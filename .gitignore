@@ -1,7 +1,7 @@
 # Project specific #
 ####################
 venv/
-fsmedhro/settings.py
+fsmedhro/secret_settings.py
 
 # Compiled source #
 ###################
