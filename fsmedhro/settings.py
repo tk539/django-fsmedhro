@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'exoral.apps.ExoralConfig',
-    'fachschaft.apps.FachschaftConfig',
+    'fsmedhrocore.apps.FachschaftConfig',
 ]
 
 MIDDLEWARE = [
