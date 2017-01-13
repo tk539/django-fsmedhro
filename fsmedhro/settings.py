@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+
 # --- INSTALL ---
 # CHANGE "secret_settings.example.py" to your settings and rename it to "secret_settings.py"
 from .secret_settings import *
@@ -43,6 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'exoral.apps.ExoralConfig',
     'fsmedhrocore.apps.FachschaftConfig',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'fsmedhro.backends.auth.LdapUniHro',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 MIDDLEWARE = [
