@@ -10,4 +10,4 @@ Django Webseite für die Fachschaft Medizin Rostock
 * (login)
 
 ## Besondere Funktionen
-* Authentifizierung via LDAP (Active Directory Domäne "uni-rostock.de") (in Arbeit)
+* Authentifizierung via LDAP (Active Directory Domäne "uni-rostock.de")
