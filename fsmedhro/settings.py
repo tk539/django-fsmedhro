@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'fsmedhro.backends.auth.LdapUniHro',
+    'fsmedhrocore.backends.auth.LdapUniHro',
 ]
 
 MIDDLEWARE = [
