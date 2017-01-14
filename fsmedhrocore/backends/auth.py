@@ -33,6 +33,10 @@ class LdapUniHro(object):
                 user = User(username=username, password='get from LDAP')
                 user.is_staff = False
                 user.is_superuser = False
+                user.set_unusable_password()
+                user.email = ldapuser["mail"][0].decode()
+                user.last_name = ldapuser["sn"][0].decode()
+                user.first_name = ldapuser["givenName"][0].decode()
                 user.save()
 
             if user.is_active:
