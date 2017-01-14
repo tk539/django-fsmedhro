@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Profil{% endblock %}
+
+
+{% block heading %}
+  <h2>Profil von {{ user.first_name }}</h2>
+{% endblock %}
+{% block content %}
+    <h3>Details</h3>
+    {%  if ownprofile %}
+        Vorname: {{ user.first_name }}<br>
+        Nachname: {{ user.last_name }}<br>
+        eMail: {{ user.email }}
+    {% else %}
+        dies ist nicht dein eigenes Profil...
+    {% endif %}
+{% endblock %}

@@ -50,6 +50,10 @@ AUTHENTICATION_BACKENDS = [
     'fsmedhrocore.backends.auth.LdapUniHro',
 ]
 
+LOGIN_URL = 'fsmedhro_login'
+LOGOUT_URL = 'fsmedhro_logout'
+LOGIN_REDIRECT_URL = 'fsmedhro_user'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
