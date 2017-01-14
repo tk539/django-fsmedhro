@@ -48,7 +48,6 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = [
     'fsmedhro.backends.auth.LdapUniHro',
-    'django.contrib.auth.backends.ModelBackend',
 ]
 
 MIDDLEWARE = [
