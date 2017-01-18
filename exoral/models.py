@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from fsmedhrocore.models import Dozent, BasicHistory, Studienabschnitt, Studiengang
 from django.utils import timezone
 
+
 class ExoralUser(models.Model):
     """
     Extends django.contrib.auth.models.User
@@ -52,7 +53,8 @@ class Meldung(Textbeitrag):
 
 
 class Frage(Textbeitrag):
-    datum = models.DateField(default=timezone.datetime.today)  # Wann wurde die Frage gestellt? ( != BasicHistory.created_date )
+    # Wann wurde die Frage gestellt? ( != BasicHistory.created_date )
+    datum = models.DateField(default=timezone.datetime.today)
     score = models.PositiveIntegerField(default=1)
     antwort = models.TextField(null=True, blank=True)
     pruefer = models.ManyToManyField(Pruefer)
@@ -67,11 +69,9 @@ class Frage(Textbeitrag):
         self.modified_by = user
         self.save()
 
-
     class Meta:
         verbose_name = "Frage"
         verbose_name_plural = "Fragen"
-
 
 
 class Kommentar(Textbeitrag):

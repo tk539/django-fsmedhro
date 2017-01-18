@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}exoral-Testatwahl{% endblock %}
+
+
+{% block heading %}
+  <h2>Testatwahl</h2>
+{% endblock %}
+
+{% block content %}
+    Modus: {{ modus }}<br>
+    Testate:<br>
+    {% if testate %}
+        <ul>
+        {% for testat in testate %}
+            <li>
+            {{ testat.bezeichnung }}({{ testat.studiengang }}, {{ testat.studienabschnitt }})
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>keine Testate abrufbar</p>
+    {% endif %}
+{% endblock %}
