@@ -1,8 +1,9 @@
 from django.conf.urls import url
-from fsmedhrocore.views import *
+from fsmedhrocore import views
 
 urlpatterns = [
-    url(r'^user/(?P<username>[\w]+)/', user_profile, name='fsmedhro_user_profile'),
-    url(r'^user/$', user_self_redirect, name='fsmedhro_user'),
-    url(r'^user_edit/$', user_edit, name='fsmedhro_user_edit')
+    url(r'^$', views.fachschaft_index, name='fsmedhro_index'),
+    url(r'^user/(?P<username>[\w]+)/', views.user_profile, name='fsmedhro_user_profile'),
+    url(r'^user/$', views.user_self_redirect, name='fsmedhro_user'),
+    url(r'^user_edit/$', views.user_edit, name='fsmedhro_user_edit'),
 ]

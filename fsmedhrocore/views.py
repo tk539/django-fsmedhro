@@ -4,10 +4,21 @@ from django.shortcuts import get_object_or_404, redirect, render
 from fsmedhrocore.forms import UserForm, FachschaftUserForm
 from django.core.exceptions import ObjectDoesNotExist
 
+
+def fachschaft_index(request):
+    return render(request, 'fsmedhrocore/index.html')
+
+
 @login_required
 def user_profile(request, username):
     user = get_object_or_404(User, username=username)
-    context = {'user': user, 'ownprofile': (request.user == user)}
+
+    try:
+        fuser = user.fachschaftuser
+    except ObjectDoesNotExist:
+        return redirect(user_edit)
+
+    context = {'user': user, 'fuser': fuser, 'ownprofile': (request.user == user)}
 
     return render(request, 'fsmedhrocore/user_profile.html', context)
 
@@ -16,7 +27,7 @@ def user_profile(request, username):
 def user_self_redirect(request):
 
     # view personal profile
-    return redirect('fsmedhro_user_profile', username=request.user.username)
+    return redirect(user_profile, username=request.user.username)
 
 
 @login_required
@@ -44,7 +55,7 @@ def user_edit(request):
             fuser = fuform.save(commit=False)
             fuser.user = user
             fuser.save()
-            return redirect('fsmedhro_user_profile', username=request.user.username)
+            return redirect(user_profile, username=request.user.username)
     else:
         uform = UserForm(instance=request.user)
 

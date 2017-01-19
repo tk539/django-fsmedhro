@@ -8,5 +8,19 @@
 {% endblock %}
 
 {% block content %}
-...ToDo...
+    Modus: {{ modus }}<br>
+    Studiengang: {{ user.fachschaftuser.studiengang }} (aus Fachschaft-Profil)<br>
+    Studienabschnitt: {{ user.fachschaftuser.studienabschnitt }} (aus Fachschaft-Profil)<br>
+    Prüfer:<br>
+    {% if pruefer %}
+        <ul>
+        {% for pruef in pruefer %}
+            <li>
+            {{ pruef.get_full_name_nachname }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>keine Testate abrufbar</p>
+    {% endif %}
 {% endblock %}

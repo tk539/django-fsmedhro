@@ -9,6 +9,8 @@
 
 {% block content %}
     Modus: {{ modus }}<br>
+    Studiengang: {{ user.fachschaftuser.studiengang }} (aus Fachschaft-Profil)<br>
+    Studienabschnitt: {{ user.fachschaftuser.studienabschnitt }} (aus Fachschaft-Profil)<br>
     Testate:<br>
     {% if testate %}
         <ul>
