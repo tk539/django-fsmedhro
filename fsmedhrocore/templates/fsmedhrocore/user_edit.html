@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Fachschaft-neues Profil{% endblock %}
+
+
+{% block heading %}
+  <h2>Neues Profil (Fachschaft)</h2>
+{% endblock %}
+
+{% block content %}
+<p>Fachschafts-Profil bearbeiten. Manche Anwendungen auf dieser Homepage beziehen sich auf Informationen aus diesem Profil.</p>
+<form method="post" action="">
+    {% csrf_token %}
+    <table>
+    {{ uform.as_table }}
+    {{ fuform.as_table }}
+    </table>
+    <input type="submit">
+</form>
+{% endblock %}

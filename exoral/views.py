@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Testat, Pruefer, Frage
-from fsmedhrocore.views import user_new
+from fsmedhrocore.views import user_edit
 
 
 @login_required
@@ -18,7 +18,7 @@ def testatwahl(request, modus):
         studiengang = request.user.fachschaftuser.studiengang
         studienabschnitt = request.user.fachschaftuser.studienabschnitt
     except ObjectDoesNotExist:
-        return redirect(user_new)  # neuen Fachschaft-User anlegen (für Studiengang etc.)
+        return redirect(user_edit)  # neuen Fachschaft-User anlegen (für Studiengang etc.)
 
     testate = Testat.objects.filter(active=True,
                                     studienabschnitt=studienabschnitt,
@@ -37,7 +37,7 @@ def prueferwahl(request, modus, testat_id):
         studiengang = request.user.fachschaftuser.studiengang
         studienabschnitt = request.user.fachschaftuser.studienabschnitt
     except ObjectDoesNotExist:
-        return redirect(user_new)  # neuen Fachschaft-User anlegen (für Studiengang etc.)
+        return redirect(user_edit)  # neuen Fachschaft-User anlegen (für Studiengang etc.)
 
     pruefer = Pruefer.objects.filter(testat=testat,
                                      active=True,
