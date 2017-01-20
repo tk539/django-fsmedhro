@@ -35,7 +35,7 @@ class Studiengang(models.Model):
 
 class Gender(models.Model):
     bezeichnung = models.CharField(max_length=30)
-    endung = models.CharField(max_length=8, null=True)  # z.B. "in" für "weiblich" -> "Studentin"
+    endung = models.CharField(max_length=8, null=True, blank=True)  # z.B. "in" für "weiblich" -> "Studentin"
 
     def __str__(self):
         return self.bezeichnung

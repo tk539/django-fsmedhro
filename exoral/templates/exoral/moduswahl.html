@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}exoral-Moduswahl{% endblock %}
+
+
+{% block heading %}
+  <h2>Moduswahl</h2>
+{% endblock %}
+
+{% block content %}
+<ul>
+    <li>
+        <a href="{% url 'exoral_testatwahl' 'l'%}">lernen</a>
+    </li>
+    <li>
+        <a href="{% url 'exoral_testatwahl' 'p'%}">protokollieren</a>
+    </li>
+</ul>
+{% endblock %}
