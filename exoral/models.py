@@ -18,6 +18,9 @@ class ExoralUser(models.Model):
 class Pruefer(Dozent):
     active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.get_full_name()
+
     class Meta:
         verbose_name = "PrüferIn"
         verbose_name_plural = "PrüferInnen"
@@ -29,6 +32,9 @@ class Testat(models.Model):
     studienabschnitt = models.ManyToManyField(Studienabschnitt)
     studiengang = models.ManyToManyField(Studiengang)
     pruefer = models.ManyToManyField(Pruefer)
+
+    def __str__(self):
+        return self.bezeichnung
 
     class Meta:
         verbose_name = "mündl. Testat"

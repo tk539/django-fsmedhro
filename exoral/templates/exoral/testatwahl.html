@@ -12,15 +12,11 @@
     Studiengang: {{ user.fachschaftuser.studiengang }} (aus Fachschaft-Profil)<br>
     Studienabschnitt: {{ user.fachschaftuser.studienabschnitt }} (aus Fachschaft-Profil)<br>
     Testate:<br>
-    {% if testate %}
-        <ul>
+    <div>
         {% for testat in testate %}
-            <li>
-            {{ testat.bezeichnung }}({{ testat.studiengang }}, {{ testat.studienabschnitt }})
-            </li>
+            <a href="{% url 'exoral:prueferwahl' modus=modus testat_id=testat.pk %}">{{ testat.bezeichnung }}</a>
+        {% empty %}
+            <p>keine Testate abrufbar</p>
         {% endfor %}
-        </ul>
-    {% else %}
-        <p>keine Testate abrufbar</p>
-    {% endif %}
+    </div>
 {% endblock %}

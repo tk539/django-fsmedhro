@@ -8,5 +8,30 @@
 {% endblock %}
 
 {% block content %}
-...ToDo...
+    User: {{ user }}
+    Modus: {{ modus }}
+    Testat: {{ testat }}
+    Prüfer: {{ pruefer }}
+    <hr>
+    Fragen:
+    <div>
+        {% for frage in fragen %}
+            <div>Frage: {{ frage.text }}</div>
+            <div>Score: {{ frage.score }}</div>
+            <div>Datum: {{ frage.datum }}</div>
+        {% empty %}
+            <p>keine Fragen abrufbar</p>
+        {% endfor %}
+    </div>
+    <hr>
+    Prüfer-Kommentare:
+    <div>
+        {% for kommentar in kommentare %}
+            <div>Kommentar: {{ kommentar.text }}</div>
+            <div>Datum: {{ kommentar.datum }}</div>
+        {% empty %}
+            <p>keine Kommentare abrufbar</p>
+        {% endfor %}
+    </div>
+
 {% endblock %}
