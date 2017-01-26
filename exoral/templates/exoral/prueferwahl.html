@@ -11,8 +11,6 @@
     <div>
         {% for pruefer in pruefer_list %}
             <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">{{ pruefer.get_full_name_nachname }}</a>
-        {% empty %}
-            <p>keine Testate abrufbar</p>
         {% endfor %}
     </div>
 {% endblock %}

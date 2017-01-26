@@ -3,6 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Testat, Pruefer, Frage, Kommentar
 from fsmedhrocore.views import user_edit
+from django.contrib import messages
 
 
 @login_required
@@ -23,6 +24,9 @@ def testatwahl(request, modus):
                                     studienabschnitt=studienabschnitt,
                                     studiengang=studiengang).order_by('bezeichnung')
 
+    if not testate.exists():
+        messages.add_message(request, messages.INFO, 'keine Testate abrufbar...')
+
     context = {'modus': modus, 'testate': testate}
 
     return render(request, 'exoral/testatwahl.html', context)
@@ -42,6 +46,9 @@ def prueferwahl(request, modus, testat_id):
                                      active=True,
                                      studienabschnitt=studienabschnitt,
                                      studiengang=studiengang).order_by('nachname', 'vorname')
+    if not pruefer.exists():
+        messages.add_message(request, messages.INFO, 'keine Prüfer abrufbar...')
+
     context = {'modus': modus, 'testat': testat, 'pruefer_list': pruefer}
 
     return render(request, 'exoral/prueferwahl.html', context)
@@ -56,6 +63,13 @@ def fragenliste(request, modus, testat_id, pruefer_id):
                                   sichtbar=True).order_by('-score', '-datum')
     kommentare = Kommentar.objects.filter(pruefer=pruefer,
                                           sichtbar=True).order_by('-created_date')
+
+    if not fragen.exists():
+        messages.add_message(request, messages.INFO, 'keine Fragen abrufbar...')
+
+    if not kommentare.exists():
+        messages.add_message(request, messages.INFO, 'keine Prüfer-Kommentare abrufbar...')
+
     context = {'modus': modus, 'testat': testat, 'pruefer': pruefer,
                'fragen': fragen, 'kommentare': kommentare}
 

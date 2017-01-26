@@ -1,0 +1,21 @@
+.fragen{
+    border: 1px solid;
+    border-radius: 20px;
+}
+
+.frage{
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.frage.text{
+
+}
+
+.frage.datum{
+
+}
+
+.frage.score{
+
+}

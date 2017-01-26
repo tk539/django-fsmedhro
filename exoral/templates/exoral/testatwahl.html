@@ -10,9 +10,7 @@
     Testate:<br>
     <div>
         {% for testat in testate %}
-            <a href="{% url 'exoral:prueferwahl' modus=modus testat_id=testat.pk %}">{{ testat.bezeichnung }}</a>
-        {% empty %}
-            <p>keine Testate abrufbar</p>
+            <a href="{% url 'exoral:prueferwahl' modus=modus testat_id=testat.pk %}">{{ testat }}</a>
         {% endfor %}
     </div>
 {% endblock %}

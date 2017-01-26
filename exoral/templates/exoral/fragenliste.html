@@ -1,21 +1,19 @@
 {% extends "exoral/base.html" %}
 
-{% block site_heading %}
-  <h2>Fragen</h2>
-{% endblock %}
+{% block site_heading %}Fragen{% endblock %}
 
 {% block site_content %}
     {% include "exoral/fortschritt.html" %}
 
     <hr>
     Fragen:
-    <div>
+    <div class="fragen">
         {% for frage in fragen %}
-            <div>Frage: {{ frage.text }}</div>
-            <div>Score: {{ frage.score }}</div>
-            <div>Datum: {{ frage.datum }}</div>
-        {% empty %}
-            <p>keine Fragen abrufbar</p>
+            <div class="frage">
+                <div class="text">Frage: {{ frage.text }}</div>
+                <div class="score">Score: {{ frage.score }}</div>
+                <div class="datum">Datum: {{ frage.datum }}</div>
+            </div>
         {% endfor %}
     </div>
     <hr>
@@ -24,8 +22,6 @@
         {% for kommentar in kommentare %}
             <div>Kommentar: {{ kommentar.text }}</div>
             <div>Datum: {{ kommentar.datum }}</div>
-        {% empty %}
-            <p>keine Kommentare abrufbar</p>
         {% endfor %}
     </div>
 
