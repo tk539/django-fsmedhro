@@ -3,11 +3,9 @@
 {% block title %}Login{% endblock %}
 
 
-{% block heading %}
-  <h2>Login</h2>
-{% endblock %}
+{% block site_heading %}Login{% endblock %}
 
-{% block content %}
+{% block site_content %}
     <form action="{% url "fsmedhro_login" %}" method="post" accept-charset="utf-8">{% csrf_token %}
         <input type="text" placeholder="Nutzerkennzeichen" class="form-control" name="username">
         <input type="password" placeholder="Passwort" class="form-control" name="password">

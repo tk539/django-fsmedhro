@@ -3,8 +3,8 @@
 {% block title %}Profil{% endblock %}
 
 
-{% block heading_text %}Profil von {{ user.first_name }}{% endblock %}
-{% block content %}
+{% block site_heading %}Profil von {{ user.first_name }}{% endblock %}
+{% block site_content %}
     <h3>Details</h3>
     {%  if ownprofile %}
         (<a href="{% url 'fsmedhro_user_edit' %}">bearbeiten</a>)
