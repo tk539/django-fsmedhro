@@ -4,7 +4,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Testat, Pruefer, Frage, Kommentar
 from fsmedhrocore.views import user_edit
 from django.contrib import messages
-
+from .forms import FrageForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 @login_required
 def moduswahl(request):
@@ -74,3 +76,30 @@ def fragenliste(request, modus, testat_id, pruefer_id):
                'fragen': fragen, 'kommentare': kommentare}
 
     return render(request, 'exoral/fragenliste.html', context)
+
+
+@login_required
+def frage_neu(request, modus, testat_id, pruefer_id):
+
+    testat = get_object_or_404(Testat, pk=testat_id)
+    pruefer = get_object_or_404(Pruefer, pk=pruefer_id)
+
+    if request.method == 'POST':
+        f_form = FrageForm(data=request.POST)
+        if f_form.is_valid():
+            frage = f_form.save(commit=False)
+            frage.modified_by=request.user
+            frage.save()
+            #return redirect(fragenliste, modus=modus, testat_id=frage.testat.pk, pruefer_id=frage.pruefer.pk)
+            return HttpResponseRedirect(reverse('exoral:fragenliste', args=(modus, testat.pk, pruefer.pk)))
+
+    else:
+        f_form = FrageForm(initial={'testat': testat, 'pruefer': pruefer})
+
+    context={
+        'f_form': f_form,
+        'modus': modus, 'testat': testat, 'pruefer': pruefer,
+    }
+
+    return render(request, 'exoral/frage_neu.html', context)
+

@@ -1,0 +1,16 @@
+{% extends "exoral/base.html" %}
+
+{% block site_heading %}Neue Frage eingeben{% endblock %}
+
+{% block site_content %}
+<p>Neue Frage hinzufügen. Bitte vorher schauen, ob wirklich nicht schon vorhanden...
+    <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">zurück</a></p>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <table>
+    {{ f_form.as_table }}
+    </table>
+    <input type="submit" value="neue Frage hinzufügen">
+</form>
+{% endblock %}

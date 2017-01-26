@@ -60,11 +60,11 @@ class Meldung(Textbeitrag):
 
 class Frage(Textbeitrag):
     # Wann wurde die Frage gestellt? ( != BasicHistory.created_date )
-    datum = models.DateField(default=timezone.datetime.today)
+    datum = models.DateField(default=timezone.datetime.today, verbose_name="Prüfungs-Datum")
     score = models.PositiveIntegerField(default=1)
-    antwort = models.TextField(null=True, blank=True)
-    pruefer = models.ManyToManyField(Pruefer)
-    testat = models.ManyToManyField(Testat)
+    antwort = models.TextField(null=True, blank=True, verbose_name="Antwort")
+    pruefer = models.ForeignKey(Pruefer, verbose_name="PrüferIn")
+    testat = models.ForeignKey(Testat, verbose_name="Testat/Prüfung")
 
     def score_up(self, user):
         """

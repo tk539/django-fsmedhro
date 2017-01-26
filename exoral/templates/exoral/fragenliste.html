@@ -16,9 +16,12 @@
             </div>
         {% endfor %}
     </div>
+    {% if modus == 'p' %}
+        <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">neue Frage</a>
+    {% endif %}
     <hr>
     Prüfer-Kommentare:
-    <div>
+    <div class="kommentare">
         {% for kommentar in kommentare %}
             <div>Kommentar: {{ kommentar.text }}</div>
             <div>Datum: {{ kommentar.datum }}</div>
