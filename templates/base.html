@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 
-{% block head %}
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
+    <head>
+        {% block head %}
+            <meta charset="UTF-8">
+            <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
+        {% endblock %}
+    </head>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <body>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        {% block nav_login %}
+            {% include "nav_login.html" %}
+        {% endblock %}
 
-</head>
-{% endblock %}
+        {% block site_headder %}
+        {% endblock %}
 
-<body>
+        {% block site %}
 
-{% block nav_login %}
-  {% include "nav_login.html" %}
-{% endblock %}
+            {% if messages %}
+                <div class="messages">
+                {% for message in messages %}
+                    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
 
-{% block heading %}
-  <h2>Fachschaft Medizin Rostock</h2>
-{% endblock %}
+            {% block site_heading_block %}
+                <h2>{% block site_heading %}Fachschaft Medizin Rostock{% endblock %}</h2>
+            {% endblock %}
 
-{% block content %}
-{% endblock %}
+            {% block site_content_block %}
+                <div class="content">
+                    {% block site_content %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        {% endblock %}
 
-</body>
-
+    </body>
 </html>

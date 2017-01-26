@@ -7,3 +7,5 @@ urlpatterns = [
     url(r'^user/$', views.user_self_redirect, name='fsmedhro_user'),
     url(r'^user_edit/$', views.user_edit, name='fsmedhro_user_edit'),
 ]
+
+# TODO: erstes Mal user_edit, danach zurück zu z.B. exoral (GET "next" in user_edit verwenden)

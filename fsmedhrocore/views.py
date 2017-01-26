@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect, render
 from fsmedhrocore.forms import UserForm, FachschaftUserForm
 from django.core.exceptions import ObjectDoesNotExist
-
+from django.contrib import messages
 
 def fachschaft_index(request):
+    messages.add_message(request, messages.INFO, 'Hello World')
     return render(request, 'fsmedhrocore/index.html')
 
 
@@ -16,7 +17,10 @@ def user_profile(request, username):
     try:
         fuser = user.fachschaftuser
     except ObjectDoesNotExist:
-        return redirect(user_edit)
+        fuser = None
+        if request.user == user:
+            # wenn eigenes profil, aber noch kein Fachschaft-Profil, dann bearbeiten/hinzufügen
+            return redirect(user_edit)
 
     context = {'user': user, 'fuser': fuser, 'ownprofile': (request.user == user)}
 
