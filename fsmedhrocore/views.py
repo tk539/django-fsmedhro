@@ -5,6 +5,7 @@ from fsmedhrocore.forms import UserForm, FachschaftUserForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 
+
 def fachschaft_index(request):
     messages.add_message(request, messages.INFO, 'Hello World')
     return render(request, 'fsmedhrocore/index.html')
@@ -12,17 +13,17 @@ def fachschaft_index(request):
 
 @login_required
 def user_profile(request, username):
-    user = get_object_or_404(User, username=username)
+    p_user = get_object_or_404(User, username=username)
 
     try:
-        fuser = user.fachschaftuser
+        f_user = p_user.fachschaftuser
     except ObjectDoesNotExist:
-        fuser = None
-        if request.user == user:
+        f_user = None
+        if request.user == p_user:
             # wenn eigenes profil, aber noch kein Fachschaft-Profil, dann bearbeiten/hinzufügen
             return redirect(user_edit)
 
-    context = {'user': user, 'fuser': fuser, 'ownprofile': (request.user == user)}
+    context = {'p_user': p_user, 'f_user': f_user}
 
     return render(request, 'fsmedhrocore/user_profile.html', context)
 
@@ -69,4 +70,4 @@ def user_edit(request):
         except ObjectDoesNotExist:
             fuform = FachschaftUserForm()
 
-    return render(request, 'fsmedhrocore/user_edit.html', {'user': request.user, 'uform': uform, 'fuform': fuform})
+    return render(request, 'fsmedhrocore/user_edit.html', {'uform': uform, 'fuform': fuform})
