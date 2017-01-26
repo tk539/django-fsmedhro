@@ -1,0 +1,12 @@
+<div class="fortschritt">
+Fortschritt:
+    {% if modus %}
+        <a href="{% url 'exoral:moduswahl' %}">Modus ({{ modus }})</a>
+        {% if testat %}
+            -> <a href="{% url 'exoral:testatwahl' modus=modus%}">Testat ({{ testat }})</a>
+            {% if pruefer %}
+                -> <a href="{% url 'exoral:prueferwahl'  modus=modus testat_id=testat.pk %}">Prüfer ({{ pruefer }})</a>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</div>

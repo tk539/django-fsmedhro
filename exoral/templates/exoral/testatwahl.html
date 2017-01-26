@@ -1,12 +1,10 @@
-{% extends "base.html" %}
-
-{% block title %}exoral-Testatwahl{% endblock %}
-
+{% extends "exoral/base.html" %}
 
 {% block site_heading %}Testatwahl{% endblock %}
 
 {% block site_content %}
-    Modus: {{ modus }}<br>
+    {% include "exoral/fortschritt.html" %}
+    <hr>
     Studiengang: {{ user.fachschaftuser.studiengang }} (aus Fachschaft-Profil)<br>
     Studienabschnitt: {{ user.fachschaftuser.studienabschnitt }} (aus Fachschaft-Profil)<br>
     Testate:<br>

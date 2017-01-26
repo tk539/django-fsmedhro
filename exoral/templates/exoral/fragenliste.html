@@ -1,17 +1,12 @@
-{% extends "base.html" %}
-
-{% block title %}exoral-Fragen{% endblock %}
-
+{% extends "exoral/base.html" %}
 
 {% block site_heading %}
   <h2>Fragen</h2>
 {% endblock %}
 
 {% block site_content %}
-    User: {{ user }}
-    Modus: {{ modus }}
-    Testat: {{ testat }}
-    Prüfer: {{ pruefer }}
+    {% include "exoral/fortschritt.html" %}
+
     <hr>
     Fragen:
     <div>
