@@ -3,9 +3,7 @@
 {% block title %}Profil{% endblock %}
 
 
-{% block heading %}
-  <h2>Profil von {{ user.first_name }}</h2>
-{% endblock %}
+{% block heading_text %}Profil von {{ user.first_name }}{% endblock %}
 {% block content %}
     <h3>Details</h3>
     {%  if ownprofile %}
@@ -17,12 +15,16 @@
             <tr><td>eMail:</td><td>{{ user.email }}</td></tr>
         </table>
         <h4>Fachschaft-Daten</h4>
-        <table>
-            <tr><td>Gender/Geschlecht:</td><td>{{ fuser.gender }}</td></tr>
-            <tr><td>Nickname:</td><td>{{ fuser.nickname }}</td></tr>
-            <tr><td>Studiengang:</td><td>{{ fuser.studiengang }}</td></tr>
-            <tr><td>Studienabschnitt:</td><td>{{ fuser.studienabschnitt }}</td></tr>
-        </table>
+        {% if fuser %}
+            <table>
+                <tr><td>Gender/Geschlecht:</td><td>{{ fuser.gender }}</td></tr>
+                <tr><td>Nickname:</td><td>{{ fuser.nickname }}</td></tr>
+                <tr><td>Studiengang:</td><td>{{ fuser.studiengang }}</td></tr>
+                <tr><td>Studienabschnitt:</td><td>{{ fuser.studienabschnitt }}</td></tr>
+            </table>
+        {% else %}
+            noch kein Fachschafts-Profil angelegt
+        {% endif %}
     {% else %}
         dies ist nicht dein eigenes Profil...
     {% endif %}

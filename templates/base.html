@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 
-{% block head %}
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
-</head>
-{% endblock %}
+    <head>
+        {% block head %}
+            <meta charset="UTF-8">
+            <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
+        {% endblock %}
+    </head>
 
-<body>
+    <body>
 
-{% block nav_login %}
-  {% include "nav_login.html" %}
-{% endblock %}
+        {% block nav_login %}
+            {% include "nav_login.html" %}
+        {% endblock %}
 
-{% block message %}
-{% endblock %}
+        {% block site_headder %}
+        {% endblock %}
 
-{% block heading %}
-  <h2>Fachschaft Medizin Rostock</h2>
-{% endblock %}
+        {% block site %}
 
-{% block content %}
-{% endblock %}
+            {% if messages %}
+                <div class="messages">
+                {% for message in messages %}
+                    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
 
-</body>
+            {% block site_heading_block %}
+                <h2>{% block site_heading %}Fachschaft Medizin Rostock{% endblock %}</h2>
+            {% endblock %}
 
+            {% block site_content_block %}
+                <div class="content">
+                    {% block site_content %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+        {% endblock %}
+
+    </body>
 </html>
