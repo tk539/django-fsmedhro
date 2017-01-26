@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 def fachschaft_index(request):
-    messages.add_message(request, messages.INFO, 'Hello World')
+    messages.info(request, 'Info: Diese Seite befindet sich noch im Aufbau...')
     return render(request, 'fsmedhrocore/index.html')
 
 

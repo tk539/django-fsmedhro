@@ -82,6 +82,10 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 WSGI_APPLICATION = 'fsmedhro.wsgi.application'
 
 
@@ -97,7 +101,7 @@ WSGI_APPLICATION = 'fsmedhro.wsgi.application'
 #        'HOST': '',
 #        'PORT': '',
 #    }
-#}
+# }
 
 
 # Password validation

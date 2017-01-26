@@ -1,0 +1,36 @@
+.messages{
+    border: solid #808080 2px;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.message{
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
+}
+
+.message.info{
+    border: solid #0066ff 2px;
+    background: rgba(0, 102, 255, 0.51);
+}
+
+.message.success{
+    border: solid #0de100 2px;
+    background: rgba(13, 225, 0, 0.5);
+}
+
+.message.warning{
+    border: solid #ffcd00 2px;
+    background: rgba(255, 205, 0, 0.51);
+}
+
+.message.error{
+    border: solid #ff0000 2px;
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.message.debug{
+    border: solid #ff50ff 2px;
+    background: rgba(255, 80, 255, 0.51);
+}

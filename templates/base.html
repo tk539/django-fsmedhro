@@ -5,6 +5,8 @@
         {% block head %}
             <meta charset="UTF-8">
             <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
+            {% load static %}
+            <link rel="stylesheet" type="text/css" href="{% static 'default.css' %}"/>
         {% endblock %}
     </head>
 
@@ -22,7 +24,7 @@
             {% if messages %}
                 <div class="messages">
                 {% for message in messages %}
-                    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    <div class="message{% if message.tags %} {{ message.tags }}{% endif %}">
                         {{ message }}
                     </div>
                 {% endfor %}
