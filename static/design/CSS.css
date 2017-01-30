@@ -1,0 +1,396 @@
+/*--------------Allgemein--------------*/
+html{
+    background-color: #E0E0F8;
+    height: 100%;
+    font-family: sans-serif, Georgia, Serif;
+    font-size: 14px;
+    float: none;
+}
+body{
+    padding: 0;
+    margin: 0;
+    padding-top: 200px;
+}
+/* --------------Header-------------- */
+header{
+    background-color: #272a44;
+    font-size: 20px;
+    color: antiquewhite;
+    width: 100%;
+    height: 100px;
+    margin-top: -200px;
+    position: fixed;
+    padding: 15px 20px 5px 15px;
+	z-index: 10;
+}
+header #logo{
+	float: left;
+	height: 100px;
+}
+header #name{
+    font-size: 45px;
+}
+header #explain{
+    font-size: 25px;
+}
+/* --------------Menue-------------- */
+/*--Grosses Menue--*/
+@media only screen and (min-width:1200px){
+	nav{
+		height: 100%;
+		width: 25%;
+		max-width: 250px;;
+		position: fixed;
+		z-index: 8;
+		left: 0;
+		background-color: #272a44;
+		margin-top: -80px;
+		transition: 0,5s;
+	}
+	nav a{
+		padding: 8px;
+		text-decoration: none;
+		font-size: 25px;
+		color: antiquewhite;
+	}
+	nav a:hover{
+		background-color: brown;
+		color: #272a44;
+		font-weight: bold;
+	}
+	nav ul{
+		list-style: none;
+		padding-left: 5px;
+	}
+	nav ul li{
+		padding-top: 15px;
+	}
+	nav ul li ul{
+		padding-left: 15px;
+	}
+	nav ul li ul a{
+		font-size: 20px;
+	}
+	nav ul li ul li{
+		padding-top: 5px;
+	}
+	nav ul li ul li a:hover{
+		border: 1px dotted antiquewhite;
+	}
+}
+/*--Mittleres Menue--*/
+@media only screen and (min-width:600px) and (max-width:1200px){
+	nav ul a{
+		text-decoration: none;
+		font-size: 20;
+		color: antiquewhite;
+	}
+	nav ul{
+		position: fixed;
+		list-style: none;
+		margin: 0;
+		padding: 5px 35px;
+		background-color: #272a44;
+		z-index: 11;
+	}
+	nav>ul{
+		top: 120px;
+		right: 0;
+		border-radius: 0 0 0 35px
+	}
+	nav ul li{
+		float: left;
+		padding: 0 5px;
+	}
+	nav ul li:hover{
+		background-color: brown;
+		border: 1px dotted antiquewhite;
+	}
+	nav ul ul{
+		border-radius: 0 0 25px 25px;
+		padding-left: 15px;
+		display: none;
+	}
+	nav ul li:hover > ul{
+		display: block;
+	}
+	nav ul ul li{
+		float: none;
+		margin: 5px 0;
+	}
+}
+/*--Mobile Menue--*/
+#menue_button{
+	visibility: hidden;
+}
+@media only screen and (max-width:600px){
+	#menue_button{
+		visibility: visible;
+		top:130px; 
+		right:50;
+		float: right;
+		position: absolute;
+		z-index: 11;
+	}
+	nav{
+		background-color: #272a44;
+		width: 85%;
+		min-height: 90%;
+		margin-left: 15%;
+		text-align: left;
+		margin-top: -80px;
+		position: absolute;
+		z-index: 9;
+		overflow: hidden;
+		transition: 0,5s;
+	}
+	.close{
+		width: 0%
+	}
+	nav a{
+		text-decoration: none;
+		color: antiquewhite;
+		font-size: 20px;
+	}
+	nav ul{
+		list-style: none;
+		padding: 0px;
+	}
+	nav >ul>li{
+		border-top: 2px solid brown;
+		padding: 5px 0px;
+	}
+	nav>ul>li>a{
+		font-size: 25px;
+	}
+	nav ul li ul li{
+		text-align: center;
+		padding: 5px 0px;
+	}
+}
+/* --------------News-------------- */
+
+/* --------------Body-------------- */
+h1{
+	font-size: 45px;
+	text-decoration: underline;
+	text-align: center;
+}
+h2{
+	font-size: 30px;
+}
+h3{
+	
+	padding-left: 25px;
+	font-style: italic;
+}
+@media only screen and (min-width:1200px){
+	article{
+		padding: 0% 20% 30px 25%;
+	}	
+}
+@media only screen and (max-width:1200px) and (min-width:430px){
+	article{
+		padding: 0% 10% 30px 10%;
+	}
+}
+@media only screen and (max-width:430px){
+	article{
+		padding: 0% 5px 30px 5px;
+	}
+	header #explain{
+		font-size: 14px;
+	}
+	header #name{
+		font-size: 25px;
+	}
+}
+section{
+	text-align: left;
+	font-size: 16px;
+	border: 1px dotted black;
+	padding: 15px;
+}
+
+button{
+	background-color: brown;
+	color: antiquewhite;
+	padding: 10px;
+	margin: 5px;
+}
+.big{
+	padding: 15px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.small{
+	padding: 5px;
+	font-style: italic;
+}
+
+.message_imp{
+	background-color: firebrick;
+	font-size: 25px;
+	font-weight: bold;
+	color: antiquewhite;
+	padding: 10px 25px;
+	text-align: center;
+}
+.message{
+	background-color: #272a44;
+	color: antiquewhite;
+	font-size: 18px;
+	padding: 5px 15px;
+	text-align: center;
+	border-radius: 15px;
+}
+    /*-----eXOral Spezifisch-----*/
+/*Fragen*/
+.frage{
+	border: 1px solid #272a44;
+	border: 2px dotted brown;
+	border-radius: 0 25px 25px 25px;
+	margin: 15px;
+	padding: 10px;
+	background-color: #272a44;
+	color: #E0E0F8;
+}
+.frage .date{
+	float: left;
+	font-style: italic;
+}
+.frage .score{
+	float: right;
+	font-weight: bold;
+}
+.frage .up{
+	float: right;
+	margin-top: -1em
+}
+.frage .text{
+	display: flex;
+	margin: 10px 50px 0px 30px;
+	font-size: 18px;
+}
+
+    /*-----SkillsLab Spezifisch-----*/
+@media only screen and (min-width:720px){
+	table{
+		margin: 25px;
+	}
+	table.cource_box tr{
+		background-color: #272a44;
+		margin: 10px;
+		font-size: 16;
+		color: #E0E0F8;
+	}
+	table.cource_box td{
+		padding: 10px;
+		text-align: center;
+		border-radius: 5px;
+	}
+	table.cource_box td:last-child{
+		background-color: #E0E0F8;
+		color: #272a44;
+		padding: 0;
+		}
+	table.cource_box tr:first-child{
+		font-size: 25;
+	}
+	table.cource_box tr:first-child td:first-child{
+		border-radius: 20px 5px 5px 5px;
+	}
+	table.cource_box tr:first-child td:nth-last-child(2){
+		border-radius: 5px 20px 5px 5px;
+	}
+	table.cource_box tr:last-child td:nth-last-child(2){
+		border-radius: 5px 5px 20px 5px;
+	}
+	table.cource_box tr:last-child td:first-child{
+		border-radius: 5px 5px 5px 20px;
+	}
+}
+@media only screen and (max-width:720px){
+	table.cource_box tr{
+	background-color: #272a44;
+	margin: 10px;
+	font-size: 16;
+	color: #E0E0F8;
+	}
+	table.cource_box td{
+		padding: 0;
+		text-align: center;
+		border-radius: 5px;
+	}
+	table.cource_box td:last-child{
+		background-color: #E0E0F8;
+		color: #272a44;
+		padding: 0;
+		}
+	table.cource_box tr:first-child{
+		font-size:16px;
+	}
+	table.cource_box tr:first-child td:first-child{
+		border-radius: 20px 5px 5px 5px;
+	}
+	table.cource_box tr:first-child td:nth-last-child(2){
+		border-radius: 5px 20px 5px 5px;
+	}
+	table.cource_box tr:last-child td:nth-last-child(2){
+		border-radius: 5px 5px 20px 5px;
+	}
+	table.cource_box tr:last-child td:first-child{
+		border-radius: 5px 5px 5px 20px;
+	}
+}
+/*-----Altfragenportal Spezifisch-----*/
+.question{
+	font-size: 18;
+	text-align: left;
+	padding: 10px;
+	margin: 0 35px 15px 15px;
+	border-bottom: 1px dotted #272a44;
+}
+.answer{
+	font-size: 16;
+}
+.answer input{
+	margin: 5px;
+	transition: 5s;
+}
+/* --------------Footer--------------*/
+footer{
+    background-color: #272a44;
+    font-size: 15px;
+    color: antiquewhite;
+    bottom: 0;
+	padding: 15px 0;
+	z-index: 11;
+	margin: 0;
+	position: fixed;
+	width: 100%
+}
+@media only screen and (min-width:1200px){
+	footer{
+		margin-left: 250px;
+	}
+}
+@media only screen and (max-width:1200px){
+	footer{
+		position: relative;
+		width: 100%;
+		padding: 15 0;
+	}
+}
+footer a{
+	padding: 15px;
+	margin: 0;
+}
+footer a:hover, footer a:link, footer a:active{
+    color: beige;
+    text-decoration: none;
+}
+footer a:visited{
+    color: darkgray;
+    text-decoration: line-through;
+}
