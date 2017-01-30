@@ -1,20 +1,30 @@
-.fragen{
-}
-
+    /*-----eXOral Spezifisch-----*/
+/*Fragen*/
 .frage{
-    border: 1px solid;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
+	border: 1px solid #272a44;
+	border: 2px dotted brown;
+	border-radius: 0 25px 25px 25px;
+	margin: 15px;
+	padding: 10px;
+	background-color: #272a44;
+	color: #E0E0F8;
 }
-
-.frage.text{
+.frage .date{
+	float: left;
+	font-style: italic;
 }
-
-.frage.datum{
+.frage .score{
+	float: right;
+	font-weight: bold;
 }
-
-.frage.score{
+.frage .up{
+	float: right;
+	margin-top: -1em
+}
+.frage .text{
+	display: flex;
+	margin: 10px 50px 0px 30px;
+	font-size: 18px;
 }
 
 .kommentare{

@@ -1,9 +1,27 @@
 {% extends "base.html" %}
 
-{% block head %}
-    {{ block.super }}
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'exoral/default.css' %}"/>
-{% endblock %}
+{% with "eXOral" as title %}
 
-{% block title %}exoral{% endblock %}
+    {% block head %}
+        {{ block.super }}
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'exoral/default.css' %}"/>
+    {% endblock %}
+
+    {% block logo_url %}{% static 'exoral/logo-exoral.png' %}{% endblock %}
+    {% block subtitle %}Portal für mündliche Altfragen{% endblock %}
+
+    {% block app_menu %}
+        <li><a><i></i>...</a></li>
+    {% endblock %}
+
+    {% block site_heading %}eXOral{% endblock %}
+
+    {% block site_content %}
+        <section>
+            {% block beschreibung %}{% endblock %}
+        </section>
+        {% block content %}{% endblock %}
+    {% endblock %}
+
+{% endwith %}

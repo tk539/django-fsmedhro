@@ -1,31 +1,30 @@
 {% extends "exoral/base.html" %}
 
-{% block site_heading %}Fragen{% endblock %}
+{% block site_heading %}Altfragen{% endblock %}
 
-{% block site_content %}
-    {% include "exoral/fortschritt.html" %}
+{% include "exoral/fortschritt.html" %}
 
-    <hr>
-    Fragen:
-    <div class="fragen">
+{% block beschreibung %}
+Wir haben für die Kombination Testat:{{ testat }}, Prüfer: {{ pruefer }} {{ fragen.count }} Fragen gefunden
+{% endblock %}
+
+{% block content %}
+    <h2>Fragen</h2>
         {% for frage in fragen %}
             <div class="frage">
-                <div class="text">Frage: {{ frage.text }}</div>
+                <div class="date">Datum: {{ frage.datum }}</div>
                 <div class="score">Score: {{ frage.score }}</div>
-                <div class="datum">Datum: {{ frage.datum }}</div>
+                <br><div class="text">Frage: {{ frage.text }}</div>
+                {% if modus == 'p' %}
+                    <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+                        <i class="fa fa-long-arrow-up" aria-hidden="true"></i>up
+                    </a>
+                {% endif %}
             </div>
         {% endfor %}
-    </div>
-    {% if modus == 'p' %}
-        <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">neue Frage</a>
-    {% endif %}
-    <hr>
-    Prüfer-Kommentare:
-    <div class="kommentare">
+    <h2>Kommentare</h2>
         {% for kommentar in kommentare %}
             <div>Kommentar: {{ kommentar.text }}</div>
             <div>Datum: {{ kommentar.datum }}</div>
         {% endfor %}
-    </div>
-
 {% endblock %}

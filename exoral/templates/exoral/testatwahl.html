@@ -2,15 +2,18 @@
 
 {% block site_heading %}Testatwahl{% endblock %}
 
-{% block site_content %}
-    {% include "exoral/fortschritt.html" %}
-    <hr>
+{% include "exoral/fortschritt.html" %}
+
+{% block beschreibung %}
+Die Auswahl dieser Testate erfolgt anhand deines Semesters, das du bei uns angegeben hast.
+    Solltest du Testate aus einem anderen Semester wählen wollen, so musst du nur dein Semester in deinen Einstellungen ändern.<br>
     Studiengang: {{ user.fachschaftuser.studiengang }} (aus Fachschaft-Profil)<br>
     Studienabschnitt: {{ user.fachschaftuser.studienabschnitt }} (aus Fachschaft-Profil)<br>
-    Testate:<br>
-    <div>
-        {% for testat in testate %}
-            <a href="{% url 'exoral:prueferwahl' modus=modus testat_id=testat.pk %}">{{ testat }}</a>
-        {% endfor %}
-    </div>
+Hier die für dich ausgewählten Testate:
+{% endblock %}
+
+{% block content %}
+    {% for testat in testate %}
+            <a href="{% url 'exoral:prueferwahl' modus=modus testat_id=testat.pk %}"><button>{{ testat }}</button></a>
+    {% endfor %}
 {% endblock %}

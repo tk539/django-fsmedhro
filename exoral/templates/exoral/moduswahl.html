@@ -2,14 +2,12 @@
 
 {% block site_heading %}Moduswahl{% endblock %}
 
-{% block site_content %}
-    {{ block.super }}
-<ul>
-    <li>
-        <a href="{% url 'exoral:testatwahl' 'l'%}">lernen</a>
-    </li>
-    <li>
-        <a href="{% url 'exoral:testatwahl' 'p'%}">protokollieren</a>
-    </li>
-</ul>
+{% block beschreibung %}
+Bitte wähle deinen Modus. Wenn du nur lernen und dir die Fragen anschauen möchtest kannst du den Modus "Lernen" wählen.
+    Eine neue Frage kannst du im Modus "Editieren" hinzufügen.
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'exoral:testatwahl' 'l'%}"><button class="big animated fadeInLeft">lernen</button></a>
+    <a href="{% url 'exoral:testatwahl' 'p'%}"><button class="big animated fadeInRight">protokollieren</button></a>
 {% endblock %}
