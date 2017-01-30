@@ -7,9 +7,8 @@ html{
     float: none;
 }
 body{
-    padding: 0;
+    padding: 200px 0 0 0;
     margin: 0;
-    padding-top: 200px;
 }
 /* --------------Header-------------- */
 header{
@@ -45,7 +44,7 @@ header #explain{
 		left: 0;
 		background-color: #272a44;
 		margin-top: -80px;
-		transition: 0,5s;
+		transition: 0.5s;
 	}
 	nav a{
 		padding: 8px;
@@ -82,7 +81,7 @@ header #explain{
 @media only screen and (min-width:600px) and (max-width:1200px){
 	nav ul a{
 		text-decoration: none;
-		font-size: 20;
+		font-size: 20px;
 		color: antiquewhite;
 	}
 	nav ul{
@@ -126,8 +125,8 @@ header #explain{
 @media only screen and (max-width:600px){
 	#menue_button{
 		visibility: visible;
-		top:130px; 
-		right:50;
+		top:130px;
+		right: 50px;
 		float: right;
 		position: absolute;
 		z-index: 11;
@@ -142,10 +141,10 @@ header #explain{
 		position: absolute;
 		z-index: 9;
 		overflow: hidden;
-		transition: 0,5s;
+		transition: 0.5s;
 	}
 	.close{
-		width: 0%
+		width: 0;
 	}
 	nav a{
 		text-decoration: none;
@@ -154,18 +153,18 @@ header #explain{
 	}
 	nav ul{
 		list-style: none;
-		padding: 0px;
+		padding: 0;
 	}
 	nav >ul>li{
 		border-top: 2px solid brown;
-		padding: 5px 0px;
+		padding: 5px 0;
 	}
 	nav>ul>li>a{
 		font-size: 25px;
 	}
 	nav ul li ul li{
 		text-align: center;
-		padding: 5px 0px;
+		padding: 5px 0;
 	}
 }
 /* --------------News-------------- */
@@ -180,23 +179,23 @@ h2{
 	font-size: 30px;
 }
 h3{
-	
+
 	padding-left: 25px;
 	font-style: italic;
 }
 @media only screen and (min-width:1200px){
 	article{
-		padding: 0% 20% 30px 25%;
-	}	
+		padding: 0 20% 30px 25%;
+	}
 }
 @media only screen and (max-width:1200px) and (min-width:430px){
 	article{
-		padding: 0% 10% 30px 10%;
+		padding: 0 10% 30px 10%;
 	}
 }
 @media only screen and (max-width:430px){
 	article{
-		padding: 0% 5px 30px 5px;
+		padding: 0 5px 30px 5px;
 	}
 	header #explain{
 		font-size: 14px;
@@ -228,49 +227,41 @@ button{
 	font-style: italic;
 }
 
-.message_imp{
-	background-color: firebrick;
-	font-size: 25px;
-	font-weight: bold;
-	color: antiquewhite;
-	padding: 10px 25px;
-	text-align: center;
+.messages{
+    border: solid #808080 2px;
 }
+
 .message{
-	background-color: #272a44;
-	color: antiquewhite;
 	font-size: 18px;
 	padding: 5px 15px;
 	text-align: center;
 	border-radius: 15px;
+    margin: 2px;
 }
-    /*-----eXOral Spezifisch-----*/
-/*Fragen*/
-.frage{
-	border: 1px solid #272a44;
-	border: 2px dotted brown;
-	border-radius: 0 25px 25px 25px;
-	margin: 15px;
-	padding: 10px;
-	background-color: #272a44;
-	color: #E0E0F8;
+
+.message.info{
+    border: solid #0066ff 2px;
+    background: rgba(0, 102, 255, 0.51);
 }
-.frage .date{
-	float: left;
-	font-style: italic;
+
+.message.success{
+    border: solid #0de100 2px;
+    background: rgba(13, 225, 0, 0.5);
 }
-.frage .score{
-	float: right;
-	font-weight: bold;
+
+.message.warning{
+    border: solid #ffcd00 2px;
+    background: rgba(255, 205, 0, 0.51);
 }
-.frage .up{
-	float: right;
-	margin-top: -1em
+
+.message.error{
+    border: solid #ff0000 2px;
+    background: rgba(255, 0, 0, 0.5);
 }
-.frage .text{
-	display: flex;
-	margin: 10px 50px 0px 30px;
-	font-size: 18px;
+
+.message.debug{
+    border: solid #ff50ff 2px;
+    background: rgba(255, 80, 255, 0.51);
 }
 
     /*-----SkillsLab Spezifisch-----*/
@@ -281,7 +272,7 @@ button{
 	table.cource_box tr{
 		background-color: #272a44;
 		margin: 10px;
-		font-size: 16;
+		font-size: 16px;
 		color: #E0E0F8;
 	}
 	table.cource_box td{
@@ -295,7 +286,7 @@ button{
 		padding: 0;
 		}
 	table.cource_box tr:first-child{
-		font-size: 25;
+		font-size: 25px;
 	}
 	table.cource_box tr:first-child td:first-child{
 		border-radius: 20px 5px 5px 5px;
@@ -314,7 +305,7 @@ button{
 	table.cource_box tr{
 	background-color: #272a44;
 	margin: 10px;
-	font-size: 16;
+	font-size: 16px;
 	color: #E0E0F8;
 	}
 	table.cource_box td{
@@ -345,14 +336,14 @@ button{
 }
 /*-----Altfragenportal Spezifisch-----*/
 .question{
-	font-size: 18;
+	font-size: 18px;
 	text-align: left;
 	padding: 10px;
 	margin: 0 35px 15px 15px;
 	border-bottom: 1px dotted #272a44;
 }
 .answer{
-	font-size: 16;
+	font-size: 16px;
 }
 .answer input{
 	margin: 5px;
@@ -379,7 +370,7 @@ footer{
 	footer{
 		position: relative;
 		width: 100%;
-		padding: 15 0;
+		padding: 15px 0;
 	}
 }
 footer a{
