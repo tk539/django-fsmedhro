@@ -20,7 +20,7 @@ from django.views.generic import RedirectView
 
 
 urlpatterns = [
-    # url(r'^$', RedirectView.as_view(url='https://fachschaft-medizin-rostock.de/')),
+    url(r'^$', RedirectView.as_view(url='https://fachschaft-medizin-rostock.de/'), name='root'),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', login, {'template_name': 'login.html'}, name='fsmedhro_login'),
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='fsmedhro_logout'),
