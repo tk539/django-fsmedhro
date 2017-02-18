@@ -2,13 +2,12 @@
 
 {% block site_heading %}Altfragen{% endblock %}
 
-{% include "exoral/fortschritt.html" %}
-
 {% block beschreibung %}
 Wir haben für die Kombination Testat:{{ testat }}, Prüfer: {{ pruefer }} {{ fragen.count }} Fragen gefunden
 {% endblock %}
 
 {% block content %}
+
     <h2>Fragen</h2>
         {% for frage in fragen %}
             <div class="frage">
