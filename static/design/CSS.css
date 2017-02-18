@@ -125,13 +125,14 @@ header #explain{
 @media only screen and (max-width:600px){
 	#menue_button{
 		visibility: visible;
-		top:130px; 
+		top:130px;
 		right: 50px;
 		float: right;
 		position: absolute;
 		z-index: 11;
 	}
 	nav{
+		display: none;
 		background-color: #272a44;
 		width: 85%;
 		min-height: 90%;
@@ -143,6 +144,11 @@ header #explain{
 		overflow: hidden;
 		transition: 0.5s;
 	}
+
+	.is-active{
+		display: inherit;
+	}
+
 	.close{
 		width: 0;
 	}
@@ -179,14 +185,14 @@ h2{
 	font-size: 30px;
 }
 h3{
-	
+
 	padding-left: 25px;
 	font-style: italic;
 }
 @media only screen and (min-width:1200px){
 	article{
 		padding: 0 20% 30px 25%;
-	}	
+	}
 }
 @media only screen and (max-width:1200px) and (min-width:430px){
 	article{
