@@ -5,14 +5,12 @@
 
     <head>
         {% block head %}
+            <meta name="viewport" content="initial-scale=1.0">
             <meta http-equiv="content-type" content="text/html; charset=UTF-8">
             <meta name="description" content="Der Interne Bereich der Fachschaft Medizin Rostock wird auf diesen Seiten dargestellt">
             <title>{{ title }}</title>
 
-    		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
             {% load static %}
-            <!-- <link rel="stylesheet" type="text/css" href="{% static 'default.css' %}"/> -->
 
             <link rel="stylesheet" href="{% static 'design/CSS.css' %}" type="text/css" media="screen">
 			<link rel="stylesheet" href="{% static 'design/animate.css' %}"> <!--File für alle Animationen-->
@@ -111,6 +109,23 @@
         {% endblock %}
 
     </body>
+
+<script>
+  // Look for .hamburger
+  var hamburger = document.querySelector(".hamburger");
+  // On click
+  hamburger.addEventListener("click", function() {
+    // Toggle class "is-active"
+    hamburger.classList.toggle("is-active");
+
+    var nav = document.querySelector("nav");
+
+    // var nav = document.getElementsByTagName("nav")[0];
+    nav.classList.toggle("is-active");
+    // Do something else, like open/close menu
+  });
+</script>
+
 </html>
 
 {% endwith %}

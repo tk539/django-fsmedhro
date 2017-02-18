@@ -132,6 +132,7 @@ header #explain{
 		z-index: 11;
 	}
 	nav{
+		display: none;
 		background-color: #272a44;
 		width: 85%;
 		min-height: 90%;
@@ -143,6 +144,11 @@ header #explain{
 		overflow: hidden;
 		transition: 0.5s;
 	}
+
+	.is-active{
+		display: inherit;
+	}
+
 	.close{
 		width: 0;
 	}
