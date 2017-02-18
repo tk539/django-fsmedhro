@@ -8,6 +8,7 @@ from .forms import FrageForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 @login_required
 def moduswahl(request):
     return render(request, 'exoral/moduswahl.html')
@@ -88,18 +89,30 @@ def frage_neu(request, modus, testat_id, pruefer_id):
         f_form = FrageForm(data=request.POST)
         if f_form.is_valid():
             frage = f_form.save(commit=False)
-            frage.modified_by=request.user
+            frage.modified_by = request.user
             frage.save()
-            #return redirect(fragenliste, modus=modus, testat_id=frage.testat.pk, pruefer_id=frage.pruefer.pk)
+            # return redirect(fragenliste, modus=modus, testat_id=frage.testat.pk, pruefer_id=frage.pruefer.pk)
             return HttpResponseRedirect(reverse('exoral:fragenliste', args=(modus, testat.pk, pruefer.pk)))
 
     else:
         f_form = FrageForm(initial={'testat': testat, 'pruefer': pruefer})
 
-    context={
+    context = {
         'f_form': f_form,
         'modus': modus, 'testat': testat, 'pruefer': pruefer,
     }
 
     return render(request, 'exoral/frage_neu.html', context)
 
+
+def frage_score(request, frage_id):
+
+    testat = get_object_or_404(Testat, pk=request.POST['testat_id'])
+    pruefer = get_object_or_404(Pruefer, pk=request.POST['pruefer_id'])
+    frage = get_object_or_404(Frage, pk=frage_id)
+
+    # TODO: check if user is score-spammer (session variable?)
+
+    frage.score_up(request.user)
+
+    return HttpResponseRedirect(reverse('exoral:fragenliste', args=('p', testat.pk, pruefer.pk)))

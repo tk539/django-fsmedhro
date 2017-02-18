@@ -1,7 +1,6 @@
     /*-----eXOral Spezifisch-----*/
 /*Fragen*/
 .frage{
-	border: 1px solid #272a44;
 	border: 2px dotted brown;
 	border-radius: 0 25px 25px 25px;
 	margin: 15px;
@@ -19,12 +18,24 @@
 }
 .frage .up{
 	float: right;
-	margin-top: -1em
+	margin-top: -20px
 }
+
+.frage .up button {
+    padding: 1px 5px;
+    margin: 0;
+}
+
 .frage .text{
 	display: flex;
-	margin: 10px 50px 0px 30px;
+	margin: 20px 50px 0 30px;
 	font-size: 18px;
+}
+
+.frage p{
+	margin: 0 5px;
+	display: block;
+	font-style: italic;
 }
 
 .kommentare{
@@ -35,7 +46,7 @@
     color: #003366;
     display: inline-block;
     border: solid 1px;
-    border-radius: 0px 15px 15px 0px;
+    border-radius: 0 15px 15px 0;
     padding: 2px 10px 2px 2px;
     text-decoration: none;
     background: #f6f6f6;
