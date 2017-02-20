@@ -11,6 +11,7 @@ from django.urls import reverse
 
 @login_required
 def moduswahl(request):
+    # hier kommt die Moduswahl
     return render(request, 'exoral/moduswahl.html')
 
 
