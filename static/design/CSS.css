@@ -94,8 +94,8 @@ header #explain{
 	}
 	nav>ul{
 		top: 120px;
-		right: 0;
-		border-radius: 0 0 0 35px
+		left: 0;
+		border-radius: 0 0 35px 0;
 	}
 	nav ul li{
 		float: left;
@@ -232,16 +232,16 @@ button{
 	padding: 5px;
 	font-style: italic;
 }
-
+/*------Messages---------*/
 .messages{
-    border: solid #808080 2px;
+
 }
 
 .message{
 	font-size: 18px;
 	padding: 5px 15px;
 	text-align: center;
-	border-radius: 15px;
+	border-radius: 0 25px 25px 0;
     margin: 2px;
 }
 
@@ -261,8 +261,9 @@ button{
 }
 
 .message.error{
-    border: solid #ff0000 2px;
+    border: solid #ff0000 4px;
     background: rgba(255, 0, 0, 0.5);
+	font-size: 22px;
 }
 
 .message.debug{
