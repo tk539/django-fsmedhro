@@ -125,7 +125,7 @@ header #explain{
 @media only screen and (max-width:600px){
 	#menue_button{
 		visibility: visible;
-		top:130px;
+		top:108px;
 		right: 50px;
 		float: right;
 		position: absolute;
@@ -135,18 +135,19 @@ header #explain{
 		display: block;
 		background-color: #272a44;
 		width: 0;
-		min-height: 90%;
+		min-height: 85%;
 		margin-left: 15%;
 		text-align: left;
 		margin-top: -80px;
 		position: absolute;
 		z-index: 9;
 		overflow: hidden;
-		transition: 0.5s;
+		transition: 1s;
+		right: 0;
 	}
 
 	.is-active{
-		width: 85%;
+		width: 90%;
 	}
 
 	.close{
@@ -155,7 +156,7 @@ header #explain{
 	nav a{
 		text-decoration: none;
 		color: antiquewhite;
-		font-size: 20px;
+		font-size: 18px;
 	}
 	nav ul{
 		list-style: none;
@@ -166,7 +167,7 @@ header #explain{
 		padding: 5px 0;
 	}
 	nav>ul>li>a{
-		font-size: 25px;
+		font-size: 22px;
 	}
 	nav ul li ul li{
 		text-align: center;
@@ -239,10 +240,11 @@ button{
 
 .message{
 	font-size: 18px;
-	padding: 5px 15px;
+	padding: 5px 0;
 	text-align: center;
 	border-radius: 0 25px 25px 0;
     margin: 2px;
+	width: 85%
 }
 
 .message.info{
@@ -270,7 +272,6 @@ button{
     border: solid #ff50ff 2px;
     background: rgba(255, 80, 255, 0.51);
 }
-
     /*-----SkillsLab Spezifisch-----*/
 @media only screen and (min-width:720px){
 	table{
@@ -371,6 +372,8 @@ footer{
 @media only screen and (min-width:1200px){
 	footer{
 		margin-left: 250px;
+		position: relative;
+		bottom: 0;
 	}
 }
 @media only screen and (max-width:1200px){
@@ -378,6 +381,7 @@ footer{
 		position: relative;
 		width: 100%;
 		padding: 15px 0;
+		bottom: 0px;
 	}
 }
 footer a{
