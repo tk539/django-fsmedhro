@@ -112,8 +112,18 @@ def frage_score(request, frage_id):
     pruefer = get_object_or_404(Pruefer, pk=request.POST['pruefer_id'])
     frage = get_object_or_404(Frage, pk=frage_id)
 
-    # TODO: check if user is score-spammer (session variable?)
+    try:
+        has_scored = request.session['has_scored']
+    except KeyError:
+        has_scored = []
 
-    frage.score_up(request.user)
+    if frage.pk in has_scored:
+        messages.add_message(request, messages.WARNING, 'Frage wurde bereits gescored')
+    elif len(has_scored) > 10:
+        messages.add_message(request, messages.WARNING, 'Nicht mehr als 10 Scores möglich')
+    else:
+        has_scored.append(frage.pk)
+        request.session['has_scored'] = has_scored
+        frage.score_up(request.user)
 
     return HttpResponseRedirect(reverse('exoral:fragenliste', args=('p', testat.pk, pruefer.pk)))
