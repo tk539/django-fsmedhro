@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from fsmedhrocore import views
 
+# /fachschaft/...
 urlpatterns = [
     url(r'^$', views.fachschaft_index, name='fsmedhro_index'),
     url(r'^user/(?P<username>[\w]+)/', views.user_profile, name='fsmedhro_user_profile'),
