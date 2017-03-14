@@ -34,9 +34,9 @@ Wir haben für die Kombination Testat:{{ testat }}, Prüfer: {{ pruefer }} {{ fr
         {% endfor %}
 
     {% if modus == 'p' %}
-        <button><a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"
-                   style="font-size:20px; color:white;">
-            neue Frage eintragen</a></button>
+        <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"
+                   style="font-size:20px; color:white;"><button>
+            neue Frage eintragen</button></a>
     {% endif %}
 
 {% endblock %}
