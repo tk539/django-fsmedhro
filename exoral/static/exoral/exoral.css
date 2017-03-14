@@ -18,7 +18,8 @@
 }
 .frage .up{
 	float: right;
-	margin-top: -20px
+	margin-top: -20px;
+    font-size: 22px;
 }
 
 .frage .up button {
@@ -40,6 +41,16 @@
 
 .kommentare{
 
+}
+.comment{
+	background-color: #272a44;
+	color: #E0E0F8;
+	font-size: 20px;
+    border: 1px dotted red;
+    border-radius: 0px 5px 5px 5px;
+}
+.button .input{
+    background-color: inherit;
 }
 .fortschritt{
     font-size: 18px;
