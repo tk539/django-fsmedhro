@@ -40,6 +40,10 @@
 }
 
 .kommentare{
+	color: #272a44;
+	background-color: #E0E0F8;
+	border: 1px dotted red;
+	border-radius: 0 5px 5px 5px;
 
 }
 .comment{

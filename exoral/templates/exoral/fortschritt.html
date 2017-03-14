@@ -1,13 +1,12 @@
 <div class="fortschritt">
 Fortschritt:
     {% if modus %}
-        <a href="{% url 'exoral:moduswahl' %}">Modus ({{ modus }})</a>
+        <a href="{% url 'exoral:moduswahl' %}">Modus: {{ modus }}</a> #TODO: P/Lin Protokollieren/Lernen
         {% if testat %}
-            -> <a href="{% url 'exoral:testatwahl' modus=modus%}">Testat ({{ testat }})</a>
+            -> <a href="{% url 'exoral:testatwahl' modus=modus%}">Testat: {{ testat }}</a>
             {% if pruefer %}
-                -> <a href="{% url 'exoral:prueferwahl'  modus=modus testat_id=testat.pk %}">Prüfer ({{ pruefer }})</a>
+                -> <a href="{% url 'exoral:prueferwahl'  modus=modus testat_id=testat.pk %}">Prüfer: {{ pruefer }}</a>
             {% endif %}
         {% endif %}
     {% endif %}
 </div>
-    # TODO: Modus: aus p und l Protokollmodus und Lernenmodus machen - dafür Madus davor wegnehmen
