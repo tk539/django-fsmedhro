@@ -94,8 +94,8 @@ header #explain{
 	}
 	nav>ul{
 		top: 120px;
-		right: 0;
-		border-radius: 0 0 0 35px
+		left: 0;
+		border-radius: 0 0 35px 0;
 	}
 	nav ul li{
 		float: left;
@@ -125,28 +125,29 @@ header #explain{
 @media only screen and (max-width:600px){
 	#menue_button{
 		visibility: visible;
-		top:130px;
+		top:108px;
 		right: 50px;
 		float: right;
 		position: absolute;
 		z-index: 11;
 	}
 	nav{
-		display: none;
+		display: block;
 		background-color: #272a44;
-		width: 85%;
-		min-height: 90%;
+		width: 0;
+		min-height: 85%;
 		margin-left: 15%;
 		text-align: left;
 		margin-top: -80px;
 		position: absolute;
 		z-index: 9;
 		overflow: hidden;
-		transition: 0.5s;
+		transition: 1s;
+		right: 0;
 	}
 
 	.is-active{
-		display: inherit;
+		width: 90%;
 	}
 
 	.close{
@@ -155,7 +156,7 @@ header #explain{
 	nav a{
 		text-decoration: none;
 		color: antiquewhite;
-		font-size: 20px;
+		font-size: 18px;
 	}
 	nav ul{
 		list-style: none;
@@ -166,7 +167,7 @@ header #explain{
 		padding: 5px 0;
 	}
 	nav>ul>li>a{
-		font-size: 25px;
+		font-size: 22px;
 	}
 	nav ul li ul li{
 		text-align: center;
@@ -199,7 +200,7 @@ h3{
 		padding: 0 10% 30px 10%;
 	}
 }
-@media only screen and (max-width:430px){
+@media only screen and (max-width:600px){
 	article{
 		padding: 0 5px 30px 5px;
 	}
@@ -232,17 +233,18 @@ button{
 	padding: 5px;
 	font-style: italic;
 }
-
+/*------Messages---------*/
 .messages{
-    border: solid #808080 2px;
+
 }
 
 .message{
 	font-size: 18px;
-	padding: 5px 15px;
+	padding: 5px 0;
 	text-align: center;
-	border-radius: 15px;
+	border-radius: 0 25px 25px 0;
     margin: 2px;
+	width: 85%
 }
 
 .message.info{
@@ -261,15 +263,15 @@ button{
 }
 
 .message.error{
-    border: solid #ff0000 2px;
+    border: solid #ff0000 4px;
     background: rgba(255, 0, 0, 0.5);
+	font-size: 22px;
 }
 
 .message.debug{
     border: solid #ff50ff 2px;
     background: rgba(255, 80, 255, 0.51);
 }
-
     /*-----SkillsLab Spezifisch-----*/
 @media only screen and (min-width:720px){
 	table{
@@ -370,6 +372,8 @@ footer{
 @media only screen and (min-width:1200px){
 	footer{
 		margin-left: 250px;
+		position: relative;
+		bottom: 0;
 	}
 }
 @media only screen and (max-width:1200px){
@@ -377,6 +381,7 @@ footer{
 		position: relative;
 		width: 100%;
 		padding: 15px 0;
+		bottom: 0px;
 	}
 }
 footer a{

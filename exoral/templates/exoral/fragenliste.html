@@ -29,13 +29,14 @@ Wir haben für die Kombination Testat:{{ testat }}, Prüfer: {{ pruefer }} {{ fr
         {% endfor %}
     <h2>Kommentare</h2>
         {% for kommentar in kommentare %}
-            <div>Kommentar: {{ kommentar.text }}</div>
+            <div class="comment">{{ kommentar.text }}</div>
             <div>Datum: {{ kommentar.datum }}</div>
         {% endfor %}
 
     {% if modus == 'p' %}
-        <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
-            neue Frage eintragen</a>
+        <button><a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"
+                   style="font-size:20px; color:white;">
+            neue Frage eintragen</a></button>
     {% endif %}
 
 {% endblock %}

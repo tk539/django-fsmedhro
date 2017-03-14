@@ -18,7 +18,8 @@
 }
 .frage .up{
 	float: right;
-	margin-top: -20px
+	margin-top: -20px;
+    font-size: 22px;
 }
 
 .frage .up button {
@@ -39,15 +40,32 @@
 }
 
 .kommentare{
+	color: #272a44;
+	background-color: #E0E0F8;
+	border: 1px dotted red;
+	border-radius: 0 5px 5px 5px;
 
 }
-
+.comment{
+	background-color: #272a44;
+	color: #E0E0F8;
+	font-size: 20px;
+    border: 1px dotted red;
+    border-radius: 0px 5px 5px 5px;
+}
+.button .input{
+    background-color: inherit;
+}
+.fortschritt{
+    font-size: 18px;
+}
 .fortschritt a{
-    color: #003366;
+    color: antiquewhite;
     display: inline-block;
     border: solid 1px;
-    border-radius: 0 15px 15px 0;
-    padding: 2px 10px 2px 2px;
+	border-radius: 5px 25px 25px 5px;
+    padding: 2px 10px 2px 10px;
     text-decoration: none;
-    background: #f6f6f6;
+    background: #272a44;
+	font-size: 22px;
 }
