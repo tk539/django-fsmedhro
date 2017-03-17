@@ -44,7 +44,7 @@
 	background-color: #E0E0F8;
 	border: 1px dotted red;
 	border-radius: 0 5px 5px 5px;
-
+	padding: 5px;
 }
 .comment{
 	background-color: #272a44;
