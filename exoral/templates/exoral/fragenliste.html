@@ -30,7 +30,6 @@ Wir haben für die Kombination Testat:{{ testat }}, Prüfer: {{ pruefer }} {{ fr
     <h2>Kommentare</h2>
         {% for kommentar in kommentare %}
             <div class="comment">{{ kommentar.text }}</div>
-            <div>Datum: {{ kommentar.datum }}</div>
         {% endfor %}
 
     {% if modus == 'p' %}
