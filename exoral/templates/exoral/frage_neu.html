@@ -3,20 +3,21 @@
 {% block site_heading %}Neue Frage eingeben{% endblock %}
 
 {% block site_content %}
-<p>Du bist dabei eine neue Frage in unseren Katalog hinzuzufügen. Bitte vergewissere dich ob diese Frage wirklich neu ist.
+<section>Du bist dabei eine neue Frage in unseren Katalog hinzuzufügen. Bitte vergewissere dich ob diese Frage wirklich neu ist.
     Sollte diese Frage schon vorhanden sein, gehe bitte zurück und nutze den "Score Up Button" ,
      um die Frage als gestellt zu markieren.
     <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">Hier gehts zurück</a>
-</p>
+</section>
 
 <form method="post" action="">
     {% csrf_token %}
     <table>
     {{ f_form.as_table }}
     </table>
-    <button><input type="submit" value="neue Frage hinzufügen"></button>
+    <input class="btn_login"type="submit" value="neue Frage hinzufügen">
 </form>
-    <button>
-        <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">Abbrechen</a>
+    <button class="small animated bounceInRight">
+        <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"
+           style="text-decoration: none; color: #E0E0F8; float: left;">Abbrechen</a>
     </button>
 {% endblock %}

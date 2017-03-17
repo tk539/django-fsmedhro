@@ -18,12 +18,12 @@
 }
 .frage .up{
 	float: right;
-	margin-top: -20px;
+	margin-top: -30px;
     font-size: 22px;
 }
 
 .frage .up button {
-    padding: 1px 5px;
+    padding: 5px;
     margin: 0;
 }
 
@@ -40,18 +40,20 @@
 }
 
 .kommentare{
-	color: #272a44;
-	background-color: #E0E0F8;
-	border: 1px dotted red;
-	border-radius: 0 5px 5px 5px;
-	padding: 5px;
+	background-color: #272a44;
+	color: #E0E0F8;
+	font-size: 16px;
+    border: 1px dotted red;
+    border-radius: 0px 20px 20px 20px;
+	padding: 5px 25px;
 }
 .comment{
 	background-color: #272a44;
 	color: #E0E0F8;
-	font-size: 20px;
+	font-size: 16px;
     border: 1px dotted red;
-    border-radius: 0px 5px 5px 5px;
+    border-radius: 0px 20px 20px 20px;
+	padding: 5px 25px;
 }
 .button .input{
     background-color: inherit;
