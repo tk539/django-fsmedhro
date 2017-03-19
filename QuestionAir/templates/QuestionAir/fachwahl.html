@@ -1,0 +1,26 @@
+{% extends "exoral/base.html" %}
+
+{% block site_heading %}
+    Fächerwahl
+{% endblock %}
+
+{% block beschreibung %}
+    Auf dieser Seite kannst du das Fach auswählen welchen du kreuzen möchtest.
+Wir haben dir bereits eine Auswahl der Fächer für dein Semester erstellt. Die auswahl basiert auf
+deinen Angaben in deinem Profil.</br>
+Deine Aktuellen angaben sind:</br>
+    <u>Studiengang:</u> {{ user.fachschaftuser.studiengang }}<br>
+    <u>Studienabschnitt:</u> {{ user.fachschaftuser.studienabschnitt }}<br>
+Du kannst deine Einstellungen bequem <a href="{% url 'fsmedhro_user_edit' %}">hier</a> ändern.
+{% endblock %}
+
+{% block content %}
+    <h2>Deine Fächer</h2>
+    {%  for fach in fach  %}
+        <a href="{% url 'QuestionAir:klausurwahl' fach_id=fach.pk %}">
+            <button class="animated zoomIn">
+                {{ fach }}
+            </button>
+        </a>
+    {% endfor %}
+{% endblock %}

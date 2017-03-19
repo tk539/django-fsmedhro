@@ -1,0 +1,18 @@
+/*-----Altfragenportal Spezifisch-----*/
+.question{
+	font-size: 18px;
+	text-align: left;
+	padding: 10px;
+	margin: 0 35px 15px 15px;
+	border-bottom: 1px dotted #272a44;
+}
+.answer{
+	font-size: 16px;
+}
+.answer input{
+	margin: 5px;
+	transition: 5s;
+}
+.navigation{
+	float: left;
+}

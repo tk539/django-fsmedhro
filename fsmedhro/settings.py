@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'exoral.apps.ExoralConfig',
     'fsmedhrocore.apps.FachschaftConfig',
+    'QuestionAir.apps.QuestionAirConfig',
 ]
 
 AUTHENTICATION_BACKENDS = [

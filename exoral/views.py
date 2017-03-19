@@ -28,7 +28,7 @@ def testatwahl(request, modus):
                                     studiengang=studiengang).order_by('bezeichnung')
 
     if not testate.exists():
-        messages.add_message(request, messages.INFO, 'keine Testate abrufbar...')
+        messages.add_message(request, messages.INFO, 'Es sind leider keine Testate abrufbar für deinen Studienabschnitt')
 
     context = {'modus': modus, 'testate': testate}
 
@@ -50,7 +50,7 @@ def prueferwahl(request, modus, testat_id):
                                      studienabschnitt=studienabschnitt,
                                      studiengang=studiengang).order_by('nachname', 'vorname')
     if not pruefer.exists():
-        messages.add_message(request, messages.INFO, 'keine Prüfer abrufbar...')
+        messages.add_message(request, messages.INFO, 'Für dieses Testat ist kein Prüfer abrufbar')
 
     context = {'modus': modus, 'testat': testat, 'pruefer_list': pruefer}
 
