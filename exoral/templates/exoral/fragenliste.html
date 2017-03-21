@@ -24,32 +24,30 @@
                         {% csrf_token %}
                         <input type="hidden" name="testat_id" value="{{ testat.pk }}" />
                         <input type="hidden" name="pruefer_id" value="{{ pruefer.pk }}" />
-                        <button class="small" "submit"><span class="fa fa-long-arrow-up"></span> up</button>
+                        <button class="small"><span class="fa fa-long-arrow-up"></span> up</button>
                     </form>
                 {% endif %}
             </div>
         {% endfor %}
+    {% if modus == 'p' %}
+        <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+        <button class="big" style="text-decoration: none; color: #E0E0F8">Neue Frage eintragen</button></a>
+    {% endif %}
     <h2><i class="fa fa-comments" aria-hidden="true"></i> Kommentare</h2>
         <section>
             Wir haben <b>für {{ pruefer }} {{ kommentare.count }} Kommentare</b> gefunden. Diese Kommentare sind aus allen
         Prüfungen bei {{ pruefer }} zusammengetragen.
             {% if modus == 'p' %}
                 Du kannst natürlich dem Prüfer auch einen Kommentar hinzufügen.
-                <button class="small">
-                    <a href="{% url 'exoral:kommentar_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"
-                style="text-decoration: none; color: #E0E0F8">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Kommentar</a>
-                </button>
+                <a href="{% url 'exoral:kommentar_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+                    <button class="small" style="text-decoration: none; color: #E0E0F8">
+                    <span class="fa fa-plus" aria-hidden="true"></span> Kommentar
+                </button></a>
             {% endif %}
         </section>
         {% for kommentar in kommentare %}
             <div class="comment animated zoomInUp">{{ kommentar.text }}</div>
         {% endfor %}
-    </br></br>
-    {% if modus == 'p' %}
-        <button class="big"><a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"
-        style="text-decoration: none; color: #E0E0F8">
-            Neue Frage eintragen</a></button>
-    {% endif %}
+    <br><br>
 
 {% endblock %}

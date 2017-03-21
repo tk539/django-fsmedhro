@@ -7,7 +7,7 @@
     Sollte diese Frage schon vorhanden sein, gehe bitte zurück und nutze den "Score Up Button" ,
      um die Frage als gestellt zu markieren.
     <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">Hier gehts zurück.</a>
-    </br></br>
+    <br><br>
     <b>Bitte trage immer nur eine neue Frage.</b> Solltest du zwei oder drei neue Fragen gestellt bekommen haben, trage
     diese bitte auch zwei oder drei <b>seperate neue Fragen ein.</b>
 </section>
@@ -17,10 +17,11 @@
     <table>
     {{ f_form.as_table }}
     </table>
-    <input class="btn_login"type="submit" value="neue Frage hinzufügen">
+    <button class="big" style="text-decoration: none; color: #E0E0F8">neue Frage hinzufügen</button>
 </form>
-    <button class="small animated bounceInRight">
-        <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"
-           style="text-decoration: none; color: #E0E0F8; float: left;">Abbrechen</a>
-    </button>
+    <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+    <button class="small animated bounceInRight" style="text-decoration: none; color: #E0E0F8; float: left;">
+        Abbrechen
+    </button></a>
+    <br><br>
 {% endblock %}

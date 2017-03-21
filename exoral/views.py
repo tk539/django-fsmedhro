@@ -17,7 +17,6 @@ def moduswahl(request):
 
 @login_required
 def testatwahl(request, modus):
-
     try:
         studiengang = request.user.fachschaftuser.studiengang
         studienabschnitt = request.user.fachschaftuser.studienabschnitt
@@ -70,7 +69,8 @@ def fragenliste(request, modus, testat_id, pruefer_id):
 
     if not fragen.exists():
         messages.add_message(request, messages.INFO,
-            'Für dieses Testat existieren leider noch keine Fragen. Wenn du eine mündlcihe Testatfrage hast, trage sie bitte ein')
+                             'Für dieses Testat existieren leider noch keine Fragen. '
+                             'Wenn du eine mündliche Testatfrage hast, trage sie bitte ein')
 
     if not kommentare.exists():
         messages.add_message(request, messages.INFO, 'Für diesen Prüfer existieren noch keine Kommentare')
@@ -83,7 +83,6 @@ def fragenliste(request, modus, testat_id, pruefer_id):
 
 @login_required
 def frage_neu(request, modus, testat_id, pruefer_id):
-
     testat = get_object_or_404(Testat, pk=testat_id)
     pruefer = get_object_or_404(Pruefer, pk=pruefer_id)
 
@@ -97,7 +96,6 @@ def frage_neu(request, modus, testat_id, pruefer_id):
             # return redirect(fragenliste, modus=modus, testat_id=frage.testat.pk, pruefer_id=frage.pruefer.pk)
             return HttpResponseRedirect(reverse('exoral:fragenliste', args=(modus, testat.pk, pruefer.pk)))
 
-
     else:
         f_form = FrageForm(initial={'testat': testat, 'pruefer': pruefer})
 
@@ -106,54 +104,47 @@ def frage_neu(request, modus, testat_id, pruefer_id):
         'modus': modus, 'testat': testat, 'pruefer': pruefer,
     }
 
-    #TODO: Message if Question is new --> 'Du hast erfolgreich eine neue Frage erstellt'
-
     return render(request, 'exoral/frage_neu.html', context)
 
 
 def frage_score(request, frage_id):
-
     testat = get_object_or_404(Testat, pk=request.POST['testat_id'])
     pruefer = get_object_or_404(Pruefer, pk=request.POST['pruefer_id'])
     frage = get_object_or_404(Frage, pk=frage_id)
 
     # TODO: check if user is score-spammer (session variable?)
 
-    #TODO: Score_up is done then Message 'Du hast den Score erfolgreich erhöht'
-
     frage.score_up(request.user)
 
     messages.add_message(request, messages.SUCCESS,
-    'Du hast erfolgreich den Score der Frage erhöht. Danke, dass du dafür keine neue Frage hinzugefügt hast.')
+                         'Du hast erfolgreich den Score der Frage erhöht. Danke, '
+                         'dass du dafür keine neue Frage hinzugefügt hast.')
 
     return HttpResponseRedirect(reverse('exoral:fragenliste', args=('p', testat.pk, pruefer.pk)))
 
+
 @login_required()
 def kommentar_neu(request, modus, testat_id, pruefer_id):
-
     testat = get_object_or_404(Testat, pk=testat_id)
     pruefer = get_object_or_404(Pruefer, pk=pruefer_id)
 
     if request.method == 'POST':
         k_form = KommentarForm(data=request.POST)
         if k_form.is_valid():
-            Kommentar = k_form.save(commit=False)
-            Kommentar.modified_by = request.user
-            Kommentar.save()
+            kommentar = k_form.save(commit=False)
+            kommentar.modified_by = request.user
+            kommentar.save()
             messages.add_message(request, messages.SUCCESS,
                                  'Wir haben deinen Kommentar erfolgreich in unsere Datenbank aufgenommen')
             # return redirect(fragenliste, modus=modus, testat_id=frage.testat.pk, pruefer_id=frage.pruefer.pk)
             return HttpResponseRedirect(reverse('exoral:fragenliste', args=(modus, testat.pk, pruefer.pk)))
-
 
     else:
         k_form = KommentarForm(initial={'pruefer': pruefer})
 
     context = {
         'k_form': k_form,
-        'modus': modus, 'pruefer': pruefer,
+        'modus': modus, 'pruefer': pruefer, 'testat': testat,
     }
-
-    # TODO: Message if Question is new --> 'Du hast erfolgreich eine neue Frage erstellt'
 
     return render(request, 'exoral/kommentar_neu.html', context)
