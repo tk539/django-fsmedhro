@@ -6,7 +6,10 @@
 <section>Du bist dabei eine neue Frage in unseren Katalog hinzuzufügen. Bitte vergewissere dich ob diese Frage wirklich neu ist.
     Sollte diese Frage schon vorhanden sein, gehe bitte zurück und nutze den "Score Up Button" ,
      um die Frage als gestellt zu markieren.
-    <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">Hier gehts zurück</a>
+    <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">Hier gehts zurück.</a>
+    </br></br>
+    <b>Bitte trage immer nur eine neue Frage.</b> Solltest du zwei oder drei neue Fragen gestellt bekommen haben, trage
+    diese bitte auch zwei oder drei <b>seperate neue Fragen ein.</b>
 </section>
 
 <form method="post" action="">

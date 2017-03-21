@@ -8,7 +8,9 @@ urlpatterns = [
     url(r'^(?P<modus>[lp])/(?P<testat_id>[0-9]+)/$', views.prueferwahl, name='prueferwahl'),
     url(r'^(?P<modus>[lp])/(?P<testat_id>[0-9]+)/(?P<pruefer_id>[0-9]+)/$', views.fragenliste,
         name='fragenliste'),
-    url(r'^(?P<modus>[lp])/(?P<testat_id>[0-9]+)/(?P<pruefer_id>[0-9]+)/frage_neu/$', views.frage_neu,
+    url(r'^(?P<modus>[lp])/(?P<testat_id>[0-9]+)/(?P<pruefer_id>[0-9]+)/Frageneingabe/$', views.frage_neu,
         name='frage_neu'),
     url(r'^frage_score/(?P<frage_id>[0-9]+)/$', views.frage_score, name='frage_score'),
+    url(r'^(?P<modus>[lp])/(?P<testat_id>[0-9]+)/(?P<pruefer_id>[0-9]+)/Kommentareingabe/$', views.kommentar_neu,
+        name='kommentar_neu'),
 ]

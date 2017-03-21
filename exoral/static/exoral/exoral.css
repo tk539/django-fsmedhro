@@ -11,26 +11,32 @@
 .frage .date{
 	float: left;
 	font-style: italic;
+	font-size: 10px;
 }
 .frage .score{
 	float: right;
 	font-weight: bold;
+	font-size: 12px;
 }
 .frage .up{
 	float: right;
 	margin-top: -30px;
-    font-size: 22px;
 }
 
 .frage .up button {
-    padding: 5px;
     margin: 0;
+	padding: 3px;
+	font-size: 14px;
 }
 
 .frage .text{
 	display: flex;
-	margin: 20px 50px 0 30px;
-	font-size: 18px;
+	margin: 15px 45px 0 0;
+	font-size: 16px;
+}
+.frage .answer{
+	display: flex;
+	margin: 5px 45px 5px 15px;
 }
 
 .frage p{
@@ -54,6 +60,8 @@
     border: 1px dotted red;
     border-radius: 0px 20px 20px 20px;
 	padding: 5px 25px;
+	margin: 15px 15px;
+	float: left;
 }
 .button .input{
     background-color: inherit;

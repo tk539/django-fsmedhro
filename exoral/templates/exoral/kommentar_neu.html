@@ -1,0 +1,25 @@
+{% extends "exoral/base.html" %}
+
+{% block site_heading %}Neuen Kommentar eingeben{% endblock %}
+
+{% block site_content %}
+<section>Du bist gerade dabei für<b> {{ pruefer }} </b>einen neuen Kommentar einzugeben.
+    </br></br>
+    <b>Bitte trage keine Beleidungen oder ähnliches ein.</b> Bitte äußere deine Meinungen und Empfindungen dem Prüfer
+    gegenüber möglichst <b>neutral</b>.
+</section>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <table>
+        {{ k_form.as_table }}
+    </table>
+        <input class="btn_login"type="submit" value="neuen Kommentar hinzufügen">
+</form>
+    <button class="small">
+        <a href="{% url 'exoral:moduswahl' %}">
+            Abbrechen
+        </a>
+    </button>
+
+{% endblock %}

@@ -273,8 +273,8 @@ button{
 }
 
 .message.success{
-    border: solid #0de100 2px;
-    background: rgba(13, 225, 0, 0.5);
+    border: solid #004B04 2px;
+    background: rgba(0, 147, 4, 0.5);
 }
 
 .message.warning{
