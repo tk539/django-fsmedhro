@@ -1,7 +1,7 @@
     /*-----eXOral Spezifisch-----*/
 /*Fragen*/
 .frage{
-	border: 2px dotted brown;
+    border: 2px dotted brown;
 	border-radius: 0 25px 25px 25px;
 	margin: 15px;
 	padding: 10px;
@@ -11,26 +11,33 @@
 .frage .date{
 	float: left;
 	font-style: italic;
+	font-size: 10px;
 }
 .frage .score{
 	float: right;
 	font-weight: bold;
+	font-size: 12px;
 }
 .frage .up{
 	float: right;
-	margin-top: -20px;
-    font-size: 22px;
+	margin-top: -25px;
+	display: block;
 }
 
 .frage .up button {
-    padding: 1px 5px;
     margin: 0;
+	padding: 3px;
+	font-size: 14px;
 }
 
 .frage .text{
 	display: flex;
-	margin: 20px 50px 0 30px;
-	font-size: 18px;
+	margin: 20px 45px 0 0;
+	font-size: 16px;
+}
+.frage .answer{
+	display: flex;
+	margin: 5px 45px 5px 15px;
 }
 
 .frage p{
@@ -40,18 +47,22 @@
 }
 
 .kommentare{
-	color: #272a44;
-	background-color: #E0E0F8;
-	border: 1px dotted red;
-	border-radius: 0 5px 5px 5px;
-
+	background-color: #272a44;
+	color: #E0E0F8;
+	font-size: 16px;
+    border: 1px dotted red;
+    border-radius: 0 20px 20px 20px;
+	padding: 5px 25px;
 }
 .comment{
 	background-color: #272a44;
 	color: #E0E0F8;
-	font-size: 20px;
+	font-size: 16px;
     border: 1px dotted red;
-    border-radius: 0px 5px 5px 5px;
+    border-radius: 0 20px 20px 20px;
+	padding: 5px 25px;
+	margin: 15px 15px;
+	float: left;
 }
 .button .input{
     background-color: inherit;
@@ -68,4 +79,9 @@
     text-decoration: none;
     background: #272a44;
 	font-size: 22px;
+}
+@media only screen and (max-width: 800px) {
+	.pdf{
+		visibility: hidden;
+	}
 }

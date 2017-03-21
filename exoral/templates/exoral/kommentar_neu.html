@@ -1,0 +1,25 @@
+{% extends "exoral/base.html" %}
+
+{% block site_heading %}Neuen Kommentar eingeben{% endblock %}
+
+{% block site_content %}
+<section>Du bist gerade dabei für<b> {{ pruefer }} </b>einen neuen Kommentar einzugeben.
+    <br><br>
+    <b>Bitte trage keine Beleidungen oder ähnliches ein.</b> Bitte äußere deine Meinungen und Empfindungen dem Prüfer
+    gegenüber möglichst <b>neutral</b>.
+</section>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <table>
+        {{ k_form.as_table }}
+    </table>
+    <button class="big" style="text-decoration: none; color: #E0E0F8">neuen Kommentar hinzufügen</button>
+</form>
+    <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+    <button class="small animated bounceInRight" style="text-decoration: none; color: #E0E0F8; float: left;">
+        Abbrechen
+    </button></a>
+    <br><br>
+
+{% endblock %}

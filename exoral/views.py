@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Testat, Pruefer, Frage, Kommentar
 from fsmedhrocore.views import user_edit
 from django.contrib import messages
-from .forms import FrageForm
+from .forms import FrageForm, KommentarForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -17,7 +17,6 @@ def moduswahl(request):
 
 @login_required
 def testatwahl(request, modus):
-
     try:
         studiengang = request.user.fachschaftuser.studiengang
         studienabschnitt = request.user.fachschaftuser.studienabschnitt
@@ -69,10 +68,12 @@ def fragenliste(request, modus, testat_id, pruefer_id):
                                           sichtbar=True).order_by('-created_date')
 
     if not fragen.exists():
-        messages.add_message(request, messages.INFO, 'keine Fragen abrufbar...')
+        messages.add_message(request, messages.INFO,
+                             'Für dieses Testat existieren leider noch keine Fragen. '
+                             'Wenn du eine mündliche Testatfrage hast, trage sie bitte ein')
 
     if not kommentare.exists():
-        messages.add_message(request, messages.INFO, 'keine Prüfer-Kommentare abrufbar...')
+        messages.add_message(request, messages.INFO, 'Für diesen Prüfer existieren noch keine Kommentare')
 
     context = {'modus': modus, 'testat': testat, 'pruefer': pruefer,
                'fragen': fragen, 'kommentare': kommentare}
@@ -82,7 +83,6 @@ def fragenliste(request, modus, testat_id, pruefer_id):
 
 @login_required
 def frage_neu(request, modus, testat_id, pruefer_id):
-
     testat = get_object_or_404(Testat, pk=testat_id)
     pruefer = get_object_or_404(Pruefer, pk=pruefer_id)
 
@@ -92,6 +92,7 @@ def frage_neu(request, modus, testat_id, pruefer_id):
             frage = f_form.save(commit=False)
             frage.modified_by = request.user
             frage.save()
+            messages.add_message(request, messages.SUCCESS, 'Vielen Dank, dass du deine Frage eingetragen hast')
             # return redirect(fragenliste, modus=modus, testat_id=frage.testat.pk, pruefer_id=frage.pruefer.pk)
             return HttpResponseRedirect(reverse('exoral:fragenliste', args=(modus, testat.pk, pruefer.pk)))
 
@@ -107,7 +108,6 @@ def frage_neu(request, modus, testat_id, pruefer_id):
 
 
 def frage_score(request, frage_id):
-
     testat = get_object_or_404(Testat, pk=request.POST['testat_id'])
     pruefer = get_object_or_404(Pruefer, pk=request.POST['pruefer_id'])
     frage = get_object_or_404(Frage, pk=frage_id)
@@ -126,4 +126,35 @@ def frage_score(request, frage_id):
         request.session['has_scored'] = has_scored
         frage.score_up(request.user)
 
+    messages.add_message(request, messages.SUCCESS,
+                         'Du hast erfolgreich den Score der Frage erhöht. Danke, '
+                         'dass du dafür keine neue Frage hinzugefügt hast.')
+
     return HttpResponseRedirect(reverse('exoral:fragenliste', args=('p', testat.pk, pruefer.pk)))
+
+
+@login_required()
+def kommentar_neu(request, modus, testat_id, pruefer_id):
+    testat = get_object_or_404(Testat, pk=testat_id)
+    pruefer = get_object_or_404(Pruefer, pk=pruefer_id)
+
+    if request.method == 'POST':
+        k_form = KommentarForm(data=request.POST)
+        if k_form.is_valid():
+            kommentar = k_form.save(commit=False)
+            kommentar.modified_by = request.user
+            kommentar.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 'Wir haben deinen Kommentar erfolgreich in unsere Datenbank aufgenommen')
+            # return redirect(fragenliste, modus=modus, testat_id=frage.testat.pk, pruefer_id=frage.pruefer.pk)
+            return HttpResponseRedirect(reverse('exoral:fragenliste', args=(modus, testat.pk, pruefer.pk)))
+
+    else:
+        k_form = KommentarForm(initial={'pruefer': pruefer})
+
+    context = {
+        'k_form': k_form,
+        'modus': modus, 'pruefer': pruefer, 'testat': testat,
+    }
+
+    return render(request, 'exoral/kommentar_neu.html', context)

@@ -5,16 +5,18 @@
 
 {% block site_heading %}Profil von {{ p_user.first_name }}{% endblock %}
 {% block site_content %}
-    <h3>Details</h3>
+    <h2>Details</h2>
     {%  if p_user == user %}
-        (<a href="{% url 'fsmedhro_user_edit' %}">bearbeiten</a>)
-        <h4>Kerndaten (LDAP)</h4>
+        <a href="{% url 'fsmedhro_user_edit' %}" style="text-decoration: none;
+        font-size: 16px;color: #272a44;">
+            Bearbeite dein Profi
+        </a>
+        <h2>Kerndaten (LDAP)</h2>
         <table>
-            <tr><td>Vorname:</td><td>{{ p_user.first_name }}</td></tr>
-            <tr><td>Nachname:</td><td>{{ p_user.last_name }}</td></tr>
-            <tr><td>eMail:</td><td>{{ p_user.email }}</td></tr>
+            <tr><td>Name:</td><td>{{ p_user.first_name }} {{ p_user.last_name }}</td></tr>
+            <tr><td>E-Mail:</td><td>{{ p_user.email }}</td></tr>
         </table>
-        <h4>Fachschaft-Daten</h4>
+        <h2>Fachschafts-Daten</h2>
         {% if f_user %}
             <table>
                 <tr><td>Gender/Geschlecht:</td><td>{{ f_user.gender }}</td></tr>

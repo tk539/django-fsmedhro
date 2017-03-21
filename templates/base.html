@@ -117,6 +117,7 @@
   hamburger.addEventListener("click", function() {
     // Toggle class "is-active"
     hamburger.classList.toggle("is-active");
+    scrollTo(0,0)
 
     var nav = document.querySelector("nav");
 
@@ -124,6 +125,8 @@
     nav.classList.toggle("is-active");
     // Do something else, like open/close menu
   });
+
+  //If Click on hamburger
 </script>
 
 </html>
