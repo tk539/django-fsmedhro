@@ -140,7 +140,7 @@ header #explain{
 		text-align: left;
 		margin-top: -80px;
 		position: absolute;
-		z-index: 9;
+		z-index: 10;
 		overflow: hidden;
 		transition: 1s;
 		right: 0;
@@ -175,7 +175,23 @@ header #explain{
 	}
 }
 /* --------------News-------------- */
-
+.btn_login{
+    background-color: brown;
+    font-size: 22px;
+    padding: 5px 15px;
+}
+.nkz{
+    font-size: 16px;
+    padding: 5px;
+    background-color: #272a44;
+    color: #E0E0F8;
+}
+.psw{
+    font-size: 14px;
+    padding: 5px;
+    background-color: #272a44;
+    color: #E0E0F8;
+}
 /* --------------Body-------------- */
 h1{
 	font-size: 45px;
@@ -193,16 +209,19 @@ h3{
 @media only screen and (min-width:1200px){
 	article{
 		padding: 0 20% 30px 25%;
+        margin-bottom: 35px;
 	}
 }
 @media only screen and (max-width:1200px) and (min-width:430px){
 	article{
 		padding: 0 10% 30px 10%;
+        margin-bottom: 35px;
 	}
 }
 @media only screen and (max-width:600px){
 	article{
 		padding: 0 5px 30px 5px;
+        margin-bottom: 35px;
 	}
 	header #explain{
 		font-size: 14px;
@@ -216,6 +235,7 @@ section{
 	font-size: 16px;
 	border: 1px dotted black;
 	padding: 15px;
+	margin: 15px 0;
 }
 
 button{
@@ -357,6 +377,13 @@ button{
 	margin: 5px;
 	transition: 5s;
 }
+/* --------------User--------------*/
+table{
+	font-size: 20px;
+}
+table td{
+	padding: 10px;
+}
 /* --------------Footer--------------*/
 footer{
     background-color: #272a44;
@@ -364,21 +391,22 @@ footer{
     color: antiquewhite;
     bottom: 0;
 	padding: 15px 0;
-	z-index: 11;
+	z-index: 5;
 	margin: 0;
 	position: fixed;
-	width: 100%
+	width: 100%;
+    margin-top: 35px;
 }
 @media only screen and (min-width:1200px){
 	footer{
 		margin-left: 250px;
-		position: relative;
+		position: fixed;
 		bottom: 0;
 	}
 }
 @media only screen and (max-width:1200px){
 	footer{
-		position: relative;
+		position: fixed;
 		width: 100%;
 		padding: 15px 0;
 		bottom: 0px;

@@ -3,19 +3,19 @@
 {% block site_heading %}Altfragen{% endblock %}
 
 {% block beschreibung %}
-Wir haben für die Kombination Testat:{{ testat }}, Prüfer: {{ pruefer }} {{ fragen.count }} Fragen gefunden
+    Wir haben für die Kombination Testat: <b>{{ testat }}</b>, Prüfer: <b>{{ pruefer }}</b> <b>{{ fragen.count }}</b> Fragen gefunden
 {% endblock %}
 
 {% block content %}
 
     <h2>Fragen</h2>
         {% for frage in fragen %}
-            <div class="frage">
-                <div class="date">Datum: {{ frage.datum }}</div>
+            <div class="frage animated bounceInLeft">
+                <div class="date">{{ frage.datum }}</div>
                 <div class="score">Score: {{ frage.score }}</div>
-                <div class="text">Frage: <p>{{ frage.text }}</p></div>
+                <div class="text"><u>Frage:</u> <p>{{ frage.text }}</p></div>
                 {% if frage.antwort %}
-                    <div class="text">Antwort: <p>{{ frage.antwort }}</p></div>
+                    <div class="text"><u>Antwort:</u> <p>{{ frage.antwort }}</p></div>
                 {% endif %}
                 {% if modus == 'p' %}
                     <form action="{% url 'exoral:frage_score' frage.pk %}" method="post" class="up">
@@ -29,8 +29,7 @@ Wir haben für die Kombination Testat:{{ testat }}, Prüfer: {{ pruefer }} {{ fr
         {% endfor %}
     <h2>Kommentare</h2>
         {% for kommentar in kommentare %}
-            <div class="comment">{{ kommentar.text }}</div>
-            <div>Datum: {{ kommentar.datum }}</div>
+            <div class="comment animated zoomInUp">{{ kommentar.text }}</div>
         {% endfor %}
 
     {% if modus == 'p' %}

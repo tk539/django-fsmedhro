@@ -4,17 +4,19 @@
 
 
 {% block site_heading %}
-  <h2>Neues Profil (Fachschaft)</h2>
+  <h1>Neues Profil (Fachschaft)</h1>
 {% endblock %}
 
 {% block site_content %}
-<p>Fachschafts-Profil bearbeiten. Manche Anwendungen auf dieser Homepage beziehen sich auf Informationen aus diesem Profil.</p>
+<section>
+    Fachschafts-Profil bearbeiten. Manche Anwendungen auf dieser Homepage beziehen sich auf Informationen aus diesem Profil.
+</section>
 <form method="post" action="">
     {% csrf_token %}
     <table>
     {{ uform.as_table }}
     {{ fuform.as_table }}
     </table>
-    <input type="submit">
+    <input class="btn_login" type="submit">
 </form>
 {% endblock %}
