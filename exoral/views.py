@@ -28,7 +28,7 @@ def testatwahl(request, modus):
                                     studiengang=studiengang).order_by('bezeichnung')
 
     if not testate.exists():
-        messages.add_message(request, messages.INFO, 'Es sind leider keine Testate abrufbar für deinen Studienabschnitt')
+        messages.add_message(request, messages.INFO, 'keine Testate abrufbar...')
 
     context = {'modus': modus, 'testate': testate}
 
@@ -50,7 +50,7 @@ def prueferwahl(request, modus, testat_id):
                                      studienabschnitt=studienabschnitt,
                                      studiengang=studiengang).order_by('nachname', 'vorname')
     if not pruefer.exists():
-        messages.add_message(request, messages.INFO, 'Für dieses Testat ist kein Prüfer abrufbar')
+        messages.add_message(request, messages.INFO, 'keine Prüfer abrufbar...')
 
     context = {'modus': modus, 'testat': testat, 'pruefer_list': pruefer}
 
@@ -125,6 +125,10 @@ def frage_score(request, frage_id):
         has_scored.append(frage.pk)
         request.session['has_scored'] = has_scored
         frage.score_up(request.user)
+
+    messages.add_message(request, messages.SUCCESS,
+                         'Du hast erfolgreich den Score der Frage erhöht. Danke, '
+                         'dass du dafür keine neue Frage hinzugefügt hast.')
 
     messages.add_message(request, messages.SUCCESS,
                          'Du hast erfolgreich den Score der Frage erhöht. Danke, '
