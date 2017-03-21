@@ -4,7 +4,7 @@
 
 {% block beschreibung %}
     Wir haben für das Testat: <b>{{ testat }}</b> bei <b>{{ pruefer }}</b> <b>{{ fragen.count }}</b> Fragen gefunden
-{% endblock %}
+{% endblock%} //PDF function
 
 {% block content %}
 
@@ -31,7 +31,7 @@
         {% endfor %}
     <h2><i class="fa fa-comments" aria-hidden="true"></i> Kommentare</h2>
         <section>
-            Wir haben für {{ pruefer }} {{ kommentare.count }} Kommentare gefunden. Diese Kommentare sind aus allen
+            Wir haben <b>für {{ pruefer }} {{ kommentare.count }} Kommentare</b> gefunden. Diese Kommentare sind aus allen
         Prüfungen bei {{ pruefer }} zusammengetragen.
             {% if modus == 'p' %}
                 Du kannst natürlich dem Prüfer auch einen Kommentar hinzufügen.

@@ -32,6 +32,30 @@ header #name{
 header #explain{
     font-size: 25px;
 }
+@media only screen and (max-width: 600px){
+	header #explain{
+		font-size: 14px;
+	}
+	header #name{
+		font-size: 25px;
+	}
+    header{
+        border-bottom: 1px solid #E0E0F8;
+    }
+}
+@media only screen and (max-width: 800px) and (min-width: 600px){
+	header #explain{
+		font-size: 22px;
+		font-style: italic;
+	}
+	header #name{
+		font-size: 35px;
+	}
+    header{
+        border-bottom: 1px solid #E0E0F8;
+    }
+}
+
 /* --------------Menue-------------- */
 /*--Grosses Menue--*/
 @media only screen and (min-width:1200px){
@@ -125,11 +149,10 @@ header #explain{
 @media only screen and (max-width:600px){
 	#menue_button{
 		visibility: visible;
-		top:108px;
+		top:60px;
 		right: 50px;
 		float: right;
 		position: absolute;
-		z-index: 11;
 	}
 	nav{
 		display: block;
@@ -222,12 +245,6 @@ h3{
 	article{
 		padding: 0 5px 30px 5px;
         margin-bottom: 35px;
-	}
-	header #explain{
-		font-size: 14px;
-	}
-	header #name{
-		font-size: 25px;
 	}
 }
 section{
@@ -396,17 +413,19 @@ footer{
 	position: fixed;
 	width: 100%;
     margin-top: 35px;
+	border-top: 1px solid rgb(224, 224, 248);
 }
 @media only screen and (min-width:1200px){
 	footer{
 		margin-left: 250px;
 		position: fixed;
 		bottom: 0;
+		border-top: 2px solid #E0E0F8;
 	}
 }
 @media only screen and (max-width:1200px){
 	footer{
-		position: fixed;
+		position: relative;
 		width: 100%;
 		padding: 15px 0;
 		bottom: 0px;

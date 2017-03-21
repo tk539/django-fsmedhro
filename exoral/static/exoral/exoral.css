@@ -31,7 +31,7 @@
 
 .frage .text{
 	display: flex;
-	margin: 15px 45px 0 0;
+	margin: 20px 45px 0 0;
 	font-size: 16px;
 }
 .frage .answer{
@@ -78,4 +78,9 @@
     text-decoration: none;
     background: #272a44;
 	font-size: 22px;
+}
+@media only screen and (max-width: 800px) {
+	.pdf{
+		visibility: hidden;
+	}
 }
