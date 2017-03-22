@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% with "eXOral" as title %}
-
     {% block head %}
         {{ block.super }}
         {% load static %}
@@ -10,9 +8,10 @@
 
     {% block logo_url %}{% static 'exoral/logo_exoral.gif' %}{% endblock %}
     {% block subtitle %}Portal für mündliche Altfragen{% endblock %}
-
+    {% block apptitle %}eXOral{% endblock %}
+    {% block appnav %}eXOral{% endblock %}
     {% block app_menu %}
-        <li><a><i></i>...</a></li>
+        <li><a href="{{ app_root }}"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>Startseite</a></li>
     {% endblock %}
 
     {% block site_heading %}eXOral{% endblock %}
@@ -26,5 +25,3 @@
         </section>
         {% block content %}{% endblock %}
     {% endblock %}
-
-{% endwith %}
