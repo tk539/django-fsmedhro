@@ -3,26 +3,30 @@
 {% block title %}Profil{% endblock %}
 
 
-{% block heading %}
-  <h2>Profil von {{ user.first_name }}</h2>
-{% endblock %}
-{% block content %}
-    <h3>Details</h3>
-    {%  if ownprofile %}
-        (<a href="{% url 'fsmedhro_user_edit' %}">bearbeiten</a>)
-        <h4>Kerndaten (LDAP)</h4>
+{% block site_heading %}Profil von {{ p_user.first_name }}{% endblock %}
+{% block site_content %}
+    <h2>Details</h2>
+    {%  if p_user == user %}
+        <a href="{% url 'fsmedhro_user_edit' %}" style="text-decoration: none;
+        font-size: 16px;color: #272a44;">
+            Bearbeite dein Profi
+        </a>
+        <h2>Kerndaten (LDAP)</h2>
         <table>
-            <tr><td>Vorname:</td><td>{{ user.first_name }}</td></tr>
-            <tr><td>Nachname:</td><td>{{ user.last_name }}</td></tr>
-            <tr><td>eMail:</td><td>{{ user.email }}</td></tr>
+            <tr><td>Name:</td><td>{{ p_user.first_name }} {{ p_user.last_name }}</td></tr>
+            <tr><td>E-Mail:</td><td>{{ p_user.email }}</td></tr>
         </table>
-        <h4>Fachschaft-Daten</h4>
-        <table>
-            <tr><td>Gender/Geschlecht:</td><td>{{ fuser.gender }}</td></tr>
-            <tr><td>Nickname:</td><td>{{ fuser.nickname }}</td></tr>
-            <tr><td>Studiengang:</td><td>{{ fuser.studiengang }}</td></tr>
-            <tr><td>Studienabschnitt:</td><td>{{ fuser.studienabschnitt }}</td></tr>
-        </table>
+        <h2>Fachschafts-Daten</h2>
+        {% if f_user %}
+            <table>
+                <tr><td>Gender/Geschlecht:</td><td>{{ f_user.gender }}</td></tr>
+                <tr><td>Nickname:</td><td>{{ f_user.nickname }}</td></tr>
+                <tr><td>Studiengang:</td><td>{{ f_user.studiengang }}</td></tr>
+                <tr><td>Studienabschnitt:</td><td>{{ f_user.studienabschnitt }}</td></tr>
+            </table>
+        {% else %}
+            noch kein Fachschafts-Profil angelegt
+        {% endif %}
     {% else %}
         dies ist nicht dein eigenes Profil...
     {% endif %}

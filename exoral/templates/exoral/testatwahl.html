@@ -1,26 +1,17 @@
-{% extends "base.html" %}
+{% extends "exoral/base.html" %}
 
-{% block title %}exoral-Testatwahl{% endblock %}
+{% block site_heading %}Testatwahl{% endblock %}
 
-
-{% block heading %}
-  <h2>Testatwahl</h2>
+{% block beschreibung %}
+Die Auswahl dieser Testate erfolgt anhand deines Semesters, das du bei uns angegeben hast.
+    Solltest du Testate aus einem anderen Semester wählen wollen, so musst du nur dein Semester in deinen <a href="{% url 'fsmedhro_user_edit' %}">Einstellungen</a> ändern.<br>
+    <u>Studiengang:</u> {{ user.fachschaftuser.studiengang }}<br>
+    <u>Studienabschnitt:</u> {{ user.fachschaftuser.studienabschnitt }}<br>
 {% endblock %}
 
 {% block content %}
-    Modus: {{ modus }}<br>
-    Studiengang: {{ user.fachschaftuser.studiengang }} (aus Fachschaft-Profil)<br>
-    Studienabschnitt: {{ user.fachschaftuser.studienabschnitt }} (aus Fachschaft-Profil)<br>
-    Testate:<br>
-    {% if testate %}
-        <ul>
-        {% for testat in testate %}
-            <li>
-            {{ testat.bezeichnung }}({{ testat.studiengang }}, {{ testat.studienabschnitt }})
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>keine Testate abrufbar</p>
-    {% endif %}
+    <h2>Hier diefür dich ausgewählten Testate</h2>
+    {% for testat in testate %}
+            <a href="{% url 'exoral:prueferwahl' modus=modus testat_id=testat.pk %}"><button class="animated zoomIn">{{ testat }}</button></a>
+    {% endfor %}
 {% endblock %}

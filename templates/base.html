@@ -1,29 +1,137 @@
+{% with "Fachschaft Medizin Rostock" as title %}
+
 <!DOCTYPE html>
 <html lang="de">
 
-{% block head %}
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
-</head>
-{% endblock %}
+    <head>
+        {% block head %}
+            <meta name="viewport" content="initial-scale=1.0">
+            <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+            <meta name="description" content="Der Interne Bereich der Fachschaft Medizin Rostock wird auf diesen Seiten dargestellt">
+            <title>{{ title }}</title>
 
-<body>
+            {% load static %}
 
-{% block nav_login %}
-  {% include "nav_login.html" %}
-{% endblock %}
+            <link rel="stylesheet" href="{% static 'design/CSS.css' %}" type="text/css" media="screen">
+			<link rel="stylesheet" href="{% static 'design/animate.css' %}"> <!--File für alle Animationen-->
+			<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'design/hamburger.css' %}">
+        {% endblock %}
+    </head>
 
-{% block message %}
-{% endblock %}
+    <body>
 
-{% block heading %}
-  <h2>Fachschaft Medizin Rostock</h2>
-{% endblock %}
+        {% block header %}
+            <header>
+                <div class="kopf">
+                    <a href="{{ app_root }}">
+                        <img id="logo" src="{% block logo_url %}{% static 'images/logo-pharos.png' %}{% endblock %}"
+                             alt="Logo">
+                    </a>
+                    <div id="name">
+                        {% block apptitle %}Fachschaft Medizin Rostock{% endblock %}
+                    </div><!--Name der Plattform-->
+                    <div id="explain">{% block subtitle %}Unterüberschrift{% endblock %}</div>
+                    <div id="menue_button">
+                        <button class="hamburger hamburger--arrowalt" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+        {% endblock %}
 
-{% block content %}
-{% endblock %}
+        {% block nav %}
+    <nav><!--Menue-->
+        <ul>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'fsmedhro_user' %}"><i class="fa fa-user-md fa-fw" aria-hidden="true"></i>{{ user }}</a>
+                    <ul>
+                        <li><a href="{% url 'fsmedhro_logout' %}"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Abmelden</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li><a href="{% url 'fsmedhro_login' %}"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>Anmelden</a></li>
+            {% endif %}
+            <li><a href="{{ app_root }}">{% block appnav %}Fachschaft Medizin Rostock{% endblock %} </a>
+                <ul>
+                    {% block app_menu %}{% endblock %}
+                </ul>
+            </li>
+            <li><a>Apps</a>
+                <ul>
+                    <li><a href="{% url 'root' %}"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Webseite</a></li>
+					<li><a href="https://www.facebook.com/fachschaft.medizinrostock/"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i>Facebook</a></li>
+                    <li><a href="https://rostock.kreuzmich.de/"><i class="fa fa-times fa-fw" aria-hidden="true"></i>Kreuzmich</a></li>
+                    <li><a href="{% url 'exoral:moduswahl' %}"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>eXOral</a></li>
+{% comment %}
+                    <li><a href="{% url 'pharos_root' %}"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i>Pharos</a></li>
+                    <li><a href="{% url 'mediathek_root' %}"><i class="fa fa-medium fa-fw" aria-hidden="true"></i>Mediathek <i class="#" href="Facebook Link"></i></a></li>
+					<li><a href="{% url 'skillslab_root' %}"><i class="fa fa-stethoscope fa-fw" aria-hidden="true"></i>SkillsLab</a></li>
+					<li><a href="{% url 'QuestionAir_root' %}"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i>QuestionAit</a></li>
+{% endcomment %}
+					<li><a href="https://fachschaft-medizin-rostock.de/diva/"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>DIVA</a></li>
 
-</body>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+        {% endblock %}
+
+
+            {% if messages %}
+                <div class="messages">
+                {% for message in messages %}
+                    <div class="message{% if message.tags %} {{ message.tags }}{% endif %} animated bounceInUp">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+
+            {% block site_heading_block %}
+                <h1>{% block site_heading %}Fachschaft Medizin Rostock{% endblock %}</h1>
+            {% endblock %}
+
+            {% block site_content_block %}
+                <article>
+                    {% block site_content %}
+                    {% endblock %}
+                </article>
+            {% endblock %}
+
+        {% block footer %}
+            <footer>
+                <a class="list-group-item" href="http://fachschaft-medizin-rostock.de/kontakt/impressum/"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Impressum</a>
+                <a class="list-group-item" href="http://fachschaft-medizin-rostock.de/kontakt"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>Kontakt</a>
+                </br>Mit <i class="fa fa-heart fa-fw" aria-hidden="true"></i> und <i class="fa fa-coffee fa-fw" aria-hidden="true"></i> kreiert von der AG IT kreiert
+            </footer>
+        {% endblock %}
+
+    </body>
+
+<script>
+  // Look for .hamburger
+  var hamburger = document.querySelector(".hamburger");
+  // On click
+  hamburger.addEventListener("click", function() {
+    // Toggle class "is-active"
+    hamburger.classList.toggle("is-active");
+    scrollTo(0,0)
+
+    var nav = document.querySelector("nav");
+
+    // var nav = document.getElementsByTagName("nav")[0];
+    nav.classList.toggle("is-active");
+    // Do something else, like open/close menu
+  });
+
+  //If Click on hamburger
+</script>
 
 </html>
+
+{% endwith %}

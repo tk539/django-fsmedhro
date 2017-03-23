@@ -1,12 +1,53 @@
-{% extends "base.html" %}
+{% extends "exoral/base.html" %}
 
-{% block title %}exoral-Fragen{% endblock %}
+{% block site_heading %}Altfragen{% endblock %}
 
-
-{% block heading %}
-  <h2>Fragen</h2>
-{% endblock %}
+{% block beschreibung %}
+    Wir haben für das Testat: <b>{{ testat }}</b> bei <b>{{ pruefer }}</b> <b>{{ fragen.count }}</b> Fragen gefunden
+{% endblock%} //PDF function
 
 {% block content %}
-...ToDo...
+
+    <h2><i class="fa fa-question" aria-hidden="true"></i> Fragen</h2>
+        {% for frage in fragen %}
+            <div class="frage animated bounceInLeft">
+                <div class="date">{{ frage.datum }}</div>
+                <div class="score">Score: {{ frage.score }}</div>
+                <div class="text"><u><small>Frage:</small></u> <p>{{ frage.text }}</p></div>
+                {% if frage.antwort %}
+                    <div class="answer"><u><small>Antwort:</small></u> <p>{{ frage.antwort }}</p></div>
+                {% endif %}
+
+
+                {% if modus == 'p' %}
+                    <form action="{% url 'exoral:frage_score' frage.pk %}" method="post" class="up">
+                        {% csrf_token %}
+                        <input type="hidden" name="testat_id" value="{{ testat.pk }}" />
+                        <input type="hidden" name="pruefer_id" value="{{ pruefer.pk }}" />
+                        <button class="small"><span class="fa fa-long-arrow-up"></span> up</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% if modus == 'p' %}
+        <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+        <button class="big" style="text-decoration: none; color: #E0E0F8">Neue Frage eintragen</button></a>
+    {% endif %}
+    <h2><i class="fa fa-comments" aria-hidden="true"></i> Kommentare</h2>
+        <section>
+            Wir haben <b>für {{ pruefer }} {{ kommentare.count }} Kommentare</b> gefunden. Diese Kommentare sind aus allen
+        Prüfungen bei {{ pruefer }} zusammengetragen.
+            {% if modus == 'p' %}
+                Du kannst natürlich dem Prüfer auch einen Kommentar hinzufügen.
+                <a href="{% url 'exoral:kommentar_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+                    <button class="small" style="text-decoration: none; color: #E0E0F8">
+                    <span class="fa fa-plus" aria-hidden="true"></span> Kommentar
+                </button></a>
+            {% endif %}
+        </section>
+        {% for kommentar in kommentare %}
+            <div class="comment animated zoomInUp">{{ kommentar.text }}</div>
+        {% endfor %}
+    <br><br>
+
 {% endblock %}
