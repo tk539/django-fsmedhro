@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = [
     'fsmedhrocore.backends.auth.LdapUniHro',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 LOGIN_URL = 'fsmedhro_login'
