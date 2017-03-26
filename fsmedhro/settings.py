@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'exoral.apps.ExoralConfig',
     'fsmedhrocore.apps.FachschaftConfig',
 ]
@@ -50,6 +51,12 @@ AUTHENTICATION_BACKENDS = [
     'fsmedhrocore.backends.auth.LdapUniHro',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 LOGIN_URL = 'fsmedhro_login'
 LOGOUT_URL = 'fsmedhro_logout'

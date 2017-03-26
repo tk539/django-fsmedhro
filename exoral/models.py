@@ -27,7 +27,7 @@ class Pruefer(Dozent):
 
 
 class Testat(models.Model):
-    bezeichnung = models.CharField(max_length=30)
+    bezeichnung = models.CharField(max_length=100)
     active = models.BooleanField(default=True)
     studienabschnitt = models.ManyToManyField(Studienabschnitt)
     studiengang = models.ManyToManyField(Studiengang)

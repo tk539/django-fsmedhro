@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='fsmedhro_logout'),
     url(r'^fachschaft/',include('fsmedhrocore.urls')),
     url(r'^exoral/',include('exoral.urls')),
+    url(r'^api/fachschaft/', include('fsmedhrocore.api.urls', namespace='fsmedhrocore-api')),
 ]
