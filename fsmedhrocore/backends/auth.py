@@ -34,12 +34,14 @@ class LdapUniHro(object):
                 user.is_staff = False
                 user.is_superuser = False
                 user.set_unusable_password()
+                user.save()
+
+            if user.is_active:
+                # Update User-Data
                 user.email = ldapuser["mail"][0].decode()
                 user.last_name = ldapuser["sn"][0].decode()
                 user.first_name = ldapuser["givenName"][0].decode()
                 user.save()
-
-            if user.is_active:
                 return user
 
         return None
@@ -52,16 +54,15 @@ class LdapUniHro(object):
 
 
 def validate_ladp_user(ldapuseratts):
-    filterlist = [
-        ["employeeType", "s"],
-        ["uniRFaculty", "03"],
-        ["gidNumber", "97"]
-    ]
+    ldap_auth_filter = {
+        "employeeType": "s",
+        "uniRFaculty": "03",
+        "gidNumber": "97"
+    }
 
-    filterstatus = []
-    for filter in filterlist:
+    for key, value in ldap_auth_filter.items():
         # if there is no matching in one filter-row, return False
-        if not (any(item.decode() == filter[1] for item in ldapuseratts[filter[0]])):
-            return False
+        if any(item.decode() == value for item in ldapuseratts[key]):
+            return True
 
-    return True
+    return False
