@@ -5,8 +5,8 @@
 	border-radius: 0 25px 25px 25px;
 	margin: 15px;
 	padding: 10px;
-	background-color: #272a44;
-	color: #E0E0F8;
+	background-color: #1f2942;
+	color: #f1f1f1;
 }
 .frage .date{
 	float: left;
@@ -47,16 +47,16 @@
 }
 
 .kommentare{
-	background-color: #272a44;
-	color: #E0E0F8;
+	background-color: #1f2942;
+	color: #f1f1f1;
 	font-size: 16px;
     border: 1px dotted red;
     border-radius: 0 20px 20px 20px;
 	padding: 5px 25px;
 }
 .comment{
-	background-color: #272a44;
-	color: #E0E0F8;
+	background-color: #1f2942;
+	color: #f1f1f1;
 	font-size: 16px;
     border: 1px dotted red;
     border-radius: 0 20px 20px 20px;
@@ -77,7 +77,7 @@
 	border-radius: 5px 25px 25px 5px;
     padding: 2px 10px 2px 10px;
     text-decoration: none;
-    background: #272a44;
+    background: #1f2942;
 	font-size: 22px;
 }
 @media only screen and (max-width: 800px) {

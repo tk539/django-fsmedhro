@@ -1,6 +1,6 @@
 /*--------------Allgemein--------------*/
 html{
-    background-color: #E0E0F8;
+    background-color: #f1f1f1;
     height: 100%;
     font-family: sans-serif, Georgia, Serif;
     font-size: 14px;
@@ -12,7 +12,7 @@ body{
 }
 /* --------------Header-------------- */
 header{
-    background-color: #272a44;
+    background-color: #1f2942;
     font-size: 20px;
     color: antiquewhite;
     width: 100vw;
@@ -34,13 +34,16 @@ header #explain{
 }
 @media only screen and (max-width: 600px){
 	header #explain{
-		font-size: 14px;
+		display: none;
 	}
 	header #name{
-		font-size: 25px;
+		font-size: 18px;
 	}
     header{
-        border-bottom: 1px solid #E0E0F8;
+        height: 50px;
+    }
+    header #logo {
+        height: 50px;
     }
 }
 @media only screen and (max-width: 800px) and (min-width: 600px){
@@ -51,13 +54,138 @@ header #explain{
 	header #name{
 		font-size: 35px;
 	}
-    header{
-        border-bottom: 1px solid #E0E0F8;
-    }
 }
 
 /* --------------Menue-------------- */
+
+@media only screen and (min-width: 767px){
+  nav{
+    position: fixed;
+    height: 50px; width: 100%;
+    background-color: #1f2942;
+    top: 105px; right: 0;
+    transition: all 0.45s ease;
+    padding: 0; margin: 0;
+      z-index: 8;
+  }
+  nav a{
+    text-decoration: none;
+    color: #f1f1f1;
+    font-size: 22px;
+    margin: 0; padding: 0;
+  }
+  nav ul{
+    list-style: none;
+  }
+  nav ul li{
+    float: left;
+    margin: 0;
+    padding: 5px;
+    border-radius: 15px;
+  }
+  nav ul li:hover{
+    background-color: #f1f1f1;
+  }
+  nav ul li:hover > a{
+    color: #1f2942;
+  }
+  nav ul li > ul{
+    position: absolute;
+    background-color: #1f2942;
+    top: 15px;
+    margin: 35px 0 0;
+    padding: 15px 0 5px;
+    border-radius: 0 0 15px 15px;
+    display: none;
+  }
+  nav ul li:hover >ul{
+    display: block;
+  }
+  nav ul li ul li{
+    position: relative;
+    float: none;
+    border-top: 0.5px solid brown;
+    margin: 5px 0;
+  }
+  .hamburger-box, .hamburger{
+    display: none;
+    z-index: 0;
+    visibility: hidden;
+  }
+}
+.hamburger, .hamburger-box{
+  display: none;
+}
+@media only screen and (max-width: 767px){
+  .hamburger{
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 0;
+    height: 75px;
+    z-index: 12;
+  }
+  .nav_open{
+    display: inherit;
+    width: 90%;
+    transition: 1s;
+  }
+  nav{
+    display: none;
+    background-color: #1f2942;
+    position: absolute;
+    top: 70px; right: 0;
+    width: 90%;
+    border-radius: 35px 0 0 35px;
+    transition: all 1s;
+    z-index: 9;
+  }
+  nav ul{
+    list-style: none;
+    margin: 0; padding: 5px 15px 15px;
+  }
+  nav ul li{
+    text-align: left;
+    border-radius: 35px 15px 0 35px;
+    border-top: 1px solid brown;
+    border-left: 1px solid brown;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px 0 10px 25px;
+    width: 95%;
+    float: none;
+    display: inline-block;
+  }
+  nav a{
+    text-decoration: none;
+    color: #f1f1f1;
+    font-size: 18px;
+  }
+  nav ul li ul li{
+    border: none;
+    display: block;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 5px 0;
+    text-decoration: none;
+    text-align: center;
+    width: 40%;
+    float: left;
+    border-radius: 0;
+  }
+  nav ul li ul{
+    height: auto;
+  }
+  .open_submenu{
+    display: block;
+    font-style: 18px;
+  }
+  .close_submenu{
+    display: none;
+  }
+}
 /*--Grosses Menue--*/
+/*
 @media only screen and (min-width:1200px){
 	nav{
 		height: 100%;
@@ -66,7 +194,7 @@ header #explain{
 		position: fixed;
 		z-index: 8;
 		left: 0;
-		background-color: #272a44;
+		background-color: #1f2942;
 		margin-top: -80px;
 		transition: 0.5s;
 	}
@@ -78,7 +206,7 @@ header #explain{
 	}
 	nav a:hover{
 		background-color: brown;
-		color: #272a44;
+		color: #1f2942;
 		font-weight: bold;
 	}
 	nav ul{
@@ -101,7 +229,7 @@ header #explain{
 		border: 1px dotted antiquewhite;
 	}
 }
-/*--Mittleres Menue--*/
+/*--Mittleres Menue--
 @media only screen and (min-width:600px) and (max-width:1200px){
 	nav ul a{
 		text-decoration: none;
@@ -113,7 +241,7 @@ header #explain{
 		list-style: none;
 		margin: 0;
 		padding: 5px 35px;
-		background-color: #272a44;
+		background-color: #1f2942;
 		z-index: 11;
 	}
 	nav>ul{
@@ -142,7 +270,7 @@ header #explain{
 		margin: 5px 0;
 	}
 }
-/*--Mobile Menue--*/
+/*--Mobile Menue--
 #menue_button{
 	visibility: hidden;
 }
@@ -156,9 +284,9 @@ header #explain{
 	}
 	nav{
 		display: block;
-		background-color: #272a44;
+		background-color: #1f2942;
 		width: 0;
-		min-height: 85%;
+		height: auto;
 		margin-left: 15%;
 		text-align: left;
 		margin-top: -80px;
@@ -206,14 +334,14 @@ header #explain{
 .nkz{
     font-size: 16px;
     padding: 5px;
-    background-color: #272a44;
-    color: #E0E0F8;
+    background-color: #1f2942;
+    color: #f1f1f1;
 }
 .psw{
     font-size: 14px;
     padding: 5px;
-    background-color: #272a44;
-    color: #E0E0F8;
+    background-color: #1f2942;
+    color: #f1f1f1;
 }
 /* --------------Body-------------- */
 h1{
@@ -231,20 +359,23 @@ h3{
 }
 @media only screen and (min-width:1200px){
 	article{
-		padding: 0 20% 30px 25%;
+		padding: 0 20% 30px 20%;
         margin-bottom: 100px;
+        justify-content: center;
 	}
 }
 @media only screen and (max-width:1200px) and (min-width:430px){
 	article{
 		padding: 0 10% 30px 10%;
         margin-bottom: 100px;
+        justify-content: center;
 	}
 }
 @media only screen and (max-width:600px){
 	article{
 		padding: 0 5px 30px 5px;
         margin-bottom: 100px;
+        justify-content: center;
 	}
 }
 section{
@@ -315,10 +446,10 @@ button{
 		margin: 25px;
 	}
 	table.cource_box tr{
-		background-color: #272a44;
+		background-color: #1f2942;
 		margin: 10px;
 		font-size: 16px;
-		color: #E0E0F8;
+		color: #f1f1f1;
 	}
 	table.cource_box td{
 		padding: 10px;
@@ -326,8 +457,8 @@ button{
 		border-radius: 5px;
 	}
 	table.cource_box td:last-child{
-		background-color: #E0E0F8;
-		color: #272a44;
+		background-color: #f1f1f1;
+		color: #1f2942;
 		padding: 0;
 		}
 	table.cource_box tr:first-child{
@@ -348,10 +479,10 @@ button{
 }
 @media only screen and (max-width:720px){
 	table.cource_box tr{
-	background-color: #272a44;
+	background-color: #1f2942;
 	margin: 10px;
 	font-size: 16px;
-	color: #E0E0F8;
+	color: #f1f1f1;
 	}
 	table.cource_box td{
 		padding: 0;
@@ -359,8 +490,8 @@ button{
 		border-radius: 5px;
 	}
 	table.cource_box td:last-child{
-		background-color: #E0E0F8;
-		color: #272a44;
+		background-color: #f1f1f1;
+		color: #1f2942;
 		padding: 0;
 		}
 	table.cource_box tr:first-child{
@@ -385,7 +516,7 @@ button{
 	text-align: left;
 	padding: 10px;
 	margin: 0 35px 15px 15px;
-	border-bottom: 1px dotted #272a44;
+	border-bottom: 1px dotted #1f2942;
 }
 .answer{
 	font-size: 16px;
@@ -403,44 +534,69 @@ table td{
 }
 /* --------------Footer--------------*/
 footer{
-    background-color: #272a44;
     font-size: 15px;
-    color: antiquewhite;
+    color: #1f2942;
     bottom: 0;
 	padding: 15px 0;
 	z-index: 5;
-	margin: 0;
-	position: fixed;
+	margin: 100px 0 0;
+	position: relative;
 	width: 100%;
-    margin-top: 100px;
-	border-top: 1px solid rgb(224, 224, 248);
+	border-top: 3px dotted #1f2942;
+    border-radius: 100px 100px 0 0;
+}
+footer i{
+  height: 25px;
+  float: left;
+  object-position: center;
+}
+.footer_logos{
+  display: inline-flex;
+  justify-content: center;
+  line-height: 21px;
+  width: 100%;
+  list-style-position: outside;
+}
+.footer_logos ul{
+  list-style: none;
+}
+.footer_logos ul li{
+  float: left;
+  cursor: pointer;
+	padding: 0;
+	margin: 0;
+}
+.footer_text{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  line-height: 21px;
+  float: none;
 }
 @media only screen and (min-width:1200px){
 	footer{
-		position: fixed;
 		bottom: 0;
-		border-top: 2px solid #E0E0F8;
-		margin: 50px 0 0 250px;
+		margin: 100px 0 0;
 	}
 }
 @media only screen and (max-width:1200px){
 	footer{
-		position: relative;
 		width: 100%;
-		padding: 15px;
-		bottom: 0px;
+		bottom: 0;
 		margin: 100px 0 0;
+        justify-content: center;
 	}
 }
 footer a{
 	padding: 15px;
 	margin: 0;
+	color: #1f2942;
 }
 footer a:hover, footer a:link, footer a:active{
-    color: beige;
     text-decoration: none;
+	color: #1f2942;
 }
 footer a:visited{
-    color: darkgray;
+    color: #1f2942;
     text-decoration: line-through;
 }

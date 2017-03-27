@@ -25,7 +25,7 @@
             <header>
                 <div class="kopf">
                     <a href="{{ app_root }}">
-                        <img id="logo" src="{% block logo_url %}{% static 'images/logo-pharos.png' %}{% endblock %}"
+                        <img id="logo" src="{% block logo_url %}{% static 'images/Signet_kontrast.png' %}{% endblock %}"
                              alt="Logo">
                     </a>
                     <div id="name">
@@ -105,10 +105,72 @@
 
         {% block footer %}
             <footer>
-                <a class="list-group-item" href="http://fachschaft-medizin-rostock.de/kontakt/impressum/"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Impressum</a>
-                <a class="list-group-item" href="http://fachschaft-medizin-rostock.de/kontakt"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>Kontakt</a>
-                </br>Mit <i class="fa fa-heart fa-fw" aria-hidden="true"></i> und <i class="fa fa-coffee fa-fw" aria-hidden="true"></i> kreiert von der AG IT kreiert
-            </footer>
+                <div class="footer_logos">
+                <ul>
+                  <li>
+                    <a href="https://www.facebook.com/fachschaft.medizinrostock/">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://fachschaft.med.uni-rostock.de/exoral">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://rostock.kreuzmich.de/">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/diva">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://www.fachschaft-medizin-rostock.de/pharos/">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://fachschaft-medizin-rostock.de/kontakt/impressum/">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://fachschaft-medizin-rostock.de/kontakt">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer_text">
+                <p>
+                  <i class="fa fa-copyright" aria-hidden="true"></i>
+                    Fachschaft Medizin Rostock </br> Kreiert von der AG IT
+                </p>
+                </footer>
         {% endblock %}
 
     </body>
@@ -125,7 +187,7 @@
     var nav = document.querySelector("nav");
 
     // var nav = document.getElementsByTagName("nav")[0];
-    nav.classList.toggle("is-active");
+    nav.classList.toggle("nav_open");
     // Do something else, like open/close menu
   });
 

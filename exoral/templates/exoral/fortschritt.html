@@ -2,11 +2,11 @@
     {% if modus %}
         <a href="{% url 'exoral:moduswahl' %}">
             {% if modus == 'l' %} Lernmodus
-                {% else %} Prokollmodus
+                {% else %} Protokollmodus
             {% endif %}
         </a>
         {% if testat %}
-            <a href="{% url 'exoral:testatwahl' modus=modus%}">Testat: {{ testat }}</a>
+            <a href="{% url 'exoral:testatwahl' modus=modus%}">{{ testat }}</a>
             {% if pruefer %}
                 <a href="{% url 'exoral:prueferwahl'  modus=modus testat_id=testat.pk %}">bei {{ pruefer }}</a>
             {% endif %}
