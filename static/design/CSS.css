@@ -89,6 +89,9 @@ header #explain{
   nav ul li:hover > a{
     color: #1f2942;
   }
+    nav ul li:hover >ul{
+    display: block;
+  }
   nav ul li > ul{
     position: absolute;
     background-color: #1f2942;
@@ -97,9 +100,6 @@ header #explain{
     padding: 15px 0 5px;
     border-radius: 0 0 15px 15px;
     display: none;
-  }
-  nav ul li:hover >ul{
-    display: block;
   }
   nav ul li ul li{
     position: relative;
