@@ -7,11 +7,11 @@ html{
     float: none;
 }
 body{
-    margin: 150px 0 0;
+    margin: 170px 0 0;
 }
 @media only screen and (max-width: 600px){
     body{
-        margin: 100px 0 0;
+        margin: 120px 0 0;
     }
 }
 /* --------------Header-------------- */
@@ -84,7 +84,7 @@ header #explain{
   }
   nav ul li{
     float: left;
-    margin: 0;
+    margin: 0 5px 0;
     padding: 5px;
     border-radius: 15px;
   }

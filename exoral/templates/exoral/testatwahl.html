@@ -10,8 +10,8 @@ Die Auswahl dieser Testate erfolgt anhand deines Semesters, das du bei uns angeg
 {% endblock %}
 
 {% block content %}
-    <h2>Hier diefür dich ausgewählten Testate</h2>
+    <h2>Hier die für dich ausgewählten Testate</h2>
     {% for testat in testate %}
-            <a href="{% url 'exoral:prueferwahl' modus=modus testat_id=testat.pk %}"><button class="animated zoomIn">{{ testat }}</button></a>
+            <a href="{% url 'exoral:prueferwahl' modus=modus testat_id=testat.pk %}"><button class="name animated zoomIn">{{ testat }}</button></a>
     {% endfor %}
 {% endblock %}
