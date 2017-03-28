@@ -10,16 +10,16 @@
 {% block site_heading %}Login{% endblock %}
 
 {% block site_content %}
-    <section style="background-color: #272a44; color: #E0E0F8;">
+    <section style="background-color: #272a44; color: #E0E0F8; font-size: 16px;">
         Willkommen auf der internen Seite der Fachschaft Medizin Rostock. </br> Du kannst dich hier Problemlos
-    mit dem Nutzerkennzeichen und dem Passwort des ITMZ anmelden. Solltest du keine Student der medizinischen Fakultät sein
+    mit dem Nutzerkennzeichen und dem Passwort des ITMZ anmelden. Solltest du kein Student der medizinischen Fakultät sein
         wird dein Loginversuch scheitern. </br>
     Wir wünschen dir viel Spaß bei deinem Studium
     </section>
     <form action="{% url "fsmedhro_login" %}" method="post" accept-charset="utf-8">{% csrf_token %}
         <input class="nkz" type="text" placeholder="Nutzerkennzeichen" class="form-control" name="username">
         <input class="psw" type="password" placeholder="Passwort" class="form-control" name="password">
-        <input class "psw" type="hidden" name="next" value="{{ next }}">
+        <input class="psw" type="hidden" name="next" value="{{ next }}">
         <input class="btn_login" type="submit" value="Login">
     </form>
 {% endblock %}

@@ -37,7 +37,7 @@
 }
 .frage .answer{
 	display: flex;
-	margin: 5px 45px 5px 15px;
+	margin: 5px 50px 5px 15px;
 }
 
 .frage p{
@@ -81,8 +81,13 @@
     background: #1f2942;
 	font-size: 22px;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1024px) {
 	.pdf{
 		visibility: hidden;
+	}
+	.comment{
+		width: 80%;
+		justify-content: center;
+		margin: 5px;
 	}
 }
