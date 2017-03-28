@@ -55,7 +55,7 @@
             {% else %}
                 <li><a href="{% url 'fsmedhro_login' %}"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>Anmelden</a></li>
             {% endif %}
-            <li><a href="{{ app_root }}">{% block appnav %}Fachschaft Medizin Rostock{% endblock %} </a>
+            <li><a href="{% block app_root_url %}{% url 'fsmedhro_index'%}{% endblock %}">{% block appnav %}Fachschaft Medizin Rostock{% endblock %} </a>
                 <ul>
                     {% block app_menu %}{% endblock %}
                 </ul>
@@ -132,7 +132,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="/diva">
+                    <a href="http://www.fachschaft-medizin-rostock.de/diva">
                       <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
@@ -168,7 +168,7 @@
               <div class="footer_text">
                 <p>
                   <i class="fa fa-copyright" aria-hidden="true"></i>
-                    Fachschaft Medizin Rostock </br> Kreiert von der AG IT
+                    Fachschaft Medizin Rostock <br> Kreiert von der AG IT
                 </p>
                 </footer>
         {% endblock %}
@@ -182,7 +182,7 @@
   hamburger.addEventListener("click", function() {
     // Toggle class "is-active"
     hamburger.classList.toggle("is-active");
-    scrollTo(0,0)
+    scrollTo(0,0);
 
     var nav = document.querySelector("nav");
 

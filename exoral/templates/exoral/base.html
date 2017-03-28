@@ -9,9 +9,10 @@
     {% block logo_url %}{% static 'exoral/logo_exoral.gif' %}{% endblock %}
     {% block subtitle %}Portal für mündliche Altfragen{% endblock %}
     {% block apptitle %}eXOral{% endblock %}
+    {% block app_root_url %}{% url 'exoral:moduswahl'%}{% endblock %}
     {% block appnav %}eXOral{% endblock %}
     {% block app_menu %}
-        <li><a href="{{ app_root }}"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>Startseite</a></li>
+        <li><a href="{% url 'exoral:moduswahl'%}"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>Startseite</a></li>
     {% endblock %}
 
     {% block site_heading %}eXOral{% endblock %}
