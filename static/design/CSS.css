@@ -107,10 +107,8 @@ header #explain{
     border-top: 0.5px solid brown;
     margin: 5px 0;
   }
-  .hamburger-box, .hamburger{
-    display: none;
-    z-index: 0;
-    visibility: hidden;
+  #menue_button{
+      display: none;
   }
 }
 .hamburger, .hamburger-box{
