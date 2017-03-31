@@ -181,7 +181,7 @@ header #explain{
   }
   .open_submenu{
     display: block;
-    font-style: 18px;
+    font-size: 18px;
   }
   .close_submenu{
     display: none;
@@ -562,8 +562,6 @@ footer{
 	margin: 100px 0 0;
 	position: relative;
 	width: 100%;
-	border-top: 3px dotted #1f2942;
-    border-radius: 100px 100px 0 0;
 }
 footer i{
   height: 25px;
@@ -571,11 +569,15 @@ footer i{
   object-position: center;
 }
 .footer_logos{
-  display: inline-flex;
-  justify-content: center;
-  line-height: 21px;
-  width: 100%;
-  list-style-position: outside;
+    display: inline-flex;
+    justify-content: center;
+    line-height: 21px;
+    width: 100%;
+    margin: 50px 0 0;
+    list-style-position: outside;
+    border-top: 3px dotted #1f2942;
+    border-radius: 100px 100px 0 0;
+
 }
 .footer_logos ul{
   list-style: none;
