@@ -7,10 +7,12 @@
 {% block site_content %}
     <h2>Details</h2>
     {%  if p_user == user %}
-        <a href="{% url 'fsmedhro_user_edit' %}" style="text-decoration: none;
+        <button>
+            <a href="{% url 'fsmedhro_user_edit' %}" style="text-decoration: none;
         font-size: 16px;color: #272a44;">
-            Bearbeite dein Profi
-        </a>
+                Bearbeite dein Profi
+            </a>
+        </button>
         <h2>Kerndaten (LDAP)</h2>
         <table>
             <tr><td>Name:</td><td>{{ p_user.first_name }} {{ p_user.last_name }}</td></tr>

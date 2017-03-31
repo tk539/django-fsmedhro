@@ -44,7 +44,7 @@
         {% endblock %}
 
         {% block nav %}
-    <nav><!--Menue-->
+    <nav> <!--Menue-->
         <ul>
             {% if request.user.is_authenticated %}
                 <li><a href="{% url 'fsmedhro_user' %}"><i class="fa fa-user-md fa-fw" aria-hidden="true"></i>{{ user }}</a>

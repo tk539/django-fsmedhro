@@ -13,7 +13,7 @@
             <div class="frage animated bounceInLeft">
                 <div class="date">{{ frage.datum }}</div>
                 <div class="score">Score: {{ frage.score }}</div>
-                <div class="text"><u><small>Frage:</small></u> <p>{{ frage.text }}</p></div>
+                <div class="text"><u><small></small></u> <p>{{ frage.text }}</p></div>
                 {% if frage.antwort %}
                     <div class="answer"><u><small>Antwort:</small></u> <p>{{ frage.antwort }}</p></div>
                 {% endif %}
@@ -48,6 +48,5 @@
         {% for kommentar in kommentare %}
             <div class="comment animated zoomInUp">{{ kommentar.text }}</div>
         {% endfor %}
-    <br><br>
 
 {% endblock %}

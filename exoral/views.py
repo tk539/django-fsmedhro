@@ -28,7 +28,7 @@ def testatwahl(request, modus):
                                     studiengang=studiengang).order_by('bezeichnung')
 
     if not testate.exists():
-        messages.add_message(request, messages.INFO, 'keine Testate abrufbar...')
+        messages.add_message(request, messages.INFO, 'Für dein Semester sind keine Testate abrufbar')
 
     context = {'modus': modus, 'testate': testate}
 
@@ -50,7 +50,7 @@ def prueferwahl(request, modus, testat_id):
                                      studienabschnitt=studienabschnitt,
                                      studiengang=studiengang).order_by('nachname', 'vorname')
     if not pruefer.exists():
-        messages.add_message(request, messages.INFO, 'keine Prüfer abrufbar...')
+        messages.add_message(request, messages.INFO, 'Für dieses Testat sind keine Prüfer abrufbar')
 
     context = {'modus': modus, 'testat': testat, 'pruefer_list': pruefer}
 
@@ -118,9 +118,9 @@ def frage_score(request, frage_id):
         has_scored = []
 
     if frage.pk in has_scored:
-        messages.add_message(request, messages.WARNING, 'Frage wurde bereits gescored')
+        messages.add_message(request, messages.WARNING, 'Du hast bereits den Score der Frage erhöht')
     elif len(has_scored) > 10:
-        messages.add_message(request, messages.WARNING, 'Nicht mehr als 10 Scores möglich')
+        messages.add_message(request, messages.WARNING, 'Du kannst nicht mehr als 10 Fragen gehabt haben')
     else:
         has_scored.append(frage.pk)
         request.session['has_scored'] = has_scored
@@ -130,9 +130,6 @@ def frage_score(request, frage_id):
                          'Du hast erfolgreich den Score der Frage erhöht. Danke, '
                          'dass du dafür keine neue Frage hinzugefügt hast.')
 
-    messages.add_message(request, messages.SUCCESS,
-                         'Du hast erfolgreich den Score der Frage erhöht. Danke, '
-                         'dass du dafür keine neue Frage hinzugefügt hast.')
 
     return HttpResponseRedirect(reverse('exoral:fragenliste', args=('p', testat.pk, pruefer.pk)))
 
