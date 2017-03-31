@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import RedirectView
+#  from django.views.generic import RedirectView
 
 
 urlpatterns = [
@@ -26,9 +26,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', login, {'template_name': 'login.html'}, name='fsmedhro_login'),
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='fsmedhro_logout'),
-    url(r'^fachschaft/',include('fsmedhrocore.urls')),
-    url(r'^exoral/',include('exoral.urls')),
+    url(r'^fachschaft/', include('fsmedhrocore.urls')),
+    url(r'^exoral/', include('exoral.urls')),
     url(r'^api/fachschaft/', include('fsmedhrocore.api.urls', namespace='fsmedhrocore-api')),
-    url(r'^', include('cms.urls')),
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^', include('cms.urls'), ),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -24,7 +24,7 @@
         {% block header %}
             <header>
                 <div class="kopf">
-                    <a href="{{ app_root }}">
+                    <a href="">
                         <img id="logo" src="{% block logo_url %}{% static 'images/Signet_kontrast.png' %}{% endblock %}"
                              alt="Logo">
                     </a>
@@ -62,7 +62,7 @@
             </li>
             <li><a>Apps</a>
                 <ul>
-                    <li><a href="{% url 'root' %}"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Webseite</a></li>
+                    <li><a href="https://fachschaft.med.uni-rostock.de"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Webseite</a></li>
 					<li><a href="https://www.facebook.com/fachschaft.medizinrostock/"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i>Facebook</a></li>
                     <li><a href="https://rostock.kreuzmich.de/"><i class="fa fa-times fa-fw" aria-hidden="true"></i>Kreuzmich</a></li>
                     <li><a href="{% url 'exoral:moduswahl' %}"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>eXOral</a></li>
