@@ -51,7 +51,29 @@ INSTALLED_APPS = [
     'menus',
     'treebeard',
     'sekizai',
+    'filer',
+    'easy_thumbnails',
+    'mptt',
+    'djangocms_text_ckeditor',
+    'djangocms_link',
+    'djangocms_file',
+    'djangocms_picture',
+    'djangocms_video',
+    'djangocms_googlemap',
+    'djangocms_snippet',
+    'djangocms_style',
+    'djangocms_column',
+    'djangocms_forms',
+    'aldryn_apphooks_config',
+    'cmsplugin_filer_image',
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'meta',
+    'djangocms_blog',
 ]
+
+ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
 SITE_ID = 1
 
@@ -105,6 +127,12 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+CMS_TEMPLATES = [
+    ('home.html', 'Standart'),
+    ('sidebar_left.html', 'Sidebar Links'),
+    ('sidebar_right.html', 'Sidebar Rechts'),
 ]
 
 STATICFILES_DIRS = [
@@ -171,3 +199,16 @@ LANGUAGES = [
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+HUMBNAIL_HIGH_RESOLUTION = True
+META_USE_SITES = True
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+)

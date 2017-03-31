@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
+from django.conf import settings
+from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 
@@ -28,4 +30,5 @@ urlpatterns = [
     url(r'^exoral/',include('exoral.urls')),
     url(r'^api/fachschaft/', include('fsmedhrocore.api.urls', namespace='fsmedhrocore-api')),
     url(r'^', include('cms.urls')),
-]
+    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
