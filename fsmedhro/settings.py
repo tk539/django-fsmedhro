@@ -36,6 +36,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Application definition
 
 INSTALLED_APPS = [
+    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,8 +46,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'exoral.apps.ExoralConfig',
     'fsmedhrocore.apps.FachschaftConfig',
-    'QuestionAir.apps.QuestionAirConfig',
+    'django.contrib.sites',
+    'cms',
+    'menus',
+    'treebeard',
+    'sekizai',
 ]
+
+SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
     'fsmedhrocore.backends.auth.LdapUniHro',
@@ -64,6 +71,7 @@ LOGOUT_URL = 'fsmedhro_logout'
 LOGIN_REDIRECT_URL = 'fsmedhro_user'
 
 MIDDLEWARE = [
+    #'cms.middleware.utils.ApphookReloadMiddleware'
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,6 +79,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware'
 ]
 
 ROOT_URLCONF = 'fsmedhro.urls'
@@ -86,6 +100,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'sekizai.context_processors.sekizai',
+                'cms.context_processors.cms_settings'
             ],
         },
     },
@@ -145,6 +161,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('de', 'German'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
