@@ -11,9 +11,10 @@
 
     <title>Fachschaft Medizn Rostock</title>
 
-    <link rel="stylesheet" href="/static/design/cms.css" />
-    <link rel="stylesheet" href="/static/font-awesome-4.7.0/css/font-awesome.min.css" />
-    <link href="/static/design/hamburger.css" rel="stylesheet" >
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'design/cms.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" />
+    <link href="{% static 'design/hamburger.css' %}" rel="stylesheet" >
     {% render_block "css"%}
     {% comment %}
         {{ ALDRYN_SNAKE.render_head }}
@@ -32,7 +33,7 @@
 <body>
     {% cms_toolbar %}
     <header>
-        <img class="header_logo" src="/static/images/Signet_kontrast.png"></img>
+        <img class="header_logo" src="{% static 'images/Signet_kontrast.png' %}">
         <a class="header_title" href="#">
           Fachschaft Medizin Rostock
         </a>
@@ -56,7 +57,7 @@
                 </a>
               </li>
               <li>
-                <a href="https://fachschaft.med.uni-rostock.de/exoral/">
+                <a href="{% url 'exoral:moduswahl' %}">
                   eXOral
                 </a>
               </li>
@@ -94,7 +95,7 @@
             </a>
           </li>
           <li>
-            <a href="https://fachschaft.med.uni-rostock.de/exoral">
+            <a href="{% url 'exoral:moduswahl' %}">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
@@ -110,7 +111,7 @@
             </a>
           </li>
           <li>
-            <a href="/diva">
+            <a href="https://fachschaft-medizin-rostock.de/diva">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
@@ -156,6 +157,7 @@
           <i class="fa fa-copyright" aria-hidden="true"></i>
           Fachschaft Medizin Rostock
         </p>
+      </div>
     </footer>
     <script>
       // Look for .hamburger
@@ -164,7 +166,7 @@
       hamburger.addEventListener("click", function() {
         // Toggle class "is-active"
         hamburger.classList.toggle("is-active");
-        scrollTo(0,0)
+        scrollTo(0,0);
 
         var nav = document.querySelector("nav");
         // var nav = document.getElementsByTagName("nav")[0];
