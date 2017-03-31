@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'meta',
     'djangocms_blog',
 ]
+#TODO: Blogs dosn't work --> please have a look
 
 ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
