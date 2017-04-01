@@ -16,7 +16,6 @@
 			<link rel="stylesheet" href="{% static 'design/animate.css' %}"> <!--File für alle Animationen-->
 			<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
 			<link rel="stylesheet" href="{% static 'design/hamburger.css' %}">
-            {% block head_add %}{% endblock %}
         {% endblock %}
     </head>
 
@@ -24,7 +23,6 @@
 
         {% block header %}
             <header>
-                {% block header_add %}{% endblock %}
                 <div class="kopf">
                     <a href="">
                         <img id="logo" src="{% block logo_url %}{% static 'images/Signet_kontrast.png' %}{% endblock %}"
@@ -165,15 +163,12 @@
                       </span>
                     </a>
                   </li>
-                  {% block footer_logos_add %}{% endblock %}
                 </ul>
               </div>
               <div class="footer_text">
                 <p>
-                    {% block footer_text %}
-                      <i class="fa fa-copyright" aria-hidden="true"></i>
-                        Fachschaft Medizin Rostock <br> Kreiert von der AG IT
-                    {% endblock %}
+                  <i class="fa fa-copyright" aria-hidden="true"></i>
+                    Fachschaft Medizin Rostock <br> Kreiert von der AG IT
                 </p>
                 </footer>
         {% endblock %}
@@ -188,14 +183,11 @@
     // Toggle class "is-active"
     hamburger.classList.toggle("is-active");
     scrollTo(0,0);
-
     var nav = document.querySelector("nav");
-
     // var nav = document.getElementsByTagName("nav")[0];
     nav.classList.toggle("nav_open");
     // Do something else, like open/close menu
   });
-
   //If Click on hamburger
 </script>
 

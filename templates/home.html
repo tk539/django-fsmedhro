@@ -1,9 +1,6 @@
-{% load cms_tags menu_tags sekizai_tags %}
-{% extends "base.html" %}
-{% with "Fachschaft Medizin Rostock" as title %}
+{% load cms_tags menu_tags sekizai_tags static %}
 
-<!DOCTYPE html>
-<html lang="de">
+<html lang="{{ LANGUAGE_CODE }}">
 
 <head>
     <meta charset="utf-8">
@@ -12,75 +9,90 @@
     <meta name="description" content="{% page_attribute "meta_descirption" %}">
     <meta name="author" content="Fachschaft Medizin Rostock">
 
-    <title>{{ title }}</title>
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'design/cms.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" />
+
+    <title>Fachschaft Medizin Rostock</title>
+    <link rel="icon" href="{% static 'images/Signet_blau.png' %}" type="image/png" >
+
+    <link rel="stylesheet" href="{% static 'design/CSS.css' %}" >
+    <link rel="stylesheet" href="{% static 'design/cms.css' %}" type="text/css" >
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" >
     <link href="{% static 'design/hamburger.css' %}" rel="stylesheet" >
+    <link href="{% static 'design/animate.css' %}" rel="stylesheet" >
     {% render_block "css"%}
-    {% comment %}
         {{ ALDRYN_SNAKE.render_head }}
 
     <!--IF toolbar is open push navbar down -> so i can se it-->
     {% if request.toolbar %}
       <style>
-        .cms-toolbar-expanded .navbar-custom {
+        .cms-toolbar-expanded nav {
           margin-top: +45px;
         }
       </style>
     {% endif %}
-    {% endcomment %}
+
 </head>
 
 <body>
     {% cms_toolbar %}
     <header>
-        <img class="header_logo" src="{% static 'images/Signet_kontrast.png' %}">
-        <a class="header_title" href="#">
-          Fachschaft Medizin Rostock
+        <a href="">
+            <img id="logo" src="{% static 'images/Signet_kontrast.png' %}"
+                 alt="Logo">
         </a>
-        <div class="hamburger hamburger--arrow">
-          <div class="hamburger-box">
-            <div class="hamburger-inner"></div>
-          </div>
+        <div id="name">
+            Fachschaft Rostock
+        </div><!--Name der Plattform-->
+        <div id="explain">Medizin und medizinische Biotechnologie</div>
+        <div id="menue_button">
+            <button class="hamburger hamburger--arrowalt" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
         </div>
     </header>
-
-    {% block nav %}
-        <nav>
-          <ul>
-            {% show_menu 0 1 100 100 %}
-            <li>
-              <a href="#">
-                Apps
-              </a>
-                <ul>
-                  <li>
-                    <a href="https://rostock.kreuzmich.de/">
-                      Kreuzmich
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{% url 'exoral:moduswahl' %}">
-                      eXOral
-                    </a>
-                  </li>
-                </ul>
-            </li>
-          </ul>
-        </nav>
-    {% endblock %}
+    <nav>
+      <ul>
+        {% show_menu 0 1 100 100 %}
+        <li>
+          <a href="#">
+            Apps
+          </a>
+            <ul>
+              <li>
+                <a href="https://rostock.kreuzmich.de/">
+                  Kreuzmich
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'exoral:moduswahl' %}">
+                  eXOral
+                </a>
+              </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Sprache ändern</a>
+            <ul>
+                {% language_chooser %}
+            </ul>
+        </li>
+      </ul>
+    </nav>
     <main>
-    <h1>{% page_attribute "page_title" %}</h1>
+        <h1>{% page_attribute "page_title" %}</h1>
         {% block content %}
-             {% placeholder "content" %}
+            {% placeholder "Content" %}
+            {% placeholder "Content" or %}
+                <div style="font-size: 22px; text-align: center; margin: 25px;">
+                    Diese Seite ist Momentan noch im Aufbau.
+                    </br>This page is under reconstruction.
+                </div>
+            {% endplaceholder %}
         {% endblock %}
     </main>
-    {% render_block "js" %}
-    {% comment %}
-        {{ ALDRYN_SNAKE.render_tail }}
-    {% endcomment %}
+
     <footer>
       <div class="footer_logos">
         <ul>
@@ -161,7 +173,7 @@
       <div class="footer_text">
         <p>
           <i class="fa fa-copyright" aria-hidden="true"></i>
-          Fachschaft Medizin Rostock
+            Fachschaft Medizin Rostock </br> Kreiert von der AG IT
         </p>
       </div>
     </footer>
@@ -173,18 +185,16 @@
         // Toggle class "is-active"
         hamburger.classList.toggle("is-active");
         scrollTo(0,0);
-
         var nav = document.querySelector("nav");
         // var nav = document.getElementsByTagName("nav")[0];
         nav.classList.toggle("nav_open");
         // Do something else, like open/close menu
       });
       //On Click for nav ul li
-
       //add class "submenu_open" to nav ul li ul
-
       //delete class "submenue_open from nav ul li ul if click on nav ul li"
     </script>
+    {% render_block "js" %}
+    {{ ALDRYN_SNAKE.render_tail }}
 </body>
 </html>
-{% endwith %}

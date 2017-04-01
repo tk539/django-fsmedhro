@@ -17,10 +17,11 @@ header{
     color: antiquewhite;
     width: 100vw;
     height: 100px;
-    margin-top: -200px;
     position: fixed;
+    margin: -200px 0 -80px;
     padding: 15px 20px 5px 15px;
 	z-index: 10;
+
 }
 header #logo{
 	float: left;
@@ -176,7 +177,7 @@ header #explain{
   }
   .open_submenu{
     display: block;
-    font-style: 18px;
+    font-size: 18px;
   }
   .close_submenu{
     display: none;
@@ -540,8 +541,6 @@ footer{
 	margin: 100px 0 0;
 	position: relative;
 	width: 100%;
-	border-top: 3px dotted #1f2942;
-    border-radius: 100px 100px 0 0;
 }
 footer i{
   height: 25px;
@@ -554,6 +553,8 @@ footer i{
   line-height: 21px;
   width: 100%;
   list-style-position: outside;
+    border-top: 3px dotted #1f2942;
+    border-radius: 100px 100px 0 0;
 }
 .footer_logos ul{
   list-style: none;
@@ -570,6 +571,7 @@ footer i{
   text-align: center;
   line-height: 21px;
   float: none;
+
 }
 @media only screen and (min-width:1200px){
 	footer{
