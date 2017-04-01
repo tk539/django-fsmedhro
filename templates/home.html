@@ -1,5 +1,8 @@
 {% load cms_tags menu_tags sekizai_tags %}
+{% extends "base.html" %}
+{% with "Fachschaft Medizin Rostock" as title %}
 
+<!DOCTYPE html>
 <html lang="de">
 
 <head>
@@ -9,7 +12,7 @@
     <meta name="description" content="{% page_attribute "meta_descirption" %}">
     <meta name="author" content="Fachschaft Medizin Rostock">
 
-    <title>Fachschaft Medizn Rostock</title>
+    <title>{{ title }}</title>
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'design/cms.css' %}" type="text/css">
@@ -43,28 +46,31 @@
           </div>
         </div>
     </header>
-    <nav>
-      <ul>
-        {% show_menu 0 1 100 100 %}
-        <li>
-          <a href="#">
-            Apps
-          </a>
-            <ul>
-              <li>
-                <a href="https://rostock.kreuzmich.de/">
-                  Kreuzmich
-                </a>
-              </li>
-              <li>
-                <a href="{% url 'exoral:moduswahl' %}">
-                  eXOral
-                </a>
-              </li>
-            </ul>
-        </li>
-      </ul>
-    </nav>
+
+    {% block nav %}
+        <nav>
+          <ul>
+            {% show_menu 0 1 100 100 %}
+            <li>
+              <a href="#">
+                Apps
+              </a>
+                <ul>
+                  <li>
+                    <a href="https://rostock.kreuzmich.de/">
+                      Kreuzmich
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'exoral:moduswahl' %}">
+                      eXOral
+                    </a>
+                  </li>
+                </ul>
+            </li>
+          </ul>
+        </nav>
+    {% endblock %}
     <main>
     <h1>{% page_attribute "page_title" %}</h1>
         {% block content %}
@@ -181,3 +187,4 @@
     </script>
 </body>
 </html>
+{% endwith %}
