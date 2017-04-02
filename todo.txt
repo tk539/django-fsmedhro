@@ -1,0 +1,4 @@
+(A) Change resolution of the Logo +Design
+(A) Add Taiga.io
+(B)Add https://github.com/aldryn/aldryn-newsblog +CMS
+(B)Add https://github.com/aldryn/aldryn-events +CMS
