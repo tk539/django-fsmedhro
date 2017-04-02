@@ -31,7 +31,7 @@
         {% endfor %}
     {% if modus == 'p' %}
         <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
-        <button class="big" style="text-decoration: none; color: #E0E0F8">Neue Frage eintragen</button></a>
+        <button class="big">Neue Frage eintragen</button></a>
     {% endif %}
     <h2><i class="fa fa-comments" aria-hidden="true"></i> Kommentare</h2>
         <section>
@@ -40,7 +40,7 @@
             {% if modus == 'p' %}
                 Du kannst natürlich dem Prüfer auch einen Kommentar hinzufügen.
                 <a href="{% url 'exoral:kommentar_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
-                    <button class="small" style="text-decoration: none; color: #E0E0F8">
+                    <button class="small">
                     <span class="fa fa-plus" aria-hidden="true"></span> Kommentar
                 </button></a>
             {% endif %}
