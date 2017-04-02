@@ -7,25 +7,21 @@ html{
     float: none;
 }
 body{
-    margin: 170px 0 0;
-}
-@media only screen and (max-width: 600px){
-    body{
-        margin: 120px 0 0;
-    }
+    padding: 200px 0 0 0;
+    margin: 0;
 }
 /* --------------Header-------------- */
 header{
     background-color: #1f2942;
     font-size: 20px;
     color: antiquewhite;
-    width: 100%;
+    width: 100vw;
     height: 100px;
-    margin: 0;
     position: fixed;
-    top: 0;
+    margin: -200px 0 -80px;
     padding: 15px 20px 5px 15px;
 	z-index: 10;
+
 }
 header #logo{
 	float: left;
@@ -84,7 +80,7 @@ header #explain{
   }
   nav ul li{
     float: left;
-    margin: 0 5px 0;
+    margin: 0;
     padding: 5px;
     border-radius: 15px;
   }
@@ -94,9 +90,6 @@ header #explain{
   nav ul li:hover > a{
     color: #1f2942;
   }
-    nav ul li:hover >ul{
-    display: block;
-  }
   nav ul li > ul{
     position: absolute;
     background-color: #1f2942;
@@ -105,6 +98,9 @@ header #explain{
     padding: 15px 0 5px;
     border-radius: 0 0 15px 15px;
     display: none;
+  }
+  nav ul li:hover >ul{
+    display: block;
   }
   nav ul li ul li{
     position: relative;
@@ -123,7 +119,7 @@ header #explain{
   .hamburger{
     display: block;
     position: fixed;
-    top: 10px;
+    /* top: 10px; */
     right: 0;
     height: 75px;
     z-index: 12;
@@ -346,19 +342,6 @@ header #explain{
     background-color: #1f2942;
     color: #f1f1f1;
 }
-@media only screen and (max-width: 767px){
-    .nkz{
-        width:80%;
-    }
-    .psw{
-        width: 80%;
-    }
-    .btn_login{
-        margin: 15px 0 0;
-        justify-content: center;
-        text-align: center;
-    }
-}
 /* --------------Body-------------- */
 h1{
 	font-size: 45px;
@@ -393,10 +376,6 @@ h3{
         margin-bottom: 100px;
         justify-content: center;
 	}
-    section{
-        font-size: 8px;
-
-    }
 }
 section{
 	text-align: left;
@@ -569,15 +548,13 @@ footer i{
   object-position: center;
 }
 .footer_logos{
-    display: inline-flex;
-    justify-content: center;
-    line-height: 21px;
-    width: 100%;
-    margin: 50px 0 0;
-    list-style-position: outside;
+  display: inline-flex;
+  justify-content: center;
+  line-height: 21px;
+  width: 100%;
+  list-style-position: outside;
     border-top: 3px dotted #1f2942;
     border-radius: 100px 100px 0 0;
-
 }
 .footer_logos ul{
   list-style: none;
@@ -594,6 +571,7 @@ footer i{
   text-align: center;
   line-height: 21px;
   float: none;
+
 }
 @media only screen and (min-width:1200px){
 	footer{

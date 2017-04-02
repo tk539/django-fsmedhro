@@ -1,0 +1,31 @@
+/*--Main--*/
+main{
+      color: #1f2942;
+      margin: 0 25px 0;
+  }
+@media only screen and (min-width: 768px) {
+  main{
+    margin: 0 20% 0;
+  }
+}
+@media only screen and (max-width: 400px) {
+  main{
+    margin: 0 5px 0;
+  }
+}
+
+p{
+  padding: 0 15px 25px;
+}
+.filer_image{
+  border-radius: 10px;
+}
+.filer_image_info{
+  visibility: hidden;
+}
+ /*.filer_image:hover .filer_image_info{
+  visibility: visible;
+  display: block;
+  background-color: #d2ec99;
+  font-size: 18px;
+}*/

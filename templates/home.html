@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load cms_tags menu_tags sekizai_tags static %}
+
+{% block language %}{{ LANGUAGE_CODE }}{% endblock %}
+
+    {% block meta_description %}{% page_attribute "meta_descirption" %}{% endblock %}
+
+{% block htmlhead %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" href="{% static 'design/cms.css' %}" type="text/css" >
+    {% endaddtoblock %}
+{% endblock %}
+
+{% block app_menu %}
+        {% show_menu 0 1 100 100 %}
+{% endblock %}
+
+{% block language_chooser %}
+        <li>
+            <a href="#">Sprache ändern</a>
+            <ul>
+                {% language_chooser %}
+            </ul>
+        </li>
+{% endblock %}
+
+{% block content_wraper %}
+    <main>
+        <h1>{% page_attribute "page_title" %}</h1>
+        {% block content %}
+            {% placeholder "Content" %}
+            {% placeholder "Content" or %}
+                <div style="font-size: 22px; text-align: center; margin: 25px;">
+                    Diese Seite ist Momentan noch im Aufbau.
+                    <br>This page is under reconstruction.
+                </div>
+            {% endplaceholder %}
+        {% endblock %}
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% with edit_page=True cururl=current_url%}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
