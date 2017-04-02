@@ -1,64 +1,31 @@
+{% extends "base.html" %}
+
 {% load cms_tags menu_tags sekizai_tags static %}
 
-<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+{% block language %}{{ LANGUAGE_CODE }}{% endblock %}
 
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Fachschaft Medizin Rostock">
+    {% block meta_description %}{% page_attribute "meta_descirption" %}{% endblock %}
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="{% page_attribute "meta_descirption" %}">
+{% block htmlhead %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" href="{% static 'design/cms.css' %}" type="text/css" >
+    {% endaddtoblock %}
+{% endblock %}
 
-
-    <title>Fachschaft Medizin Rostock</title>
-
-    {% load static %}
-    <link rel="icon" href="{% static 'images/Signet_blau.png' %}" type="image/png" >
-
-    <link rel="stylesheet" href="{% static 'design/CSS.css' %}" >
-    <link rel="stylesheet" href="{% static 'design/animate.css' %}" >
-    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" >
-    <link rel="stylesheet" href="{% static 'design/hamburger.css' %}" >
-
-    <script src="{% static 'hamburger.js' %}"></script>
-
-    <link rel="stylesheet" href="{% static 'design/cms.css' %}" type="text/css" >
-
-    {% render_block "css"%}
-        {{ ALDRYN_SNAKE.render_head }}
-
-    <!--IF toolbar is open push navbar down -> so i can se it-->
-    {% if request.toolbar %}
-      <style>
-        .cms-toolbar-expanded nav {
-          margin-top: +45px;
-        }
-      </style>
-    {% endif %}
-
-</head>
-
-<body>
-    {% cms_toolbar %}
-    <header>
-        {% include "header.html" %}
-    </header>
-    <nav>
-      <ul>
+{% block app_menu %}
         {% show_menu 0 1 100 100 %}
-        <li>
-            {% include "apps_menu.html" %}
-        </li>
+{% endblock %}
+
+{% block language_chooser %}
         <li>
             <a href="#">Sprache ändern</a>
             <ul>
                 {% language_chooser %}
             </ul>
         </li>
-      </ul>
-    </nav>
+{% endblock %}
+
+{% block content_wraper %}
     <main>
         <h1>{% page_attribute "page_title" %}</h1>
         {% block content %}
@@ -71,14 +38,10 @@
             {% endplaceholder %}
         {% endblock %}
     </main>
+{% endblock %}
 
-    <footer>
-        {% with edit_page=True cururl=current_url%}
-            {% include "footer.html" %}
-        {% endwith %}
-    </footer>
-
-    {% render_block "js" %}
-    {{ ALDRYN_SNAKE.render_tail }}
-</body>
-</html>
+{% block footer %}
+    {% with edit_page=True cururl=current_url%}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
