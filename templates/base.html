@@ -1,14 +1,15 @@
-{% with "Fachschaft Medizin Rostock" as title %}
-
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{% block language %}de{% endblock %}">
 
     <head>
         {% block head %}
-            <meta name="viewport" content="initial-scale=1.0">
             <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-            <meta name="description" content="Der Interne Bereich der Fachschaft Medizin Rostock wird auf diesen Seiten dargestellt">
-            <title>{{ title }}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="author" content="Fachschaft Medizin Rostock">
+
+            <meta name="description" content="{% block meta_description %}Der Interne Bereich der Fachschaft Medizin Rostock wird auf diesen Seiten dargestellt{% endblock %}">
+
+            <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
 
             {% load static %}
             <link rel="icon" href="{% static 'images/Signet_blau.png' %}" type="image/png" >
@@ -86,5 +87,3 @@
     </body>
 
 </html>
-
-{% endwith %}
