@@ -46,7 +46,23 @@
 
         {% block header %}
             <header>
-                {% include "header.html" %}
+                <div class="kopf">
+                    <a href="">
+                        <img id="logo" src="{% block logo_url %}{% static 'images/Signet_kontrast.png' %}{% endblock %}"
+                             alt="Logo">
+                    </a>
+                    <div id="name">
+                        {% block apptitle %}Fachschaft Medizin Rostock{% endblock %}
+                    </div><!--Name der Plattform-->
+                    <div id="explain">{% block subtitle %}{% endblock %}</div>
+                    <div id="menue_button">
+                        <button class="hamburger hamburger--arrowalt" type="button" onclick = "HamburgerClick()">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
             </header>
         {% endblock %}
 
