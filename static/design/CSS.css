@@ -10,6 +10,7 @@ body{
     padding: 200px 0 0 0;
     margin: 0;
 }
+
 /* --------------Header-------------- */
 header{
     background-color: #1f2942;
@@ -21,7 +22,6 @@ header{
     margin: -200px 0 -80px;
     padding: 15px 20px 5px 15px;
 	z-index: 10;
-
 }
 header #logo{
 	float: left;
@@ -58,7 +58,6 @@ header #explain{
 }
 
 /* --------------Menue-------------- */
-
 @media only screen and (min-width: 767px){
   nav{
     position: fixed;
@@ -72,8 +71,9 @@ header #explain{
   nav a{
     text-decoration: none;
     color: #f1f1f1;
-    font-size: 22px;
-    margin: 0; padding: 0;
+    font-size: 18px;
+    margin: 0 10px;
+    padding: 0;
   }
   nav ul{
     list-style: none;
@@ -93,7 +93,7 @@ header #explain{
   nav ul li > ul{
     position: absolute;
     background-color: #1f2942;
-    top: 15px;
+    top: 11px;
     margin: 35px 0 0;
     padding: 15px 0 5px;
     border-radius: 0 0 15px 15px;
@@ -105,7 +105,7 @@ header #explain{
   nav ul li ul li{
     position: relative;
     float: none;
-    border-top: 0.5px solid brown;
+    border-top: 1px solid brown;
     margin: 5px 0;
   }
   #menue_button{
@@ -402,11 +402,9 @@ button{
 	padding: 5px;
 	font-style: italic;
 }
+
 /*------Messages---------*/
-.messages{
-
-}
-
+/*
 .message{
 	font-size: 18px;
 	padding: 5px 0;
@@ -441,6 +439,24 @@ button{
     border: solid #ff50ff 2px;
     background: rgba(255, 80, 255, 0.51);
 }
+*/
+
+/*--Main--*/
+main{
+      color: #1f2942;
+      margin: 0 25px 0;
+  }
+@media only screen and (min-width: 768px) {
+  main{
+    margin: 0 20% 0;
+  }
+}
+@media only screen and (max-width: 400px) {
+  main{
+    margin: 0 5px 0;
+  }
+}
+
     /*-----SkillsLab Spezifisch-----*/
 @media only screen and (min-width:720px){
 	table{
@@ -511,21 +527,7 @@ button{
 		border-radius: 5px 5px 5px 20px;
 	}
 }
-/*-----Altfragenportal Spezifisch-----*/
-.question{
-	font-size: 18px;
-	text-align: left;
-	padding: 10px;
-	margin: 0 35px 15px 15px;
-	border-bottom: 1px dotted #1f2942;
-}
-.answer{
-	font-size: 16px;
-}
-.answer input{
-	margin: 5px;
-	transition: 5s;
-}
+
 /* --------------User--------------*/
 table{
 	font-size: 20px;
