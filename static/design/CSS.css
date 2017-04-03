@@ -451,9 +451,9 @@ main{
     margin: 0 20% 0;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
   main{
-    margin: 0 5px 0;
+    margin: -145px 5px 0;
   }
 }
 
