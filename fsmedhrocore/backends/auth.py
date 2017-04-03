@@ -1,6 +1,6 @@
 import ldap
 from django.contrib.auth.models import User
-
+from django.conf import settings
 
 class LdapUniHro(object):
     """
@@ -24,6 +24,13 @@ class LdapUniHro(object):
                 ldapuser = conection.search_s("ou=people,o=uni-rostock,c=de", ldap.SCOPE_SUBTREE, "uid="+username)[0][1]
         finally:
             conection.unbind()
+
+        if settings.DEBUG:
+            print('Loginversuch, LDAP-Daten:')
+            for att in ldapuser:
+                for item in ldapuser[att]:
+                    print(att, ':', item.decode())
+
 
         if validate_ladp_user(ldapuser):
             try:
