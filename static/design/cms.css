@@ -13,3 +13,84 @@ p{
   background-color: #d2ec99;
   font-size: 18px;
 }*/
+.content{
+
+}
+.sidebar{
+  width: 30%;
+    float: left;
+}
+
+/*--------------Formular-------*/
+
+.forms{
+  border: 1px dotted #a52a2a;
+  border-radius: 15px;
+  padding: 5px;
+}
+.forms .title{
+  font-size: 22px;
+  text-align: center;
+}
+.forms .description{
+  margin: 5px 15px 15px;
+  border: 1px dotted #1f2942;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.forms .form-wrapper{
+    margin: 5px 0 0 40px;
+}
+.forms .integerfield{
+    width: 35px;
+    text-align: center;
+}
+.forms .field-wrapper{
+    margin: 15px 0;
+}
+.forms .help-text{
+    font-style: italic;
+    font-size: 12px;
+}
+.forms label{
+    vertical-align: top;
+    font-weight: bold;
+}
+.forms label span{
+    text-decoration: none;
+    font-weight: normal;
+    vertical-align: top;
+}
+.forms .field-wrapper input{
+    margin: 0 0 0 5px;
+    padding: 0 0 0 2px;
+}
+.forms .field-wrapper textarea{
+    padding: 5px 5px 0;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    margin: 0 0 0 5px;
+}
+.forms select{
+    padding: 2px 5px;
+    font-size: 18px;
+}
+.forms select option{
+    background-color: #1f2942;
+    color: #f1f1f1;
+    margin: 2px 0;
+}
+.forms ul {
+    list-style: none;
+    text-decoration: none;
+    margin: 5px 0;
+}
+.forms ul .radioselect{
+    margin: 2px 0;
+    font-weight: normal;
+
+}
+.forms .button-wrapper{
+    justify-content: center;
+
+
+}

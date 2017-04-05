@@ -98,9 +98,12 @@ header #explain{
     padding: 15px 0 5px;
     border-radius: 0 0 15px 15px;
     display: none;
+      height: 0;
   }
   nav ul li:hover >ul{
-    display: block;
+      transition: 1.15s all;
+      display: block;
+      height: auto;
   }
   nav ul li ul li{
     position: relative;
