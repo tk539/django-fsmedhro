@@ -93,14 +93,18 @@ header #explain{
   nav ul li > ul{
     position: absolute;
     background-color: #1f2942;
+      color: ;
     top: 11px;
     margin: 35px 0 0;
     padding: 15px 0 5px;
     border-radius: 0 0 15px 15px;
     display: none;
+      height: 0;
   }
   nav ul li:hover >ul{
-    display: block;
+      transition: 3s all;
+      height: auto;
+      display: block;
   }
   nav ul li ul li{
     position: relative;
@@ -108,9 +112,35 @@ header #explain{
     border-top: 1px solid brown;
     margin: 5px 0;
   }
+  nav ul li ul li ul{
+      position: relative;
+      display: none;
+      height: auto;
+      margin: -15px 0 0;
+      padding: 0;
+      background-color: #f1f1f1;
+  }
+  nav ul li ul li:hover > ul{
+      display: block;
+  }
+  nav ul li ul li ul li{
+      background-color: #f1f1f1;
+  }
+  nav ul li ul li ul li:hover{
+      background-color: #1f2942;
+      color: #f1f1f1;
+  }
+  nav ul li ul li ul li a{
+      color: #1f2942;
+      font-size: 12px;
+  }
+  nav ul li ul li ul li a:hover{
+      color: #f1f1f1;
+  }
   #menue_button{
       display: none;
   }
+
 }
 .hamburger, .hamburger-box{
   display: none;
@@ -181,6 +211,9 @@ header #explain{
   }
   .close_submenu{
     display: none;
+  }
+  nav ul li ul li ul{
+      display: none;
   }
 }
 /*--Grosses Menue--*/

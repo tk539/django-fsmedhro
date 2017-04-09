@@ -14,7 +14,7 @@
 
             <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
 
-            <link rel="icon" href="{% static 'images/Signet_blau.png' %}" type="image/png" >
+            <link rel="icon" href="{% block logo_bar %}{% static 'images/Signet_blau.png' %}{% endblock %}" type="image/png" >
 
             <link rel="stylesheet" href="{% static 'design/CSS.css' %}" type="text/css" media="screen">
 			<link rel="stylesheet" href="{% static 'design/animate.css' %}"> <!--File für alle Animationen-->
@@ -72,6 +72,7 @@
             {% if request.user.is_authenticated %}
                 <li><a href="{% url 'fsmedhro_user' %}"><i class="fa fa-user-md fa-fw" aria-hidden="true"></i>{{ user }}</a>
                     <ul>
+                        <li><a href="{% url 'fsmedhro_user' %}"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Dein Profil</a>
                         <li><a href="{% url 'fsmedhro_logout' %}"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Abmelden</a></li>
                     </ul>
                 </li>
@@ -124,10 +125,8 @@
             {% endblock %}
 
             {% block site_content_block %}
-                <article>
                     {% block site_content %}
                     {% endblock %}
-                </article>
             {% endblock %}
 
         {% endblock %}
