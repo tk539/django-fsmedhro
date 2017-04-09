@@ -13,17 +13,19 @@
 {% endblock %}
 
 {% block app_menu %}
-        {% show_menu 0 1 100 100 %}
+        {% show_menu 0 2 100 100 %}
 {% endblock %}
 
-{% block language_chooser %}
-        <li>
-            <a href="#">Sprache ändern</a>
-            <ul>
-                {% language_chooser %}
-            </ul>
-        </li>
-{% endblock %}
+{% comment %}
+    {% block language_chooser %}
+            <li>
+                <a href="#">Sprache ändern</a>
+                <ul>
+                    {% language_chooser %}
+                </ul>
+            </li>
+    {% endblock %}
+{% endcomment %}
 
 {% block content_wraper %}
         <h1>{% page_attribute "page_title" %}</h1>
