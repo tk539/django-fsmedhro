@@ -10,6 +10,9 @@ class LdapUniHro(object):
 
     def authenticate(self, username, password):
 
+        # nur lowercase um Duplikationen zu verhindern
+        username = username.lower()
+
         user_dn = "uid=%s,%s" % (username, self.BASE_DN)
         conection = ldap.initialize(self.HOST)
 
