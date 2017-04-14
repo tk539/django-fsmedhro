@@ -1,5 +1,7 @@
-(A) Change resolution of the Logo +Design
 (A) Add Taiga.io +Apps
 (A) add Django Quiz App +Apps
-(B)Add https://github.com/aldryn/aldryn-newsblog +CMS
-(B)Add https://github.com/aldryn/aldryn-events +CMS
+(A) add FileManager like a Cloud (exchange for Pharos) +App
+(B) Add https://github.com/aldryn/aldryn-newsblog +CMS
+(B) Add https://github.com/aldryn/aldryn-events +CMS
+(B) Add Column Plugin to +CMS
+Change resolution of the Logo +Design
