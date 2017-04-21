@@ -1,4 +1,4 @@
-{% load cms_tags menu_tags sekizai_tags static %}
+{% load cms_tags menu_tags sekizai_tags static thumbnail %}
 
 <!DOCTYPE html>
 <html lang="{% block language %}de{% endblock %}">
@@ -17,6 +17,7 @@
             <link rel="icon" href="{% block logo_bar %}{% static 'images/Signet_blau.png' %}{% endblock %}" type="image/png" >
 
             <link rel="stylesheet" href="{% static 'design/CSS.css' %}" type="text/css" media="screen">
+            <link rel="stylesheet" href="{% static 'design/print.css' %}" type="text/css" media="print">
 			<link rel="stylesheet" href="{% static 'design/animate.css' %}"> <!--File für alle Animationen-->
 			<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
 			<link rel="stylesheet" href="{% static 'design/hamburger.css' %}">
