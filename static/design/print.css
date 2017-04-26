@@ -4,6 +4,10 @@
         font-size: 12px;
         background-color: transparent;
         color: #000;
+
+        @bottom-center {
+            content: "Dieser Inhalt ist geschützt";
+        }
 	}
 	#cms-top, #logo, #explain, nav, .fortschritt, .fa, footer{
 		display: none;
@@ -17,28 +21,34 @@
     }
     main{
         width: 100%;
+        font-size: 12px;
+
     }
     /*----------eXOral--------------*/
     .frage{
-        width: 80%;
+        width: 42%;
         background-color: transparent;
-        border: 1px solid #000;
-        border-radius: 0cm 5cm 5cm;
+        border: none;
         color: black;
+        float: left;
     }
     .frage .date{
-
+        float: none;
     }
     .frage .score{
-
+        display: none;
     }
     .frage .text{
         color: black;
+        display: flex;
     }
     .frage .answer{
-        color: black;
+        display: none;
     }
     .frage .up, button.big, .comment, section{
         display: none;
+    }
+    .noprint{
+    display: none;
     }
 }
