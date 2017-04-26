@@ -58,7 +58,7 @@ header #explain{
 }
 
 /* --------------Menue-------------- */
-@media only screen and (min-width: 767px){
+@media only screen and (min-width: 1024px){
   nav{
     position: fixed;
     height: 50px; width: 100%;
@@ -145,7 +145,7 @@ header #explain{
 .hamburger, .hamburger-box{
   display: none;
 }
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 1024px){
   .hamburger{
     display: block;
     position: fixed;
