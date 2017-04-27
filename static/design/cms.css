@@ -91,6 +91,13 @@ p{
 }
 .forms .button-wrapper{
     justify-content: center;
+}
 
 
+/*------Table---------*/
+tbody tr:hover{
+  background-color: #DADADA;
+}
+tbody tr{
+  border: 1px dotted #1f2942;
 }
