@@ -4,9 +4,9 @@ Django Webseite für die Fachschaft Medizin Rostock
 
 __Demo at our [Website](https://fachschaft.med.uni-rostock.de)__
 
-##Features
-*LDAP Authetification (uni-rostock.de)
-*CMS with multiple Plugins
+## Features
+* LDAP Authetification (uni-rostock.de)
+* CMS with multiple Plugins
 
 
 # Apps
