@@ -94,3 +94,60 @@ p{
 
 
 }
+
+
+/*------------Blog-----------------------*/
+.app.app-blog{
+    border: none;
+    margin: 0;
+    padding: 0;
+    color: #1f2942;
+}
+.blog-list{
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.post-item{
+    margin: 5px 0 15px;
+    padding: 15px;
+    border: 1px dotted #1f2942;
+    border-radius: 0 0 5px 25px;
+}
+.post-item header h3{
+    text-align: center;
+    font-size: 35px;
+}
+.post-item header h3 a{
+    color: inherit;
+    text-decoration: underline;
+}
+.post-detail header li, .post-item header .post-detail li{
+    list-style: none;
+    text-align: right;
+}
+.tags{
+    float: right;
+    display: inline-flex;
+}
+.blog-visual{
+    margin: -150px 0 0;
+}
+.blog-lead{
+    margin: 0;
+    padding: 0;
+}
+.read-more{
+    width: auto;
+    margin: 0 0 15px 0;
+    padding: 5px;
+}
+.read-more a{
+    float: right;
+    text-align: right;
+    border: 3px dotted #1f2942;
+    border-radius: 15px;
+    padding: 3px;
+}
+
+

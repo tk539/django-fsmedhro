@@ -66,6 +66,13 @@ INSTALLED_APPS = [
     'djangocms_forms',
     'aldryn_apphooks_config',
     'cmsplugin_filer_image',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_link',
+    'cmsplugin_filer_video',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_utils',
+    'cmsplugin_filer_tests_shared',
     'parler',
     'taggit',
     'taggit_autosuggest',
@@ -206,6 +213,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 HUMBNAIL_HIGH_RESOLUTION = True
 META_USE_SITES = True
+META_SITE_PROTOCOL ='https'
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',

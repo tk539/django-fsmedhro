@@ -46,10 +46,11 @@
         {% cms_toolbar %}
 
         {% block header %}
+            <div class="site-header">
             <header>
                 <div class="kopf">
                     <a href="">
-                        <img id="logo" src="{% block logo_url %}{% static 'images/Signet_FS.svg' %}{% endblock %}"
+                        <img id="logo" src="{% block logo_url %}{% static 'images/Signet.svg' %}{% endblock %}"
                              alt="Logo">
                     </a>
                     <div id="name">
@@ -65,6 +66,7 @@
                     </div>
                 </div>
             </header>
+            </div>
         {% endblock %}
 
         {% block nav %}
