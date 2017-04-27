@@ -42,6 +42,7 @@ header #explain{
 	}
     header{
         height: 50px;
+        width: 100%;
     }
     header #logo {
         height: 50px;
@@ -58,7 +59,7 @@ header #explain{
 }
 
 /* --------------Menue-------------- */
-@media only screen and (min-width: 767px){
+@media only screen and (min-width: 1024px){
   nav{
     position: fixed;
     height: 50px; width: 100%;
@@ -93,7 +94,7 @@ header #explain{
   nav ul li > ul{
     position: absolute;
     background-color: #1f2942;
-      color: ;
+      color: #f1f1f1 ;
     top: 11px;
     margin: 35px 0 0;
     padding: 15px 0 5px;
@@ -145,7 +146,13 @@ header #explain{
 .hamburger, .hamburger-box{
   display: none;
 }
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 1024px) and  (min-width: 600px){
+nav{
+    top: 105px;
+    z-index: 12;
+}
+}
+@media only screen and (max-width: 1024px){
   .hamburger{
     display: block;
     position: fixed;
