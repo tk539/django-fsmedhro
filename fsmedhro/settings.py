@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'taggit_autosuggest',
     'meta',
     'djangocms_blog',
+
 ]
 #TODO: Blogs dosn't work --> please have a look
 
