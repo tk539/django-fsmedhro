@@ -101,3 +101,6 @@ tbody tr:hover{
 tbody tr{
   border: 1px dotted #1f2942;
 }
+tbody tr td:hover{
+  background-color: #BBB;
+}
