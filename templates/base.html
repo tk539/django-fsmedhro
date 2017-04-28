@@ -21,6 +21,7 @@
 			<link rel="stylesheet" href="{% static 'design/animate.css' %}"> <!--File für alle Animationen-->
 			<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
 			<link rel="stylesheet" href="{% static 'design/hamburger.css' %}">
+            <link rel="stylesheet" href="{% static 'design/bootstrap3/css/bootstrap.min.css' %}">
 
             {% render_block "css"%}
             {{ ALDRYN_SNAKE.render_head }}
@@ -49,7 +50,7 @@
             <header>
                 <div class="kopf">
                     <a href="">
-                        <img id="logo" src="{% block logo_url %}{% static 'images/Signet_FS.svg' %}{% endblock %}"
+                        <img id="logo" src="{% block logo_url %}{% static 'images/Signet.svg' %}{% endblock %}"
                              alt="Logo">
                     </a>
                     <div id="name">
@@ -141,7 +142,6 @@
 
         {% render_block "js" %}
         {{ ALDRYN_SNAKE.render_tail }}
-
     </body>
 
 </html>

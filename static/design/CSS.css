@@ -17,9 +17,9 @@ header{
     font-size: 20px;
     color: antiquewhite;
     width: 100vw;
-    height: 100px;
+    height: 120px;
     position: fixed;
-    margin: -200px 0 -80px;
+    margin: -200px 0 -90px;
     padding: 15px 20px 5px 15px;
 	z-index: 10;
 }
@@ -64,7 +64,7 @@ header #explain{
     position: fixed;
     height: 50px; width: 100%;
     background-color: #1f2942;
-    top: 105px; right: 0;
+    top: 120px; right: 0;
     transition: all 0.45s ease;
     padding: 0; margin: 0;
       z-index: 8;
@@ -95,7 +95,7 @@ header #explain{
     position: absolute;
     background-color: #1f2942;
       color: #f1f1f1 ;
-    top: 11px;
+    top: 0;
     margin: 35px 0 0;
     padding: 15px 0 5px;
     border-radius: 0 0 15px 15px;
