@@ -9,7 +9,7 @@
 	 xml:space="preserve">
 <defs>
 </defs>
-<rect x="56.586" y="49.195" width="800" height="800"/>
+<rect x="56.586" y="49.195" fill="#1F2942" width="800" height="800"/>
 <polyline fill="none" stroke="#FFFFFF" stroke-width="60" stroke-miterlimit="10" points="57.011,49.481 480.5,502.48 
 	635.484,668.265 "/>
 <line fill="none" stroke="#FFFFFF" stroke-width="60" stroke-miterlimit="10" x1="22.082" y1="706.551" x2="653.167" y2="20.307"/>
