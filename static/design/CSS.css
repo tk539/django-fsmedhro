@@ -12,7 +12,7 @@ body{
 }
 
 /* --------------Header-------------- */
-header{
+.site-header header{
     background-color: #1f2942;
     font-size: 20px;
     color: antiquewhite;
@@ -23,37 +23,36 @@ header{
     padding: 15px 20px 5px 15px;
 	z-index: 10;
 }
-header #logo{
+.site-header header #logo{
 	float: left;
 	height: 100px;
 }
-header #name{
+.site-header header #name{
     font-size: 45px;
 }
-header #explain{
+.site-header header #explain{
     font-size: 25px;
 }
 @media only screen and (max-width: 600px){
-	header #explain{
+	.site-header header #explain{
 		display: none;
 	}
-	header #name{
+	.site-header header #name{
 		font-size: 18px;
 	}
-    header{
-        height: 70px;
-        width: 100%;
+    .site-header header{
+        height: 50px;
     }
-    header #logo {
+    .site-header header #logo {
         height: 50px;
     }
 }
 @media only screen and (max-width: 800px) and (min-width: 600px){
-	header #explain{
+	.site-header header #explain{
 		font-size: 22px;
 		font-style: italic;
 	}
-	header #name{
+	.site-header header #name{
 		font-size: 35px;
 	}
 }
