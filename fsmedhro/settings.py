@@ -65,12 +65,14 @@ INSTALLED_APPS = [
     'djangocms_column',
     'djangocms_forms',
     'aldryn_apphooks_config',
+    'aldryn_bootstrap3',
     'cmsplugin_filer_image',
     'parler',
     'taggit',
     'taggit_autosuggest',
     'meta',
     'djangocms_blog',
+
 ]
 #TODO: Blogs dosn't work --> please have a look
 
@@ -142,7 +144,11 @@ STATICFILES_DIRS = [
 
 WSGI_APPLICATION = 'fsmedhro.wsgi.application'
 
-
+ALDRYN_BOOTSTRAP3_ICONSETS = [
+    ('glyphicons', 'glyphicons', 'Glyphicons'),
+    ('fontawesome', 'fa', 'Font Awesome'),
+    ('icons', 'icon', 'Custom Icons'),
+]
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
