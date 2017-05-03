@@ -427,7 +427,7 @@ section{
 
 button{
 	background-color: brown;
-	color: antiquewhite;
+	color: antiquewhite !important;
 	padding: 10px;
 	margin: 5px;
     text-decoration: none;
