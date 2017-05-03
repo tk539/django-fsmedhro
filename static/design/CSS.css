@@ -41,7 +41,7 @@ header #explain{
 		font-size: 18px;
 	}
     header{
-        height: 50px;
+        height: 70px;
         width: 100%;
     }
     header #logo {
@@ -427,7 +427,7 @@ section{
 
 button{
 	background-color: brown;
-	color: antiquewhite !important;
+	color: antiquewhite;
 	padding: 10px;
 	margin: 5px;
     text-decoration: none;
