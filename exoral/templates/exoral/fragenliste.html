@@ -4,7 +4,8 @@
 
 {% block beschreibung %}
     Wir haben für das Testat: <b>{{ testat }}</b> bei <b>{{ pruefer }}</b> <b>{{ fragen.count }}</b> Fragen gefunden
-{% endblock%}
+    Du kannst die Liste auch <a href="javascript:window.print()"><button>Drucken</button></a>
+{% endblock%} //PDF function
 
 {% block content %}
 
@@ -33,8 +34,8 @@
         <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
         <button class="big">Neue Frage eintragen</button></a>
     {% endif %}
-    <h2><i class="fa fa-comments" aria-hidden="true"></i> Kommentare</h2>
-        <section>
+    <h2 class="noprint"><i class="fa fa-comments" aria-hidden="true"></i> Kommentare</h2>
+        <section class="noprint">
             Wir haben <b>für {{ pruefer }} {{ kommentare.count }} Kommentare</b> gefunden. Diese Kommentare sind aus allen
         Prüfungen bei {{ pruefer }} zusammengetragen.
             {% if modus == 'p' %}
@@ -46,7 +47,7 @@
             {% endif %}
         </section>
         {% for kommentar in kommentare %}
-            <div class="comment animated zoomInUp">{{ kommentar.text }}</div>
+            <div class="comment noprint animated zoomInUp">{{ kommentar.text }}</div>
         {% endfor %}
 
 {% endblock %}

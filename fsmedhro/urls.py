@@ -32,4 +32,5 @@ urlpatterns = [
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     url(r'^cms-forms/', include('djangocms_forms.urls')),
     url(r'^', include('cms.urls'), ),
+    url(r'^data/', include('filer.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
