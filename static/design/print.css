@@ -26,9 +26,9 @@
     }
     /*----------eXOral--------------*/
     .frage{
-        width: 42%;
-        background-color: transparent;
-        border: none;
+        width: 16cm;
+        background-color: transparent !important;
+        border: none !important;
         color: black;
         float: left;
     }
