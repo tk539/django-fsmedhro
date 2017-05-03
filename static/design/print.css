@@ -9,7 +9,7 @@
             content: "Dieser Inhalt ist geschützt";
         }
 	}
-	#cms-top, #logo, #explain, nav, .fortschritt, .fa, footer{
+	#cms-top, #explain, nav, .fortschritt, .fa, footer{
 		display: none;
 	}
     h1{
@@ -24,11 +24,16 @@
         font-size: 12px;
 
     }
+
+    .noprint{
+    display: none;
+    }
+
     /*----------eXOral--------------*/
     .frage{
-        width: 42%;
-        background-color: transparent;
-        border: none;
+        width: 16cm;
+        background-color: transparent !important;
+        border: none !important;
         color: black;
         float: left;
     }
@@ -47,8 +52,5 @@
     }
     .frage .up, button.big, .comment, section{
         display: none;
-    }
-    .noprint{
-    display: none;
     }
 }
