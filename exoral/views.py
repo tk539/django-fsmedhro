@@ -40,19 +40,27 @@ def testatwahl(request, modus):
 def prueferwahl(request, modus, testat_id):
     testat = get_object_or_404(Testat, pk=testat_id)
 
-    fach = testat.fach
+    faecher = testat.fach.all()
 
-    if fach == None:
-        messages.add_message(request, messages.INFO, 'Für dieses testat ist kein Fach eingetragen')
+    if faecher.count() == 0:
+        messages.add_message(request, messages.INFO, 'Für dieses testat ist kein Fach eingetragen. ')
 
-    pruefer = Pruefer.objects.filter(fach=fach,
-                                     active=True,).order_by('nachname', 'vorname')
+    pruefer = Pruefer.objects.filter(fach__in=faecher,
+                                     active=True,).order_by('fach__bezeichnung', 'nachname', 'vorname')
     if not pruefer.exists():
-        messages.add_message(request, messages.INFO, 'Für dieses Testat sind keine Prüfer abrufbar')
+        messages.add_message(request, messages.INFO, 'Für dieses Testat sind keine Prüfer abrufbar. ')
 
-    pruefer_list = []
+    pruefer_list = {}
+    fach_temp = None
     for pruef in pruefer:
-        pruefer_list.append({'pruefer': pruef, 'count': Frage.objects.filter(testat=testat, pruefer=pruef).count()})
+
+        if pruef.fach != fach_temp:
+            pruefer_list[pruef.fach.bezeichnung] = []
+
+        pruefer_list[pruef.fach.bezeichnung].append(
+            {'pruefer': pruef, 'count': Frage.objects.filter(testat=testat, pruefer=pruef).count()})
+
+        fach_temp = pruef.fach
 
     context = {'modus': modus, 'testat': testat, 'pruefer_list': pruefer_list}
 

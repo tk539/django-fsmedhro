@@ -32,7 +32,8 @@ class Testat(models.Model):
     studienabschnitt = models.ManyToManyField(Studienabschnitt)
     studiengang = models.ManyToManyField(Studiengang)
     # pruefer = models.ManyToManyField(Pruefer)
-    fach = models.ForeignKey(Fach, on_delete=models.CASCADE, null=True, blank=True)
+    #fach = models.ForeignKey(Fach, on_delete=models.CASCADE, null=True, blank=True)
+    fach = models.ManyToManyField(Fach)
 
     def __str__(self):
         return self.bezeichnung
