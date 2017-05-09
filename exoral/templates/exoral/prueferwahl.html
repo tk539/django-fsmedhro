@@ -7,7 +7,9 @@ Für die Prüfung {{ testat }} stehen folgende Prüfer zur Auswahl:<br>
 {% endblock %}
 
 {% block content %}
-    {% for pruefer in pruefer_list %}
-        <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"><button class="name animated zoomIn">{{ pruefer.get_full_name_nachname }}</button></a>
+    {% for row in pruefer_list %}
+        <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=row.pruefer.pk %}">
+            <button class="name animated zoomIn">{{ row.pruefer.get_full_name_nachname }} ({{ row.count }})</button>
+        </a>
     {% endfor %}
 {% endblock %}

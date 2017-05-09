@@ -67,12 +67,24 @@ class FachschaftUser(models.Model):
         verbose_name_plural = "StudentInnen"
 
 
+class Fach(models.Model):
+    bezeichnung = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.bezeichnung
+
+    class Meta:
+        verbose_name = "Fach"
+        verbose_name_plural = "Fächer"
+
+
 class Dozent(models.Model):
-    titel = models.CharField(max_length=30, null=True)
-    vorname = models.CharField(max_length=30, null=True)
+    titel = models.CharField(max_length=30, null=True, blank=True)
+    vorname = models.CharField(max_length=30, null=True, blank=True)
     nachname = models.CharField(max_length=30)
-    studienabschnitt = models.ManyToManyField(Studienabschnitt)
-    studiengang = models.ManyToManyField(Studiengang)
+    # studienabschnitt = models.ManyToManyField(Studienabschnitt)
+    # studiengang = models.ManyToManyField(Studiengang)
+    fach = models.ForeignKey(Fach, on_delete=models.CASCADE, null=True, blank=True)
 
     # aktiv = models.BooleanField
     # Typ? (Professor...)

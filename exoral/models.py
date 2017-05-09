@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from fsmedhrocore.models import Dozent, BasicHistory, Studienabschnitt, Studiengang
+from fsmedhrocore.models import Dozent, BasicHistory, Studienabschnitt, Studiengang, Fach
 from django.utils import timezone
 
 
@@ -31,7 +31,8 @@ class Testat(models.Model):
     active = models.BooleanField(default=True)
     studienabschnitt = models.ManyToManyField(Studienabschnitt)
     studiengang = models.ManyToManyField(Studiengang)
-    pruefer = models.ManyToManyField(Pruefer)
+    # pruefer = models.ManyToManyField(Pruefer)
+    fach = models.ForeignKey(Fach, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.bezeichnung

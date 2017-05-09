@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Testat, Pruefer, Frage, Kommentar
+from fsmedhrocore.models import Fach
 from fsmedhrocore.views import user_edit
 from django.contrib import messages
 from .forms import FrageForm, KommentarForm
@@ -39,20 +40,21 @@ def testatwahl(request, modus):
 def prueferwahl(request, modus, testat_id):
     testat = get_object_or_404(Testat, pk=testat_id)
 
-    try:
-        studiengang = request.user.fachschaftuser.studiengang
-        studienabschnitt = request.user.fachschaftuser.studienabschnitt
-    except ObjectDoesNotExist:
-        return redirect(user_edit)  # neuen Fachschaft-User anlegen (für Studiengang etc.)
+    fach = testat.fach
 
-    pruefer = Pruefer.objects.filter(testat=testat,
-                                     active=True,
-                                     studienabschnitt=studienabschnitt,
-                                     studiengang=studiengang).order_by('nachname', 'vorname')
+    if fach == None:
+        messages.add_message(request, messages.INFO, 'Für dieses testat ist kein Fach eingetragen')
+
+    pruefer = Pruefer.objects.filter(fach=fach,
+                                     active=True,).order_by('nachname', 'vorname')
     if not pruefer.exists():
         messages.add_message(request, messages.INFO, 'Für dieses Testat sind keine Prüfer abrufbar')
 
-    context = {'modus': modus, 'testat': testat, 'pruefer_list': pruefer}
+    pruefer_list = []
+    for pruef in pruefer:
+        pruefer_list.append({'pruefer': pruef, 'count': Frage.objects.filter(testat=testat, pruefer=pruef).count()})
+
+    context = {'modus': modus, 'testat': testat, 'pruefer_list': pruefer_list}
 
     return render(request, 'exoral/prueferwahl.html', context)
 
@@ -129,7 +131,6 @@ def frage_score(request, frage_id):
     messages.add_message(request, messages.SUCCESS,
                          'Du hast erfolgreich den Score der Frage erhöht. Danke, '
                          'dass du dafür keine neue Frage hinzugefügt hast.')
-
 
     return HttpResponseRedirect(reverse('exoral:fragenliste', args=('p', testat.pk, pruefer.pk)))
 

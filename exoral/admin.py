@@ -4,7 +4,7 @@ from .models import *
 
 class TestatAdmin(admin.ModelAdmin):
     model = Testat
-    filter_horizontal = ('pruefer', 'studiengang', 'studienabschnitt', )
+    filter_horizontal = ('studiengang', 'studienabschnitt', )
 
 
 # Register your models here.
