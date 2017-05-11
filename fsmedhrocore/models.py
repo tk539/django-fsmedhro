@@ -54,7 +54,7 @@ class FachschaftUser(models.Model):
     gender = models.ForeignKey(Gender, on_delete=models.PROTECT)  # Geschlecht
     studienabschnitt = models.ForeignKey(Studienabschnitt, on_delete=models.PROTECT)
     studiengang = models.ForeignKey(Studiengang, on_delete=models.PROTECT)
-    nickname = models.CharField(max_length=30)  # anonymer Spitzname
+    nickname = models.CharField(max_length=30, unique=True)  # anonymer Spitzname
 
     def __str__(self):
         """

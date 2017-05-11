@@ -11,4 +11,45 @@ Bitte wähle deinen Modus. Wenn du nur lernen und dir die Fragen anschauen möch
     {% block fortschritt %}{% endblock %}
     <a href="{% url 'exoral:testatwahl' 'l'%}"><button class="big_m animated fadeInLeft">Lernen</button></a>
     <a href="{% url 'exoral:testatwahl' 'p'%}"><button class="big_m animated fadeInRight">Protokollieren</button></a>
+
+    <br><br>
+    <section>
+      <h2>Informationen</h2>
+      <h3>Zur Anwendung</h3>
+      <ol>
+        <li>Logge dich mit deinem Nutzerkennzeichen der Uni und dem dazugehörigen Passwort ein</li>
+        <li>Wähle, ob du Lernen möchtest oder ob du Protokollieren möchtest
+        Im Lernmodus kannst du keine neune Fragen hinzufügen oder den Score erhöhen.
+         Somit ist sichergestellt, dass du nicht aus Versehen die Wichtung der Fragen veränderst.</li>
+        <li>Wähle dein Testat und deinen Prüfer
+          <ol>
+          <li>Solltest du nicht das gewünschte Testat aus deinem Semester sehen,
+            so kann das daran liegen, dass dein Semester nicht richtig ausgewählt ist.
+            Wir zeigen dir schließlich nur die Testate an, die in deinem Semester geprüft werden.</li>
+          </ol>
+        </li>
+        <li>Nun werden dir alle Fragen des Prüfers in dem jeweiligen Testat angezeigt.</li>
+      </ol>
+      <h3>Nach dem Testat</h3>
+      Bitte trage nach dem Testat deine Frage in unser System ein.
+        <u>Dazu gibt es zwei Möglichkeiten:<u>
+          <ol>
+           	<li><strong>Deine Frage war eine Altfrage?</strong>
+              <ol>
+               	<li>Dann schau bitte im <strong>Protokollmodus,</strong>
+                  wo du deine Frage in der Liste der Fragen findest und benutze den
+                  <strong>Score-up Knopf,</strong> um den Score der Frage zu erhöhen.
+              So ist sichergestellt, dass die Fragen, die häufig gestellt werden,
+              in der Liste der Fragen auch weiter oben auftauchen.</li>
+              </ol>
+          </li>
+          <li><strong>Du hattest eine neue Frage</strong> (keine Altfrage) ?
+            <ol>
+             	<li>In diesem Fall kannst du im Protokollmodus am Ende der Fragenliste eine neue Frage eintragen.</li>
+            </ol>
+          </li>
+        </ol>
+Wenn du einen <strong>Kommentar zu deinem Prüfer</strong> eingeben möchtest,
+kannst du das auch am Ende der Fragenliste bei den Kommentaren im Protokollmodus tun.
+    </section
 {% endblock %}

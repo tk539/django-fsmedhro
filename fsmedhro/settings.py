@@ -65,12 +65,21 @@ INSTALLED_APPS = [
     'djangocms_column',
     'djangocms_forms',
     'aldryn_apphooks_config',
+    'aldryn_bootstrap3',
     'cmsplugin_filer_image',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_link',
+    'cmsplugin_filer_video',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_utils',
+    'cmsplugin_filer_tests_shared',
     'parler',
     'taggit',
     'taggit_autosuggest',
     'meta',
     'djangocms_blog',
+
 ]
 #TODO: Blogs dosn't work --> please have a look
 
@@ -142,7 +151,11 @@ STATICFILES_DIRS = [
 
 WSGI_APPLICATION = 'fsmedhro.wsgi.application'
 
-
+ALDRYN_BOOTSTRAP3_ICONSETS = [
+    ('glyphicons', 'glyphicons', 'Glyphicons'),
+    ('fontawesome', 'fa', 'Font Awesome'),
+    ('icons', 'icon', 'Custom Icons'),
+]
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -206,10 +219,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 HUMBNAIL_HIGH_RESOLUTION = True
 META_USE_SITES = True
+META_SITE_PROTOCOL ='https'
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters'
+    'easy_thumbnails.processors.filters',
 )
