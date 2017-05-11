@@ -1,0 +1,56 @@
+@media print {
+	@page{
+		size: A4 portrait;
+        font-size: 12px;
+        background-color: transparent;
+        color: #000;
+
+        @bottom-center {
+            content: "Dieser Inhalt ist geschützt";
+        }
+	}
+	#cms-top, #explain, nav, .fortschritt, .fa, footer{
+		display: none;
+	}
+    h1{
+        text-align: center;
+        font-size: 22px;
+    }
+    h2{
+        font-size: 18px;
+    }
+    main{
+        width: 100%;
+        font-size: 12px;
+
+    }
+
+    .noprint{
+    display: none;
+    }
+
+    /*----------eXOral--------------*/
+    .frage{
+        width: 16cm;
+        background-color: transparent !important;
+        border: none !important;
+        color: black;
+        float: left;
+    }
+    .frage .date{
+        float: none;
+    }
+    .frage .score{
+        display: none;
+    }
+    .frage .text{
+        color: black;
+        display: flex;
+    }
+    .frage .answer{
+        display: none;
+    }
+    .frage .up, button.big, .comment, section{
+        display: none;
+    }
+}
