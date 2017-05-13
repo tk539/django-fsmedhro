@@ -41,6 +41,7 @@ class Testat(models.Model):
     class Meta:
         verbose_name = "mündl. Testat"
         verbose_name_plural = "mündl. Testate"
+        ordering = ("bezeichnung",)
 
 
 class Textbeitrag(BasicHistory):

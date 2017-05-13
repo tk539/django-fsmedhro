@@ -76,6 +76,7 @@ class Fach(models.Model):
     class Meta:
         verbose_name = "Fach"
         verbose_name_plural = "Fächer"
+        ordering = ("bezeichnung",)
 
 
 class Dozent(models.Model):
@@ -121,7 +122,7 @@ class Dozent(models.Model):
     class Meta:
         verbose_name = "Dozent"
         verbose_name_plural = "Dozenten"
-
+        ordering = ("nachname",)
 
 class BasicHistory(models.Model):
     """
