@@ -1,0 +1,28 @@
+{% extends "exoral/base.html" %}
+
+{% block site_heading %}<i class="fa fa-book" aria-hidden="true"></i> Protokolle{% endblock %}
+{% block site_heading_sub %}
+    <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+    <button class="name animated zoomIn"><i class="fa fa-question" aria-hidden="true"></i> Einzelfragen ({{ count_fragen }})</button></a>
+    <a href="{% url 'exoral:kommentarliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+        <button class="name animated zoomIn"><i class="fa fa-comments" aria-hidden="true"></i> Prüfer-Kommentare ({{ count_kommentare }})</button></a>
+{% endblock %}
+
+{% block beschreibung %}
+    Wir haben für das Testat: <b>{{ testat }}</b> bei <b>{{ pruefer }}</b> <b>{{ count_protokolle }}</b> Protokolle gefunden
+    <a href="javascript:window.print()"><button class="small"><i class="fa fa-print" aria-hidden="true"></i></button></a>
+    {% if modus == 'p' %}
+        <br><a href="{% url 'exoral:protokoll_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+        <button class="small"><span class="fa fa-plus" aria-hidden="true"></span> Neues Protokoll eintragen</button></a>
+    {% endif %}
+{% endblock%} //PDF function
+
+{% block content %}
+
+        {% for protokoll in protokolle %}
+            <div class="protokoll animated bounceInLeft">
+                <div class="date">{{ protokoll.datum }}</div>
+                <div class="text"><p>{{ protokoll.text|linebreaks }}</p></div>
+            </div>
+        {% endfor %}
+{% endblock %}

@@ -86,7 +86,6 @@ class Frage(Textbeitrag):
         verbose_name_plural = "Fragen"
 
 
-# TODO: Protokolle neben Einzelfragen in Views implementieren etc.
 class Protokoll(Textbeitrag):
     datum = models.DateField(default=timezone.datetime.today, verbose_name="Prüfungs-Datum")
     pruefer = models.ForeignKey(Pruefer, verbose_name="PrüferIn")

@@ -11,5 +11,6 @@ class TestatAdmin(admin.ModelAdmin):
 admin.site.register(Testat, TestatAdmin)
 admin.site.register(Pruefer)
 admin.site.register(Frage)
+admin.site.register(Protokoll)
 admin.site.register(Kommentar)
 admin.site.register(Meldung)
