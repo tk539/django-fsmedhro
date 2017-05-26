@@ -51,6 +51,9 @@ class Textbeitrag(BasicHistory):
     def __str__(self):
         return self.text
 
+    class Meta:
+        ordering = ("-created_date",)
+
 
 class Meldung(Textbeitrag):
     beitrag = models.ForeignKey(Textbeitrag, related_name="meldungen")
