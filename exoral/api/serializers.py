@@ -4,7 +4,7 @@ from rest_framework.serializers import (
     SerializerMethodField,
     StringRelatedField,
 )
-from exoral.models import Pruefer, Frage, Testat, Kommentar
+from exoral.models import Pruefer, Frage, Testat, Kommentar, Protokoll
 
 
 """
@@ -114,7 +114,7 @@ class KommentarUpdateSerializer(ModelSerializer):
 
 class KommentarListSerializer(ModelSerializer):
     url = HyperlinkedIdentityField(
-        view_name='exoral-api:frage_detail',
+        view_name='exoral-api:kommentar_detail',
     )
     class Meta:
         model = Kommentar
@@ -148,6 +148,84 @@ class KommentarDetailSerializer(ModelSerializer):
             'modified_date',
             'version',
         ]
+
+    def get_pruefer(self, obj):
+        return obj.pruefer.get_full_name()
+
+    def get_created_by(self, obj):
+        return obj.created_by.username
+
+    def get_modified_by(self, obj):
+        return obj.modified_by.username
+
+
+"""
+Protokoll-Serializers
+"""
+
+
+class ProtokollUpdateSerializer(ModelSerializer):
+
+    class Meta:
+        model = Protokoll
+        fields = [
+            #'id',
+            'datum',
+            'text',
+            'pruefer',
+            'testat',
+            #'created_by',
+            #'created_date',
+            #'modified_by',
+            #'modified_date',
+            #'version',
+        ]
+
+
+class ProtokollListSerializer(ModelSerializer):
+    url = HyperlinkedIdentityField(
+        view_name='exoral-api:protokoll_detail',
+    )
+    class Meta:
+        model = Protokoll
+        fields = [
+            'url',
+            'id',
+            'datum',
+            'text',
+            'pruefer',
+            'testat',
+            #'created_by',
+            'created_date',
+            #'modified_by',
+            'modified_date',
+            #'version',
+        ]
+
+
+class ProtokollDetailSerializer(ModelSerializer):
+    pruefer = SerializerMethodField()
+    testat = SerializerMethodField()
+    created_by = SerializerMethodField()
+    modified_by = SerializerMethodField()
+
+    class Meta:
+        model = Protokoll
+        fields = [
+            'id',
+            'datum',
+            'text',
+            'pruefer',
+            'testat',
+            'created_by',
+            'created_date',
+            'modified_by',
+            'modified_date',
+            'version',
+        ]
+
+    def get_testat(self, obj):
+        return obj.testat.bezeichnung
 
     def get_pruefer(self, obj):
         return obj.pruefer.get_full_name()

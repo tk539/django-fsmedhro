@@ -9,6 +9,10 @@ from .views import (
     KommentarDetailAPIViev,
     KommentarDeleteAPIViev,
     KommentarUpdateAPIViev,
+    ProtokollListAPIViev,
+    ProtokollDetailAPIViev,
+    ProtokollDeleteAPIViev,
+    ProtokollUpdateAPIViev,
     PrueferListAPIView,
     TestatListAPIViev,
 )
@@ -22,6 +26,10 @@ urlpatterns = [
     url(r'^kommentar/(?P<pk>\d+)/$', KommentarDetailAPIViev.as_view(), name='kommentar_detail'),
     url(r'^kommentar/(?P<pk>\d+)/edit/$', KommentarUpdateAPIViev.as_view(), name='kommentar_edit'),
     url(r'^kommentar/(?P<pk>\d+)/delete/$', KommentarDeleteAPIViev.as_view(), name='kommentar_delete'),
+    url(r'^protokoll/$', ProtokollListAPIViev.as_view(), name='protokoll_list'),
+    url(r'^protokoll/(?P<pk>\d+)/$', ProtokollDetailAPIViev.as_view(), name='protokoll_detail'),
+    url(r'^protokoll/(?P<pk>\d+)/edit/$', ProtokollUpdateAPIViev.as_view(), name='protokoll_edit'),
+    url(r'^protokoll/(?P<pk>\d+)/delete/$', ProtokollDeleteAPIViev.as_view(), name='protokoll_delete'),
     url(r'^pruefer/$', PrueferListAPIView.as_view(), name='pruefer_list'),
     url(r'^testat/$', TestatListAPIViev.as_view(), name='testat_list'),
 ]

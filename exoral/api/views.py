@@ -15,17 +15,22 @@ from exoral.models import (
     Frage,
     Testat,
     Kommentar,
+    Protokoll,
 )
 
 from .serializers import (
-    PrueferListSerializer,
     FrageListSerializer,
     FrageDetailSerializer,
     FrageUpdateSerializer,
-    TestatListSerializer,
     KommentarListSerializer,
     KommentarDetailSerializer,
     KommentarUpdateSerializer,
+    ProtokollListSerializer,
+    ProtokollDetailSerializer,
+    ProtokollUpdateSerializer,
+    PrueferListSerializer,
+    TestatListSerializer,
+
 )
 
 
@@ -83,6 +88,45 @@ class FrageDeleteAPIViev(DestroyAPIView):
 class FrageUpdateAPIViev(RetrieveUpdateAPIView):
     queryset = Frage.objects.all()
     serializer_class = FrageUpdateSerializer
+
+    def perform_update(self, serializer):
+        serializer.save(modified_by=self.request.user)
+
+"""
+Protokoll-API-Views
+"""
+
+
+class ProtokollListAPIViev(ListCreateAPIView):
+    queryset = Protokoll.objects.all()
+    serializer_class = ProtokollListSerializer
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['text', 'pruefer__nachname', 'testat__bezeichnung', 'modified_by__username']
+
+    def perform_create(self, serializer):
+        serializer.save(modified_by=self.request.user)
+
+    # support for multiple objects creation
+    def get_serializer(self, *args, **kwargs):
+        """ if an array is passed, set serializer to many """
+        if isinstance(kwargs.get('data', {}), list):
+            kwargs['many'] = True
+        return super(ProtokollListAPIViev, self).get_serializer(*args, **kwargs)
+
+
+class ProtokollDetailAPIViev(RetrieveAPIView):
+    queryset = Protokoll.objects.all()
+    serializer_class = ProtokollDetailSerializer
+
+
+class ProtokollDeleteAPIViev(DestroyAPIView):
+    queryset = Protokoll.objects.all()
+    serializer_class = ProtokollDetailSerializer
+
+
+class ProtokollUpdateAPIViev(RetrieveUpdateAPIView):
+    queryset = Protokoll.objects.all()
+    serializer_class = ProtokollUpdateSerializer
 
     def perform_update(self, serializer):
         serializer.save(modified_by=self.request.user)
