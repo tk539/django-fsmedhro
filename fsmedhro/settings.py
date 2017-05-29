@@ -245,9 +245,11 @@ THUMBNAIL_PROCESSORS = (
 
 # WIKI Settings
 
+WIKI_SHOW_MAX_CHILDREN = 3
+
 WIKI_ANONYMOUS = False
 #treats not logged in users not as other users
-WIKI_ACCOUNT_HANDLING = False
+WIKI_ACCOUNT_HANDLING = True
 WIKI_ACCOUNT_SIGNUP_ALLOWED = True
 #lock account settings in the wiki
 
