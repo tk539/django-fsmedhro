@@ -47,13 +47,15 @@ INSTALLED_APPS = [
     'exoral.apps.ExoralConfig',
     'fsmedhrocore.apps.FachschaftConfig',
     'django.contrib.sites',
+    'django.contrib.humanize',
+    'django_nyt',
     'cms',
+    'mptt',
     'menus',
     'treebeard',
     'sekizai',
     'filer',
     'easy_thumbnails',
-    'mptt',
     'djangocms_text_ckeditor',
     'djangocms_link',
     'djangocms_file',
@@ -79,6 +81,13 @@ INSTALLED_APPS = [
     'taggit_autosuggest',
     'meta',
     'djangocms_blog',
+    'sorl.thumbnail',
+    'wiki',
+    'wiki.plugins.attachments',
+    'wiki.plugins.notifications',
+    'wiki.plugins.images',
+    'wiki.plugins.macros',
+
 
 ]
 #TODO: Blogs dosn't work --> please have a look
@@ -130,10 +139,15 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 'sekizai.context_processors.sekizai',
                 'cms.context_processors.cms_settings'
+
             ],
         },
     },
@@ -227,3 +241,17 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
 )
+
+
+# WIKI Settings
+
+WIKI_ANONYMOUS = False
+#treats not logged in users not as other users
+WIKI_ACCOUNT_HANDLING = False
+WIKI_ACCOUNT_SIGNUP_ALLOWED = True
+#lock account settings in the wiki
+
+WIKI_ANONYMOUS_CREATE = False
+WIKI_ANONYMOUS_UPLOAD = False
+WIKI_ANONYMOUS_WRITE = False
+#lock anonymous writing
