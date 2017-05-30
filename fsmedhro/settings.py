@@ -241,7 +241,8 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
 )
-
+# TODO customizing CKEditor as Richttexteditor --> needed for better writing in Pharos-App
+#CKEDItor
 
 # WIKI Settings
 
@@ -255,10 +256,14 @@ WIKI_ACCOUNT_HANDLING = True
 WIKI_ACCOUNT_SIGNUP_ALLOWED = True
 #lock account settings in the wiki
 
+#TODO include CKEditor as texteditor
+# WIKI_EDITOR = u'static/ckeditor/ckeditor'
+
 WIKI_ANONYMOUS_CREATE = False
 WIKI_ANONYMOUS_UPLOAD = False
 WIKI_ANONYMOUS_WRITE = False
 #lock anonymous writing
+
 
 WIKI_MARKDOWN_KWARGS = {
     'extensions': [
