@@ -245,7 +245,9 @@ THUMBNAIL_PROCESSORS = (
 
 # WIKI Settings
 
-WIKI_SHOW_MAX_CHILDREN = 3
+WIKI_SHOW_MAX_CHILDREN = 15
+WIKI_ACCOUNT_SIGNUP_ALLOWED = False
+WIKI_CHECK_SLUG_URL_AVAILABLE = False
 
 WIKI_ANONYMOUS = False
 #treats not logged in users not as other users
@@ -257,3 +259,13 @@ WIKI_ANONYMOUS_CREATE = False
 WIKI_ANONYMOUS_UPLOAD = False
 WIKI_ANONYMOUS_WRITE = False
 #lock anonymous writing
+
+WIKI_MARKDOWN_KWARGS = {
+    'extensions': [
+        'footnotes',
+        'attr_list',
+        'headerid',
+        'extra',
+        'codehilite',
+    ]
+}

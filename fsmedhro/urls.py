@@ -36,5 +36,5 @@ urlpatterns = [
     url(r'^data/', include('filer.urls')),
     url(r'^notifications/', get_nyt_pattern()),
     url(r'^pharos/', get_wiki_pattern()),
-    url(r'^', include('cms.urls'), ),
+    url(r'^', include('cms.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
