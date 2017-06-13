@@ -57,7 +57,12 @@ def prueferwahl(request, modus, testat_id):
             pruefer_list[pruef.fach.bezeichnung] = []
 
         pruefer_list[pruef.fach.bezeichnung].append(
-            {'pruefer': pruef, 'count': Frage.objects.filter(testat=testat, pruefer=pruef).count()})
+            {
+                'pruefer': pruef,
+                'count_fragen': Frage.objects.filter(testat=testat, pruefer=pruef).count(),
+                'count_protokolle': Protokoll.objects.filter(testat=testat, pruefer=pruef).count(),
+                'count_kommentare': Kommentar.objects.filter(pruefer=pruef).count(),
+            })
 
         fach_temp = pruef.fach
 

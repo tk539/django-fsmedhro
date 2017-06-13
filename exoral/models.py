@@ -4,17 +4,6 @@ from fsmedhrocore.models import Dozent, BasicHistory, Studienabschnitt, Studieng
 from django.utils import timezone
 
 
-class ExoralUser(models.Model):
-    """
-    Extends django.contrib.auth.models.User
-    """
-    user = models.OneToOneField(User)
-
-    def __str__(self):
-        # Vorname + Nachname
-        return self.user.get_full_name()
-
-
 class Pruefer(Dozent):
     active = models.BooleanField(default=True)
 
