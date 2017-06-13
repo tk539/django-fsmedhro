@@ -1,18 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from fsmedhrocore.models import Dozent, BasicHistory, Studienabschnitt, Studiengang
+from fsmedhrocore.models import Dozent, BasicHistory, Studienabschnitt, Studiengang, Fach
 from django.utils import timezone
-
-
-class ExoralUser(models.Model):
-    """
-    Extends django.contrib.auth.models.User
-    """
-    user = models.OneToOneField(User)
-
-    def __str__(self):
-        # Vorname + Nachname
-        return self.user.get_full_name()
 
 
 class Pruefer(Dozent):
@@ -31,7 +20,9 @@ class Testat(models.Model):
     active = models.BooleanField(default=True)
     studienabschnitt = models.ManyToManyField(Studienabschnitt)
     studiengang = models.ManyToManyField(Studiengang)
-    pruefer = models.ManyToManyField(Pruefer)
+    # pruefer = models.ManyToManyField(Pruefer)
+    #fach = models.ForeignKey(Fach, on_delete=models.CASCADE, null=True, blank=True)
+    fach = models.ManyToManyField(Fach)
 
     def __str__(self):
         return self.bezeichnung
@@ -39,6 +30,7 @@ class Testat(models.Model):
     class Meta:
         verbose_name = "mündl. Testat"
         verbose_name_plural = "mündl. Testate"
+        ordering = ("bezeichnung",)
 
 
 class Textbeitrag(BasicHistory):
@@ -47,6 +39,9 @@ class Textbeitrag(BasicHistory):
 
     def __str__(self):
         return self.text
+
+    class Meta:
+        ordering = ("-created_date",)
 
 
 class Meldung(Textbeitrag):
@@ -78,6 +73,16 @@ class Frage(Textbeitrag):
     class Meta:
         verbose_name = "Frage"
         verbose_name_plural = "Fragen"
+
+
+class Protokoll(Textbeitrag):
+    datum = models.DateField(default=timezone.datetime.today, verbose_name="Prüfungs-Datum")
+    pruefer = models.ForeignKey(Pruefer, verbose_name="PrüferIn")
+    testat = models.ForeignKey(Testat, verbose_name="Testat/Prüfung")
+
+    class Meta:
+        verbose_name = "Protokoll"
+        verbose_name_plural = "Protokolle"
 
 
 class Kommentar(Textbeitrag):

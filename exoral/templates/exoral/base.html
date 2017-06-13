@@ -25,9 +25,12 @@
 
     {% block site_heading %}eXOral{% endblock %}
 
-    {% block site_content %}
 
-    {% block fortschritt %}{% include "exoral/fortschritt.html" %}{% endblock %}
+
+    {% block site_content %}
+        <div align="center">{% block site_heading_sub %}{% endblock %}</div><br>
+
+        {% block fortschritt %}{% include "exoral/fortschritt.html" %}{% endblock %}
         <section>
             {% block beschreibung %}{% endblock %}
         </section>

@@ -1,15 +1,21 @@
 {% extends "exoral/base.html" %}
 
-{% block site_heading %}Altfragen{% endblock %}
+{% block site_heading %}<i class="fa fa-question" aria-hidden="true"></i> Einzelfragen{% endblock %}
+
+{% block site_heading_sub %}
+    <a href="{% url 'exoral:protokollliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+    <button class="name animated zoomIn"><i class="fa fa-book" aria-hidden="true"></i> Prüfungsprotokolle ({{ count_protokolle }})</button></a>
+    <a href="{% url 'exoral:kommentarliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+    <button class="name animated zoomIn"><i class="fa fa-comments" aria-hidden="true"></i> Prüfer-Kommentare ({{ count_kommentare }})</button></a>
+{% endblock %}
 
 {% block beschreibung %}
-    Wir haben für das Testat: <b>{{ testat }}</b> bei <b>{{ pruefer }}</b> <b>{{ fragen.count }}</b> Fragen gefunden
-    Du kannst die Liste auch <a href="javascript:window.print()"><button>Drucken</button></a>
+    Wir haben für das Testat: <b>{{ testat }}</b> bei <b>{{ pruefer }}</b> <b>{{ count_fragen }}</b> Fragen gefunden
+    <a href="javascript:window.print()"><button class="small"><i class="fa fa-print" aria-hidden="true"></i></button></a><br>
 {% endblock%} //PDF function
 
 {% block content %}
 
-    <h2><i class="fa fa-question" aria-hidden="true"></i> Fragen</h2>
         {% for frage in fragen %}
             <div class="frage animated bounceInLeft">
                 <div class="date">{{ frage.datum }}</div>
@@ -34,20 +40,4 @@
         <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
         <button class="big">Neue Frage eintragen</button></a>
     {% endif %}
-    <h2 class="noprint"><i class="fa fa-comments" aria-hidden="true"></i> Kommentare</h2>
-        <section class="noprint">
-            Wir haben <b>für {{ pruefer }} {{ kommentare.count }} Kommentare</b> gefunden. Diese Kommentare sind aus allen
-        Prüfungen bei {{ pruefer }} zusammengetragen.
-            {% if modus == 'p' %}
-                Du kannst natürlich dem Prüfer auch einen Kommentar hinzufügen.
-                <a href="{% url 'exoral:kommentar_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
-                    <button class="small">
-                    <span class="fa fa-plus" aria-hidden="true"></span> Kommentar
-                </button></a>
-            {% endif %}
-        </section>
-        {% for kommentar in kommentare %}
-            <div class="comment noprint animated zoomInUp">{{ kommentar.text }}</div>
-        {% endfor %}
-
 {% endblock %}

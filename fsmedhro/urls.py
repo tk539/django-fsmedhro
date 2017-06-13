@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^fachschaft/', include('fsmedhrocore.urls')),
     url(r'^exoral/', include('exoral.urls')),
     url(r'^api/fachschaft/', include('fsmedhrocore.api.urls', namespace='fsmedhrocore-api')),
+    url(r'^api/exoral/', include('exoral.api.urls', namespace='exoral-api')),
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     url(r'^cms-forms/', include('djangocms_forms.urls')),
     url(r'^data/', include('filer.urls')),
