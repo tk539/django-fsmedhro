@@ -7,7 +7,15 @@ Für die Prüfung {{ testat }} stehen folgende Prüfer zur Auswahl:<br>
 {% endblock %}
 
 {% block content %}
-    {% for pruefer in pruefer_list %}
-        <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}"><button class="name animated zoomIn">{{ pruefer.get_full_name_nachname }}</button></a>
+    {% for fach, list in pruefer_list.items|dictsort:0 %}
+        <h3>{{ fach }}</h3>
+    {% for row in list %}
+        <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=row.pruefer.pk %}">
+            <button class="name animated zoomIn">{{ row.pruefer.get_full_name_nachname }} <br>
+                (<i class="fa fa-question" aria-hidden="true"></i> {{ row.count_fragen }},
+                <i class="fa fa-book" aria-hidden="true"></i> {{ row.count_protokolle }},
+                <i class="fa fa-comments" aria-hidden="true"></i> {{ row.count_kommentare }})</button>
+        </a>
+    {% endfor %}
     {% endfor %}
 {% endblock %}

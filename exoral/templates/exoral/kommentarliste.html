@@ -1,0 +1,29 @@
+{% extends "exoral/base.html" %}
+
+{% block site_heading %}<i class="fa fa-comments" aria-hidden="true"></i> Kommentare{% endblock %}
+
+{% block site_heading_sub %}
+    <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+    <button class="name animated zoomIn"><i class="fa fa-question" aria-hidden="true"></i> Einzelfragen ({{ count_fragen }})</button></a>
+    <a href="{% url 'exoral:protokollliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+    <button class="name animated zoomIn"><i class="fa fa-book" aria-hidden="true"></i> Prüfungsprotokolle ({{ count_protokolle }})</button></a>
+{% endblock %}
+
+{% block beschreibung %}
+    Wir haben <b>für {{ pruefer }} {{ count_kommentare }} Kommentare</b> gefunden. Diese Kommentare sind aus allen Prüfungen bei {{ pruefer }} zusammengetragen.
+    {% if modus == 'p' %}
+        <br><a href="{% url 'exoral:kommentar_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+            <button class="small">
+                <span class="fa fa-plus" aria-hidden="true"></span> Kommentar hinzufügen
+            </button></a>
+    {% endif %}
+{% endblock%}
+
+{% block content %}
+
+        {% for kommentar in kommentare %}
+            <div class="comment noprint animated zoomInUp">{{ kommentar.text }}</div>
+        {% endfor %}
+
+
+{% endblock %}

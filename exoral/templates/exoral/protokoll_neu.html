@@ -1,0 +1,23 @@
+{% extends "exoral/base.html" %}
+
+{% block site_heading %}Neues Protokoll eingeben{% endblock %}
+
+{% block site_content %}
+<section>Du bist gerade dabei ein neues Prüfungsprotokoll einzutragen. Diese Form der Altfragen-Sammlung wurde speziell
+    für die protokollierung von großen Prüfungen, wie Physikum und STEX, eingeführt. Bei allen anderen Testaten ist die
+    Sammlung von Einzelfragen womöglich sinnvoller.
+</section>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <table>
+            {{ p_form.as_table }}
+        </table>
+        <button class="big">neues Protokoll hinzufügen</button>
+    </form>
+    <a href="{% url 'exoral:protokollliste' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
+    <button class="small animated bounceInRight">
+        Abbrechen
+    </button></a>
+    <br><br>
+{% endblock %}

@@ -11,5 +11,6 @@ class StudiengangAdmin(admin.ModelAdmin):
 
 admin.site.register(Studiengang, StudiengangAdmin)
 admin.site.register(Studienabschnitt)
+admin.site.register(Fach)
 admin.site.register(Gender)
 admin.site.register(FachschaftUser)
