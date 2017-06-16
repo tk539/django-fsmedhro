@@ -3,7 +3,7 @@
 
 {% block htmlhead %}
     {% addtoblock "js" %}
-        <script src="{% static "wiki/js/jquery.min.js" %}"></script>
+        <script src="{% static "wiki/js/jquery.min.js" %}" xmlns="http://www.w3.org/1999/html"></script>
         <script src="{% static "wiki/js/core.js" %}"></script>
         <script src="{% static "wiki/bootstrap/js/bootstrap.min.js" %}"></script>
         <!-- Optionally enable responsive features in IE8 -->
@@ -23,13 +23,13 @@
           <form class="navbar-form navbar-right" id="wiki-search-form" method="GET" action="{% url 'wiki:search' %}">
             <div class="input-group">
               <input type="search" class="form-control search-query" name="q" placeholder="{% trans "Search" %}" />
-                <span class="input-group-btn">
+                {% comment %}<span class="input-group-btn">
                     <button class="btn btn-default" type="submit">
                         <span class="fa fa-search"></span>
                 </button>
-              </span>
+              </span>{% endcomment %}
             </div><!-- /input-group -->
-          </form>
+            </form>
           <div class="navbar-right">
             {% if user.is_authenticated %}
             <ul class="nav navbar-nav">
@@ -88,6 +88,8 @@
 {% block content_wraper %}
     <div class="container" style="margin-top: 60px;">
 
+    Drucken
+
       {% if messages %}
         <!-- Messages for this instance -->
         {% for message in messages %}
@@ -102,6 +104,16 @@
       {% block wiki_breadcrumbs %}{% endblock %}
 
       <!-- Main page contents go here -->
+    <div id="article-menu">
+    <ul class="nav nav-pills" id="article-menu">
+        <li class="pull-right">
+            <a href="javascript:window.print()">
+                <span class="fa fa-print"></span>
+                <span class="hidden-xs">{% trans "Print" %}</span>
+            </a>
+        </li>
+    </ul>
+    </div>
       {% block wiki_contents %}
 
       {% endblock %}
