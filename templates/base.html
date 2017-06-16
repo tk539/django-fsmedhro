@@ -90,21 +90,7 @@
             </li>
         {% endblock %}
             <li>
-                <a>Apps</a>
-                <ul>
-                    <li><a href="https://fachschaft.med.uni-rostock.de"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Webseite</a></li>
-					<li><a href="https://www.facebook.com/fachschaft.medizinrostock/"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i>Facebook</a></li>
-                    <li><a href="https://rostock.kreuzmich.de/"><i class="fa fa-times fa-fw" aria-hidden="true"></i>Kreuzmich</a></li>
-                    <li><a href="{% url 'exoral:moduswahl' %}"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>eXOral</a></li>
-{% comment %}
-			<li><a href="{% url 'fsmedhro_index' %}">Fachschaft und Profil</a></li>
-                    <li><a href="{% url 'pharos_root' %}"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i>Pharos</a></li>
-                    <li><a href="{% url 'mediathek_root' %}"><i class="fa fa-medium fa-fw" aria-hidden="true"></i>Mediathek <i class="#" href="Facebook Link"></i></a></li>
-					<li><a href="{% url 'skillslab_root' %}"><i class="fa fa-stethoscope fa-fw" aria-hidden="true"></i>SkillsLab</a></li>
-{% endcomment %}
-					<li><a href="https://fachschaft-medizin-rostock.de/diva/"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>DIVA</a></li>
-
-                </ul>
+                {% include "apps_menu.html" %}
             </li>
         {% block language_chooser %}{% endblock %}
         </ul>
