@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
+from wiki.urls import get_pattern as get_wiki_pattern
+from django_nyt.urls import get_pattern as get_nyt_pattern
 #  from django.views.generic import RedirectView
 
 
@@ -33,5 +35,7 @@ urlpatterns = [
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     url(r'^cms-forms/', include('djangocms_forms.urls')),
     url(r'^data/', include('filer.urls')),
-    url(r'^', include('cms.urls'), ),
+    url(r'^notifications/', get_nyt_pattern()),
+    url(r'^pharos/', get_wiki_pattern()),
+    url(r'^', include('cms.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
