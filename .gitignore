@@ -2,6 +2,8 @@
 ####################
 venv/
 fsmedhro/secret_settings.py
+.ipython/
+.cache/
 
 # Compiled source #
 ###################
@@ -29,6 +31,7 @@ fsmedhro/secret_settings.py
 ######################
 *.log
 *.sqlite
+*.sqlite3
 
 # OS generated files #
 ######################
