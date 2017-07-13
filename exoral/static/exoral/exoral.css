@@ -75,13 +75,12 @@ button.name{
 }
 
 .protokoll .text{
-	display: flex;
 	margin: 20px 45px 0 0;
 	font-size: 16px;
 }
 
 .protokoll p{
-	margin: 0 5px;
+	margin: 5px;
 	display: block;
 	font-style: italic;
 }
@@ -102,8 +101,8 @@ button.name{
     border: 1px dotted red;
     border-radius: 0 20px 20px 20px;
 	padding: 5px 25px;
-	margin: 15px 15px;
-	width: 40%;
+	margin: 5px 15px;
+	width: 96%;
 	float: left;
 }
 .button .input{
@@ -125,11 +124,6 @@ button.name{
 @media only screen and (max-width: 1024px) {
 	.pdf{
 		visibility: hidden;
-	}
-	.comment{
-		width: 80%;
-		justify-content: center;
-		margin: 5px;
 	}
 }
 @media only screen and (max-width: 500px){
