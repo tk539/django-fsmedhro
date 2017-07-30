@@ -90,7 +90,7 @@ INSTALLED_APPS = [
 
 
 ]
-#TODO: Blogs dosn't work --> please have a look
+# TODO: Blogs dosn't work --> please have a look
 
 ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
@@ -109,7 +109,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100
 }
 
-LOGIN_URL = 'fsmedhro_login'
+LOGIN_URL = '/login/'
 LOGOUT_URL = 'fsmedhro_logout'
 LOGIN_REDIRECT_URL = 'fsmedhro_user'
 
@@ -233,9 +233,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-HUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_HIGH_RESOLUTION = True
 META_USE_SITES = True
-META_SITE_PROTOCOL ='https'
+META_SITE_PROTOCOL = 'https'
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
