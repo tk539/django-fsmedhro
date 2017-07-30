@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'exoral.apps.ExoralConfig',
     'fsmedhrocore.apps.FachschaftConfig',
-    'mediathek.apps.MediathekConfig'
+    'mediathek.apps.MediathekConfig',
     'django.contrib.sites',
     'django.contrib.humanize',
     'django_nyt',
