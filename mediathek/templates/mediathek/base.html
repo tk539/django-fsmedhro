@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% load sekizai_tags static %}
+
+{% block htmlhead %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" type="text/css" href="{% static 'mediathek/mediathek.css' %}"/>
+    {% endaddtoblock %}
+{% endblock %}
+
+{% block logo_bar %}{% static 'mediathek/Logo.png' %}{% endblock %}
+{% block title %}Mediathek{% endblock %}
+
+    {% block logo_url %}{% static 'mediathek/Logo.png' %}{% endblock %}
+    {% block subtitle %}Bücher, Sammelbestellungen und mehr{% endblock %}
+    {% block apptitle %}Mediathek{% endblock %}
+
+    {% block app_menu %}
+            <li><a href="{% url 'mediathek:mediathek_index'%}">Mediathek</a>
+                <ul>
+                    <li><a href="{% url 'mediathek:mediathek_index'%}"><i class="fa fa-address-card-o" aria-hidden="true"></i> Übersicht</a></li>
+                    <li><a href="{% url 'mediathek:mediathek_verwaltung'%}"><i class="fa fa-cogs" aria-hidden="true"></i> Verwaltung</a></li>
+                </ul>
+            </li>
+    {% endblock %}
+
+    {% block site_heading %}Mediathek{% endblock %}
+
+
+
+    {% block site_content %}
+        <div align="center">{% block site_heading_sub %}{% endblock %}</div><br>
+
+        <section>
+            {% block beschreibung %}{% endblock %}
+        </section>
+
+        {% block content %}{% endblock %}
+    {% endblock %}

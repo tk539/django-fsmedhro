@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mediathek Verwaltung</title>
-</head>
-<body>
+{% extends "mediathek/base.html" %}
 
-</body>
-</html>
+{% block site_heading %}Mediathek Verwaltung{% endblock %}
+
+{% block beschreibung %}
+    Hier findest du alle nötigen Funktionen um Ausleihen, Sammelbestellungen, Namensschildbestellungen etc. zu verwalten.
+{% endblock %}
+
+{% block content %}
+    <h2>Kunden</h2>
+    <a href="">Kunden/Aufträge verwalten</a>
+    <h2>Ausleihe</h2>
+    <a href="{% url "mediathek:ausleihe" %}">aktuelle (Buch-)Ausleihe Übersicht</a>
+    <form action="{% url "mediathek:ausleihe" %}" method="post" accept-charset="utf-8">
+        <input id="inv_id" type="number">
+        <input type="submit" value="aktuellen Auftrag suchen">
+    </form>
+    <form>
+    Ferienverlängerung
+    </form>
+    <a href="">Inventar verwalten</a>
+    <h2>Sammelbestellungen</h2>
+    <h3>aktuelle Sammelbestellungen</h3>
+    <a href="">Waren verwalten</a>
+    <h2>Namensschilder</h2>
+    <h2>Finanzen</h2>
+    Aktueller Pfand: <br>
+    <a href="">Kassenbuch</a>
+
+{% endblock %}
