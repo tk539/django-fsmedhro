@@ -21,7 +21,7 @@ def testatwahl(request, modus):
         studiengang = request.user.fachschaftuser.studiengang
         studienabschnitt = request.user.fachschaftuser.studienabschnitt
     except ObjectDoesNotExist:
-        return redirect(user_edit)  # neuen Fachschaft-User anlegen (für Studiengang etc.)
+        return redirect('fachschaft:fsmedhro_user_edit')  # neuen Fachschaft-User anlegen (für Studiengang etc.)
 
     testate = Testat.objects.filter(active=True,
                                     studienabschnitt=studienabschnitt,

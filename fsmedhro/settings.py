@@ -112,7 +112,7 @@ REST_FRAMEWORK = {
 
 LOGIN_URL = 'fsmedhro_login'
 LOGOUT_URL = 'fsmedhro_logout'
-LOGIN_REDIRECT_URL = 'fsmedhro_user'
+LOGIN_REDIRECT_URL = 'fachschaft:fsmedhro_user'
 
 MIDDLEWARE = [
     #'cms.middleware.utils.ApphookReloadMiddleware'
