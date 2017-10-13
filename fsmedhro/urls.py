@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', login, {'template_name': 'login.html'}, name='fsmedhro_login'),
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='fsmedhro_logout'),
-    url(r'^fachschaft/', include('fsmedhrocore.urls')),
+    url(r'^fachschaft/', include('fsmedhrocore.urls', namespace='fachschaft')),
     url(r'^exoral/', include('exoral.urls')),
     url(r'^mediathek/', include('mediathek.urls', namespace='mediathek')),
     url(r'^api/fachschaft/', include('fsmedhrocore.api.urls', namespace='fsmedhrocore-api')),

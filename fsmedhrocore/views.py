@@ -32,7 +32,7 @@ def user_profile(request, username):
 def user_self_redirect(request):
 
     # view personal profile
-    return redirect(user_profile, username=request.user.username)
+    return redirect('fachschaft:fsmedhro_user_profile', username=request.user.username)
 
 
 @login_required
