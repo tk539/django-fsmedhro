@@ -26,8 +26,8 @@ def index(request):
 
 
 @login_required
-@user_passes_test(check_mediathek_mitarbeiter, login_url='mediathek:mediathek_index', redirect_field_name=None)
-def mediathek_verwaltung(request):
+@user_passes_test(check_mediathek_mitarbeiter, login_url='mediathek:index', redirect_field_name=None)
+def verwaltung(request):
     """
     Verwaltung-Übersicht
     :param request:
@@ -54,7 +54,9 @@ def sammelbest_detail(request, sammelbest_id):
 
     sammelbest = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
 
-    return render(request, 'mediathek/sammelbest_detail.html')
+    context = {'sammelbest': sammelbest}
+
+    return render(request, 'mediathek/sammelbest_detail.html', context)
 
 
 @login_required
@@ -69,7 +71,9 @@ def sammelbest_auftraege_list(request, sammelbest_id):
 
     sammelbest = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
 
-    return render(request, 'mediathek/sammelbest_auftraege_list.html')
+    context = {'sammelbest': sammelbest}
+
+    return render(request, 'mediathek/sammelbest_auftraege_list.html', context)
 
 
 @login_required
@@ -82,9 +86,9 @@ def sammelbest_auftrag_detail(request, auftrag_id):
     """
     bestellung = get_object_or_404(Bestellung, pk=auftrag_id)
     
-    context = {'mitarbeiter': check_mediathek_mitarbeiter(request.user), }
+    context = {'mitarbeiter': check_mediathek_mitarbeiter(request.user), 'bestellung': bestellung}
        
-    return render(request, 'mediathek/sammelbest_auftrag_detail.html')
+    return render(request, 'mediathek/sammelbest_auftrag_detail.html', context)
 
 
 @login_required
@@ -110,7 +114,9 @@ def ware_detail(request, ware_id):
 
     ware = get_object_or_404(Ware, pk=ware_id)
 
-    return render(request, 'mediathek/ware_detail.html')
+    context = {'ware': ware}
+
+    return render(request, 'mediathek/ware_detail.html', context)
 
 
 @login_required
@@ -125,7 +131,9 @@ def angebot_detail(request, angebot_id):
 
     angebot = get_object_or_404(Angebot, pk=angebot_id)
 
-    return render(request, 'mediathek/angebot_detail.html')
+    context = {'angebot': angebot}
+
+    return render(request, 'mediathek/angebot_detail.html', context)
 
 
 @login_required
