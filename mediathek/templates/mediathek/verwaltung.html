@@ -8,10 +8,15 @@
 
 {% block content %}
     <h2>Kunden</h2>
+<!--
     <a href="">Kunden/Aufträge verwalten</a>
+-->
+<i class="fa fa-wrench" aria-hidden="true">in Arbeit... </i>
+
     <h2>Ausleihe</h2>
-    <a href="mediathek-ausleihe-url">aktuelle (Buch-)Ausleihe Übersicht</a>
-    <form action="mediathek-ausleihe-url" method="post" accept-charset="utf-8">
+<!--
+    <a href="{% url 'mediathek:ausleihe' %}">aktuelle (Buch-)Ausleihe Übersicht</a>
+    <form action="{% url 'mediathek:ausleihe' %}" method="post" accept-charset="utf-8">
         <input id="inv_id" type="number">
         <input type="submit" value="aktuellen Auftrag suchen">
     </form>
@@ -19,12 +24,29 @@
     Ferienverlängerung
     </form>
     <a href="">Inventar verwalten</a>
+-->
+<i class="fa fa-wrench" aria-hidden="true">in Arbeit... </i>
+
     <h2>Sammelbestellungen</h2>
-    <h3>aktuelle Sammelbestellungen</h3>
-    <a href="">Waren verwalten</a>
+    <h3>letzte Sammelbestellung</h3>
+    <p>
+    {% for sb in aktuelle_sammelbest %}
+        <a href="{% url 'mediathek:sammelbest_detail' sammelbest_id=sb.pk %}">{{ sb.bezeichnung }} ({{ sb.start }} bis {{ sb.ende }})</a>
+    {% empty %}
+        <i>keine Sammelbestellungen bisher</i>
+    {% endfor %}
+    </p>
+    <p><a href="{% url 'mediathek:sammelbest_list' %}">alle Sammelbestellungen</a></p>
+    <h3>Waren</h3>
+    <p><a href="">Waren verwalten</a></p>
     <h2>Namensschilder</h2>
+<i class="fa fa-wrench" aria-hidden="true">in Arbeit... </i>
+
     <h2>Finanzen</h2>
+<!--
     Aktueller Pfand: <br>
     <a href="">Kassenbuch</a>
+-->
+<i class="fa fa-wrench" aria-hidden="true">in Arbeit... </i>
 
 {% endblock %}
