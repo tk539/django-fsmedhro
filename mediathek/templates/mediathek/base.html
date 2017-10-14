@@ -16,10 +16,10 @@
     {% block apptitle %}Mediathek{% endblock %}
 
     {% block app_menu %}
-            <li><a href="{% url 'mediathek:mediathek_index'%}">Mediathek</a>
+            <li><a href="{% url 'index' %}">Mediathek</a>
                 <ul>
-                    <li><a href="{% url 'mediathek:mediathek_index'%}"><i class="fa fa-address-card-o" aria-hidden="true"></i> Übersicht</a></li>
-                    <li><a href="{% url 'mediathek:mediathek_verwaltung'%}"><i class="fa fa-cogs" aria-hidden="true"></i> Verwaltung</a></li>
+                    <li><a href="{% url 'index' %}"><i class="fa fa-address-card-o" aria-hidden="true"></i> Übersicht</a></li>
+                    <li><a href="{% url 'mediathek:verwaltung'%}"><i class="fa fa-cogs" aria-hidden="true"></i> Verwaltung</a></li>
                 </ul>
             </li>
     {% endblock %}

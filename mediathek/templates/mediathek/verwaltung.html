@@ -10,8 +10,8 @@
     <h2>Kunden</h2>
     <a href="">Kunden/Aufträge verwalten</a>
     <h2>Ausleihe</h2>
-    <a href="{% url "mediathek:ausleihe" %}">aktuelle (Buch-)Ausleihe Übersicht</a>
-    <form action="{% url "mediathek:ausleihe" %}" method="post" accept-charset="utf-8">
+    <a href="mediathek-ausleihe-url">aktuelle (Buch-)Ausleihe Übersicht</a>
+    <form action="mediathek-ausleihe-url" method="post" accept-charset="utf-8">
         <input id="inv_id" type="number">
         <input type="submit" value="aktuellen Auftrag suchen">
     </form>
