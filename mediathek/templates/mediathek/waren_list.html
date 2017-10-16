@@ -1,0 +1,24 @@
+{% extends "mediathek/base.html" %}
+
+{% block site_heading %}Alle Waren{% endblock %}
+
+{% block beschreibung %}
+    Liste aller bisher angebotenen Waren.
+{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>Bezeichnung</th><th>Marke</th><th>Variation</th>
+        </tr>
+        {% for ware in waren %}
+            <tr>
+                <td><a href="{% url 'mediathek:ware_detail' ware_id=ware.pk %}">{{ ware.bezeichnung }}</a></td>
+                <td>{{ ware.marke }}</td>
+                <td>{{ ware.variation }}</td>
+            </tr>
+        {% empty %}
+            <tr><td><i>keine Waren bisher</i></td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -65,7 +65,7 @@ def verwaltung(request):
     :return:
     """
 
-    aktuelle_sammelbest = Sammelbestellung.objects.filter(abgeschlossen=False)
+    aktuelle_sammelbest = Sammelbestellung.objects.filter(abgeschlossen=False).order_by('-ende')
 
     context = {'aktuelle_sammelbest': aktuelle_sammelbest}
 
@@ -75,7 +75,12 @@ def verwaltung(request):
 @login_required
 @user_passes_test(check_mediathek_mitarbeiter, login_url='mediathek:index', redirect_field_name=None)
 def sammelbest_list(request):
-    return render(request, 'mediathek/sammelbest_list.html')
+
+    sammelbestelungen = Sammelbestellung.objects.all().order_by('abgeschlossen', '-ende')
+
+    context = {'sammelbestelungen': sammelbestelungen}
+
+    return render(request, 'mediathek/sammelbest_list.html', context)
 
 
 @login_required
@@ -156,7 +161,12 @@ def waren_list(request):
     :param request:
     :return:
     """
-    return render(request, 'mediathek/waren_list.html')
+
+    waren = Ware.objects.all().order_by('bezeichnung', 'variation')
+
+    context = {'waren': waren}
+
+    return render(request, 'mediathek/waren_list.html', context)
 
 
 @login_required

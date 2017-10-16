@@ -111,3 +111,14 @@ class Bestellung(Auftrag):
     class Meta:
         verbose_name = "Sammelbestellung(Auftrag)"
         verbose_name_plural = "Sammelbestellungen(Aufträge)"
+
+
+class Einstellungen(models.Model):
+    timestamp = models.DateTimeField(auto_now=True)
+    oeffnungszeiten = models.TextField(null=True, blank=True, verbose_name="Öffnungszeiten")
+    konto_inhaber = models.CharField(max_length=30, default='KontoinhaberIn', verbose_name="KontoinhaberIn")
+    konto_iban = models.CharField(max_length=22, default='DE00000000000000000000', verbose_name="Konto IBAN")
+
+    class Meta:
+        verbose_name = "Einstellungen"
+        verbose_name_plural = "Einstellungen"
