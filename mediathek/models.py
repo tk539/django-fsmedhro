@@ -23,6 +23,7 @@ class Kunde(BasicHistory):
     class Meta:
         verbose_name = "Kundin/Kunde"
         verbose_name_plural = "Kundinnen/Kunden"
+        ordering = ("user__last_name",)
 
 
 class Sammelbestellung(models.Model):
@@ -37,6 +38,7 @@ class Sammelbestellung(models.Model):
     class Meta:
         verbose_name = "Sammelbestellung"
         verbose_name_plural = "Sammelbestellungen"
+        ordering = ("abgeschlossen", "-ende")
 
 
 class Ware(models.Model):
@@ -55,6 +57,7 @@ class Ware(models.Model):
     class Meta:
         verbose_name = "Ware"
         verbose_name_plural = "Waren"
+        ordering = ("marke", "bezeichnung", "variation")
 
 
 class Angebot(models.Model):
@@ -68,6 +71,7 @@ class Angebot(models.Model):
     class Meta:
         verbose_name = "Angebot"
         verbose_name_plural = "Angebote"
+        ordering = ("ware__marke", "ware__bezeichnung", "ware__variation")
 
 
 class Auftrag(BasicHistory):

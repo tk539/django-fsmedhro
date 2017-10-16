@@ -222,8 +222,8 @@ USE_TZ = True
 
 
 LANGUAGES = [
-    ('en', 'English'),
     ('de', 'German'),
+    ('en', 'English'),
 ]
 
 # Static files (CSS, JavaScript, Images)
