@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from mediathek.models import Kunde, Bestellung, Sammelbestellung, Ware, Angebot
 from fsmedhrocore.models import BasicHistory
 from django.contrib import messages
+from mediathek.forms import SammelbestForm
 
 
 def check_mediathek_mitarbeiter(user):
@@ -64,7 +65,7 @@ def verwaltung(request):
     :return:
     """
 
-    aktuelle_sammelbest = Sammelbestellung.objects.filter(active=True)
+    aktuelle_sammelbest = Sammelbestellung.objects.filter(abgeschlossen=False)
 
     context = {'aktuelle_sammelbest': aktuelle_sammelbest}
 
@@ -87,9 +88,29 @@ def sammelbest_detail(request, sammelbest_id):
     :return:
     """
 
-    sammelbest = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
+    if sammelbest_id == '0':
+        # neu
+        sammelbest = Sammelbestellung()
+    else:
+        sammelbest = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
 
-    context = {'sammelbest': sammelbest}
+    if request.method == 'POST':
+        sb_form = SammelbestForm(data=request.POST, instance=sammelbest)
+        if sb_form.is_valid():
+            sammelbest = sb_form.save(commit=False)
+            sammelbest.save()
+            return redirect('mediathek:verwaltung')
+    else:
+        sb_form = SammelbestForm(initial={
+            'bezeichnung': sammelbest.bezeichnung,
+            'start': sammelbest.start,
+            'ende': sammelbest.ende,
+            'abgeschlossen': sammelbest.abgeschlossen,
+        })
+
+    # TODO: Angebote
+
+    context = {'sb_form': sb_form, }
 
     return render(request, 'mediathek/sammelbest_detail.html', context)
 

@@ -1,0 +1,24 @@
+{% extends "mediathek/base.html" %}
+
+{% block site_heading %}Sammelbestellung{% endblock %}
+
+{% block beschreibung %}
+    Sammelbestellung erstellen/bearbeiten.
+{% endblock %}
+
+{% block content %}
+    <h2>Kerndaten</h2>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <table>
+        {{ sb_form.as_table }}
+        </table>
+        <button>speichern</button>
+    </form>
+    <a href="{% url 'mediathek:verwaltung' %}"><button>abbrechen</button></a>
+
+    <h2>Angebote</h2>
+<i class="fa fa-wrench" aria-hidden="true">in Arbeit... </i>
+
+{% endblock %}

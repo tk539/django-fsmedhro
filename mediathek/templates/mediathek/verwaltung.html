@@ -28,16 +28,15 @@
 <i class="fa fa-wrench" aria-hidden="true">in Arbeit... </i>
 
     <h2>Sammelbestellungen</h2>
-    <h3>letzte Sammelbestellung</h3>
-    <p>
+    <ul>
     {% for sb in aktuelle_sammelbest %}
-        <a href="{% url 'mediathek:sammelbest_detail' sammelbest_id=sb.pk %}">{{ sb.bezeichnung }} ({{ sb.start }} bis {{ sb.ende }})</a>
+        <li><a href="{% url 'mediathek:sammelbest_detail' sammelbest_id=sb.pk %}">{{ sb.bezeichnung }} ({{ sb.start|date:'d.m.Y H:i' }} bis {{ sb.ende|date:'Y-m-d H:i' }})</a></li>
     {% empty %}
         <i>keine Sammelbestellungen bisher</i>
     {% endfor %}
-    </p>
+    </ul>
     <p><a href="{% url 'mediathek:sammelbest_list' %}">alle Sammelbestellungen</a></p>
-    <h3>Waren</h3>
+    <p><a href="{% url 'mediathek:sammelbest_detail' sammelbest_id='0' %}">neue Sammelbestellung</a></p>
     <p><a href="">Waren verwalten</a></p>
     <h2>Namensschilder</h2>
 <i class="fa fa-wrench" aria-hidden="true">in Arbeit... </i>

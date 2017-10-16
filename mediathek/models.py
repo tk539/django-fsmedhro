@@ -29,7 +29,7 @@ class Sammelbestellung(models.Model):
     bezeichnung = models.CharField(max_length=30)
     start = models.DateTimeField()
     ende = models.DateTimeField()
-    active = models.BooleanField(default=True)
+    abgeschlossen = models.BooleanField(default=False, verbose_name="abgeschlossen")
 
     def __str__(self):
         return self.bezeichnung
