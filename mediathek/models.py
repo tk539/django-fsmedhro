@@ -4,7 +4,7 @@ from fsmedhrocore.models import BasicHistory
 from django.utils import timezone
 
 
-class Kunde(BasicHistory):
+class Kunde(models.Model):
     """
     Extends django.contrib.auth.models.User
     """
@@ -74,7 +74,7 @@ class Angebot(models.Model):
         ordering = ("ware__marke", "ware__bezeichnung", "ware__variation")
 
 
-class Auftrag(BasicHistory):
+class Auftrag(models.Model):
 
     ERSTELLT, BEARBEITET, ABGESCHLOSSEN = range(0, 3)
 
@@ -84,6 +84,7 @@ class Auftrag(BasicHistory):
         (ABGESCHLOSSEN, 'abgeschlossen'),
     )
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     datum = models.DateField(default=timezone.datetime.today, verbose_name="Auftrags-Datum")
     status = models.IntegerField(choices=STATUS, default=ERSTELLT)
 
@@ -92,13 +93,13 @@ class Auftrag(BasicHistory):
         return self.STATUS[self.status][1]
 
     def __str__(self):
-        return "{} {} ({}), {} ({})".format(
-            self._meta.verbose_name_raw, self.pk, self.datum, self.get_status_display(), self.modified_date)
+        return "{} {} ({}), {}".format(
+            self._meta.verbose_name_raw, self.pk, self.datum, self.get_status_display())
 
     class Meta:
         verbose_name = "Auftrag"
         verbose_name_plural = "Aufträge"
-        ordering = ('-datum', '-created_date',)
+        ordering = ('-datum', 'status',)
 
 
 class Bestellung(Auftrag):

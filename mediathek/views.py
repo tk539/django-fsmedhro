@@ -28,7 +28,7 @@ def index(request):
     try:
         kunde = user.kunde
     except ObjectDoesNotExist:
-        kunde = Kunde(user=user, modified_by=user)
+        kunde = Kunde(user=user)
         kunde.save()
 
     context = {'kunde': kunde, }
