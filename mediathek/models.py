@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from fsmedhrocore.models import BasicHistory
 from django.utils import timezone
+import decimal
 
 
 class Kunde(models.Model):
@@ -91,6 +92,8 @@ class Auftrag(models.Model):
     # override Model API method, STATUS can be overridden in subclasses
     def get_status_display(self):
         return self.STATUS[self.status][1]
+    get_status_display.short_description = 'Status'
+    get_status_display.admin_order_field = 'status'
 
     def __str__(self):
         return "{} {} ({}), {}".format(
@@ -110,12 +113,30 @@ class Bestellung(Auftrag):
         (Auftrag.ABGESCHLOSSEN, 'abgeschlossen'),
     )
 
-    anzahl = models.IntegerField(default=1)
-    angebot = models.ForeignKey(Angebot, on_delete=models.PROTECT)
+    bezahlt = models.BooleanField(default=False, verbose_name="bezahlt")
+    # has BestellungPosition
+
+    def get_bezahlbetrag(self):
+        summe = decimal.Decimal('0.00')
+        for pos in self.bestellungposition_set.all():
+            summe += pos.angebot.preis * pos.anzahl
+        return summe
+    get_bezahlbetrag.short_description = 'zu zahlen'
 
     class Meta:
         verbose_name = "Sammelbestellung(Auftrag)"
         verbose_name_plural = "Sammelbestellungen(Aufträge)"
+
+
+class BestellungPosition(models.Model):
+    bestellung = models.ForeignKey(Bestellung, on_delete=models.CASCADE)
+    angebot = models.ForeignKey(Angebot, on_delete=models.PROTECT)
+    anzahl = models.PositiveSmallIntegerField(default=1)
+
+    class Meta:
+        verbose_name = "Sammelbestellung(Auftrag)"
+        verbose_name_plural = "Sammelbestellungen(Aufträge)"
+        ordering = ("angebot__ware__marke", "angebot__ware__bezeichnung", "angebot__ware__variation")
 
 
 class Einstellungen(models.Model):
