@@ -11,9 +11,19 @@ class Kunde(models.Model):
     """
     user = models.OneToOneField(User)
 
-    anschrift = models.CharField(max_length=255, blank=True, null=True)
+    anschrift = models.TextField(blank=True, null=True)
     tel = models.CharField(max_length=16, blank=True, null=True)
     bemerkung = models.TextField(blank=True, null=True)
+
+    def get_user_first_name(self):
+        return self.user.first_name
+    get_user_first_name.short_description = "Vorname"
+    get_user_first_name.admin_order_field = 'user__first_name'
+
+    def get_user_last_name(self):
+        return self.user.last_name
+    get_user_last_name.short_description = "Nachname"
+    get_user_last_name.admin_order_field = 'user__last_name'
 
     def __str__(self):
         """
@@ -66,8 +76,11 @@ class Angebot(models.Model):
     ware = models.ForeignKey(Ware, on_delete=models.CASCADE)
     sammelbestellung = models.ForeignKey(Sammelbestellung, on_delete=models.CASCADE)
 
+    def get_preis_str(self):
+        return "{} €".format(self.preis).replace(".", ",")
+
     def __str__(self):
-        return "{} - {} - {} €".format(self.sammelbestellung, self.ware, self.preis)
+        return "{} - {} - {}".format(self.sammelbestellung, self.ware, self.get_preis_str())
 
     class Meta:
         verbose_name = "Angebot"
@@ -95,6 +108,20 @@ class Auftrag(models.Model):
     get_status_display.short_description = 'Status'
     get_status_display.admin_order_field = 'status'
 
+    def get_user_first_name(self):
+        return self.user.first_name
+    get_user_first_name.short_description = "Vorname"
+    get_user_first_name.admin_order_field = 'user__first_name'
+
+    def get_user_last_name(self):
+        return self.user.last_name
+    get_user_last_name.short_description = "Nachname"
+    get_user_last_name.admin_order_field = 'user__last_name'
+
+    def get_auf_id(self):
+        return self.pk
+    get_auf_id.short_description = "Auftr.-Nr."
+
     def __str__(self):
         return "{} {} ({}), {}".format(
             self._meta.verbose_name_raw, self.pk, self.datum, self.get_status_display())
@@ -112,6 +139,7 @@ class Bestellung(Auftrag):
         (Auftrag.BEARBEITET, 'abholbereit'),
         (Auftrag.ABGESCHLOSSEN, 'abgeschlossen'),
     )
+    # TODO: funktioniert nicht mehr (get_status_display() zeigt "alte" Status an)
 
     bezahlt = models.BooleanField(default=False, verbose_name="bezahlt")
     # has BestellungPosition
@@ -120,7 +148,7 @@ class Bestellung(Auftrag):
         summe = decimal.Decimal('0.00')
         for pos in self.bestellungposition_set.all():
             summe += pos.angebot.preis * pos.anzahl
-        return summe
+        return "{} €".format(summe).replace(".", ",")
     get_bezahlbetrag.short_description = 'zu zahlen'
 
     class Meta:
@@ -133,9 +161,12 @@ class BestellungPosition(models.Model):
     angebot = models.ForeignKey(Angebot, on_delete=models.PROTECT)
     anzahl = models.PositiveSmallIntegerField(default=1)
 
+    def __str__(self):
+        return "{}x {}".format(self.anzahl, self.angebot.ware)
+
     class Meta:
-        verbose_name = "Sammelbestellung(Auftrag)"
-        verbose_name_plural = "Sammelbestellungen(Aufträge)"
+        verbose_name = "Bestellungs-Position"
+        verbose_name_plural = "Bestellungs-Positionen"
         ordering = ("angebot__ware__marke", "angebot__ware__bezeichnung", "angebot__ware__variation")
 
 

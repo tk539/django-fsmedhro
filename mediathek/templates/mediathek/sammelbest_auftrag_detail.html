@@ -1,0 +1,28 @@
+{% extends "mediathek/base.html" %}
+
+{% block site_heading %}Bestellübersicht{% endblock %}
+
+{% block beschreibung %}
+Bestellung aufgeben für Sammelbestellung "{{ sammelbestellung.bezeichnung }}".
+{% endblock %}
+
+{% block content %}
+
+    Bestellung vom {{ bestellung.datum }}<br>
+    Zu zahlen: {{ bestellung.get_bezahlbetrag }}<br>
+    Status: "{{ bestellung.get_status_display }}", {% if bestellung.bezahlt %}schon{% else %}noch nicht{% endif %} bezahlt
+    <table>
+        <tr>
+            <th>Bezeichnung</th><th>Preis</th><th>Anzahl</th>
+        </tr>
+        {% for position in positionen %}
+        <tr>
+            <td>{{ position.angebot.ware }}</td>
+            <td>{{ position.angebot.get_preis_str }} €</td>
+            <td>{{ position.anzahl }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'mediathek:index' %}">zurück</a>
+
+{% endblock %}

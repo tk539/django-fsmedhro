@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
-from mediathek.models import Kunde, Bestellung, Sammelbestellung, Ware, Angebot
+from mediathek.models import Kunde, Bestellung, Sammelbestellung, Angebot, BestellungPosition
 from fsmedhrocore.models import BasicHistory
 from django.contrib import messages
-from mediathek.forms import SammelbestForm
 
 
 def check_mediathek_mitarbeiter(user):
@@ -31,7 +30,10 @@ def index(request):
         kunde = Kunde(user=user)
         kunde.save()
 
-    context = {'kunde': kunde, }
+    bestellungen = Bestellung.objects.filter(user=user).order_by('-datum')
+    aktuelle_sammelbest = Sammelbestellung.objects.filter(abgeschlossen=False).order_by('-ende')
+
+    context = {'kunde': kunde, 'aktuelle_sammelbest': aktuelle_sammelbest, 'bestellungen': bestellungen}
 
     return render(request, 'mediathek/index.html', context)
 
@@ -39,7 +41,7 @@ def index(request):
 @login_required
 def sammelbest_auftrag_detail(request, auftrag_id):
     """
-    Eine Bestellung aufgeben/ansehen/bearbeiten
+    Eine Bestellung ansehen
     :param request:
     :param auftrag_id:
     :return:
@@ -51,61 +53,46 @@ def sammelbest_auftrag_detail(request, auftrag_id):
         messages.add_message(request, messages.INFO, 'Diese Bestellung ist nicht von dir.')
         return redirect('mediathek:index')
 
-    context = {'bestellung': bestellung}
+    positionen = BestellungPosition.objects.filter(bestellung=bestellung)
+
+    context = {'bestellung': bestellung, 'positionen': positionen}
 
     return render(request, 'mediathek/sammelbest_auftrag_detail.html', context)
 
 
 @login_required
-@user_passes_test(check_mediathek_mitarbeiter, login_url='mediathek:index', redirect_field_name=None)
-def verwaltung(request):
+def sammelbest_auftrag_neu(request, sammelbest_id):
     """
-    Verwaltung-Übersicht
-    :param request:
-    :return:
-    """
-
-    aktuelle_sammelbest = Sammelbestellung.objects.filter(abgeschlossen=False).order_by('-ende')
-
-    context = {'aktuelle_sammelbest': aktuelle_sammelbest}
-
-    return render(request, 'mediathek/verwaltung.html', context)
-
-
-@login_required
-@user_passes_test(check_mediathek_mitarbeiter, login_url='mediathek:index', redirect_field_name=None)
-def sammelbest_auftraege_list(request, sammelbest_id):
-    """
-    Alle Bestellungen zu einer Sammelbestellung
+    Eine Bestellung aufgeben
     :param request:
     :param sammelbest_id:
     :return:
     """
+    sammelbestellung = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
 
-    sammelbest = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
+    valid_order = False
+    positionen = []
 
-    context = {'sammelbest': sammelbest}
+    if request.method == 'POST':
+        for key, value in request.POST.items():
+            if key.isdigit() and value.isdigit():
+                if int(value) > 0:
+                    valid_order = True
+                    angebot = get_object_or_404(Angebot, pk=int(key))
+                    anzahl = int(value)
+                    positionen.append({'angebot': angebot, 'anzahl': anzahl})
+        if valid_order:
+            bestellung = Bestellung(user=request.user)
+            bestellung.save()
+            for pos in positionen:
+                position = BestellungPosition(bestellung=bestellung, angebot=pos['angebot'], anzahl=pos['anzahl'])
+                position.save()
+            return redirect('mediathek:sammelbest_auftrag_detail', auftrag_id=bestellung.pk)
+        else:
+            messages.add_message(request, messages.INFO, 'Ungültige Bestellung')
+            return redirect('mediathek:index')
 
-    return render(request, 'mediathek/sammelbest_auftraege_list.html', context)
+    angebote = Angebot.objects.filter(sammelbestellung=sammelbestellung)
+    context = {'sammelbestellung': sammelbestellung, 'angebote': angebote}
 
-
-@login_required
-@user_passes_test(check_mediathek_mitarbeiter, login_url='mediathek:index', redirect_field_name=None)
-def sammelbest_auftrag_edit(request, auftrag_id):
-    """
-    Eine Bestellung aufgeben/ansehen/bearbeiten
-    :param request:
-    :param auftrag_id:
-    :return:
-    """
-    bestellung = get_object_or_404(Bestellung, pk=auftrag_id)
-    
-    context = {'bestellung': bestellung}
-       
-    return render(request, 'mediathek/sammelbest_auftrag_edit.html', context)
-
-
-@login_required
-@user_passes_test(check_mediathek_mitarbeiter, login_url='mediathek:index', redirect_field_name=None)
-def ausleihe(request):
-    return render(request, 'mediathek/ausleihe.html')
+    return render(request, 'mediathek/sammelbest_auftrag_neu.html', context)

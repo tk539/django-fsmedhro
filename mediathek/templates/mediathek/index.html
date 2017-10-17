@@ -18,8 +18,21 @@ Hier findest du eine Übersicht über alle deine Aufträge, wie Buchhausleihen, 
 
     <h2>Ausleihe</h2>
     in Arbeit... <i class="fa fa-wrench" aria-hidden="true"></i>
-    <h2>Sammelbstellung</h2>
-    in Arbeit... <i class="fa fa-wrench" aria-hidden="true"></i>
     <h2>Namensschild</h2>
     in Arbeit... <i class="fa fa-wrench" aria-hidden="true"></i>
+    <h2>Sammelbstellung</h2>
+    <h3>aktuelle Sammelbestellungen</h3>
+    <ul>
+    {% for sb in aktuelle_sammelbest %}
+        <li><a href="{% url 'mediathek:sammelbest_auftrag_neu' sammelbest_id=sb.pk %}">{{ sb }}</a></li>
+    {% empty %}
+        <i>aktuell gibt es keine Sammelbestellungen</i>
+    {% endfor %}
+    </ul>
+    <h3>Deine Bestellungen</h3>
+    {% for best in bestellungen %}
+        <li><a href="{% url 'mediathek:sammelbest_auftrag_detail' auftrag_id=best.pk %}">{{ best }}</a></li>
+    {% empty %}
+        <i>du hast noch nichts bestellt</i>
+    {% endfor %}
 {% endblock %}

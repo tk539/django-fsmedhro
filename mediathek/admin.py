@@ -35,18 +35,25 @@ class BestellungPositionInline(admin.StackedInline):
 @admin.register(Bestellung)
 class BestellungAdmin(admin.ModelAdmin):
     model = Bestellung
-    list_display = ('datum', 'user_last_name', 'user_first_name', 'get_bezahlbetrag', 'bezahlt', 'get_status_display',)
+    list_display = (
+        'get_auf_id',
+        'datum',
+        'user',
+        'get_user_last_name',
+        'get_user_first_name',
+        'get_bezahlbetrag',
+        'bezahlt',
+        'get_status_display')
     inlines = [BestellungPositionInline, ]
     actions = [best_abholbereit, best_abgeschlossen, best_bezahlt, ]
+    search_fields = ['=user__username', '=id', 'user__last_name', 'user__first_name']
 
-    def user_first_name(self, obj):
-        return obj.user.first_name
 
-    def user_last_name(self, obj):
-        return obj.user.last_name
-
-    user_first_name.admin_order_field = 'user__first_name'
-    user_last_name.admin_order_field = 'user__last_name'
+@admin.register(Kunde)
+class KundeAdmin(admin.ModelAdmin):
+    model = Kunde
+    list_display = ('get_user_last_name', 'get_user_first_name')
+    search_fields = ['=user__username', '=id', 'user__last_name', 'user__first_name']
 
 
 @admin.register(Einstellungen)
