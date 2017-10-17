@@ -3,14 +3,20 @@
 {% block site_heading %}Bestellübersicht{% endblock %}
 
 {% block beschreibung %}
-Bestellung aufgeben für Sammelbestellung "{{ sammelbestellung.bezeichnung }}".
+    <p>
+    {% if bestellung.bezahlt %}
+        Die Zahlung über {{ bestellung.get_bezahlbetrag }} ist bei uns eingegangen.
+    {% else %}
+        Bitte überweise zeitnah den Betrag von <b>{{ bestellung.get_bezahlbetrag }}</b> auf folgendes Konto:<br>
+        in Arbeit... <i class="fa fa-wrench" aria-hidden="true"></i>
+    {% endif %}
+    </p>
+Statuscode der Bestellung: "{{ bestellung.get_status_display }}"
 {% endblock %}
 
 {% block content %}
 
-    Bestellung vom {{ bestellung.datum }}<br>
-    Zu zahlen: {{ bestellung.get_bezahlbetrag }}<br>
-    Status: "{{ bestellung.get_status_display }}", {% if bestellung.bezahlt %}schon{% else %}noch nicht{% endif %} bezahlt
+    <h2>{{ sammelbestellung.bezeichnung }} ({{ bestellung.datum|date:'d.m.Y' }})</h2>
     <table>
         <tr>
             <th>Bezeichnung</th><th>Preis</th><th>Anzahl</th>
@@ -18,7 +24,7 @@ Bestellung aufgeben für Sammelbestellung "{{ sammelbestellung.bezeichnung }}".
         {% for position in positionen %}
         <tr>
             <td>{{ position.angebot.ware }}</td>
-            <td>{{ position.angebot.get_preis_str }} €</td>
+            <td>{{ position.angebot.get_preis_str }}</td>
             <td>{{ position.anzahl }}</td>
         </tr>
         {% endfor %}

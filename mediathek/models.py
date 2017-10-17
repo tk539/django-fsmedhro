@@ -139,7 +139,6 @@ class Bestellung(Auftrag):
         (Auftrag.BEARBEITET, 'abholbereit'),
         (Auftrag.ABGESCHLOSSEN, 'abgeschlossen'),
     )
-    # TODO: funktioniert nicht mehr (get_status_display() zeigt "alte" Status an)
 
     bezahlt = models.BooleanField(default=False, verbose_name="bezahlt")
     # has BestellungPosition

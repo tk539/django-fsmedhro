@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from mediathek.models import Kunde, Bestellung, Sammelbestellung, Angebot, BestellungPosition
 from fsmedhrocore.models import BasicHistory
 from django.contrib import messages
+from django.utils import timezone
 
 
 def check_mediathek_mitarbeiter(user):
@@ -55,7 +56,8 @@ def sammelbest_auftrag_detail(request, auftrag_id):
 
     positionen = BestellungPosition.objects.filter(bestellung=bestellung)
 
-    context = {'bestellung': bestellung, 'positionen': positionen}
+    context = {'bestellung': bestellung, 'positionen': positionen,
+               'sammelbestellung': positionen.first().angebot.sammelbestellung}
 
     return render(request, 'mediathek/sammelbest_auftrag_detail.html', context)
 
@@ -69,6 +71,12 @@ def sammelbest_auftrag_neu(request, sammelbest_id):
     :return:
     """
     sammelbestellung = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
+
+    # Sammelbestellung abgelaufen?
+    if sammelbestellung.start > timezone.now() or sammelbestellung.ende < timezone.now():
+        messages.add_message(request, messages.INFO, 'Bestellung nur zwischen {:%d.%m.%y %H:%M} und {:%d.%m.%y %H:%M} möglich.'.format(
+            sammelbestellung.start, sammelbestellung.ende))
+        return redirect('mediathek:index')
 
     valid_order = False
     positionen = []

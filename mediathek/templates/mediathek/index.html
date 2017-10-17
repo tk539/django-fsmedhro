@@ -24,15 +24,18 @@ Hier findest du eine Übersicht über alle deine Aufträge, wie Buchhausleihen, 
     <h3>aktuelle Sammelbestellungen</h3>
     <ul>
     {% for sb in aktuelle_sammelbest %}
-        <li><a href="{% url 'mediathek:sammelbest_auftrag_neu' sammelbest_id=sb.pk %}">{{ sb }}</a></li>
+        <li><a href="{% url 'mediathek:sammelbest_auftrag_neu' sammelbest_id=sb.pk %}">{{ sb }} ({{ sb.start|date:'d.m.y H:i' }} bis {{ sb.ende|date:'d.m.y H:i' }})</a></li>
     {% empty %}
         <i>aktuell gibt es keine Sammelbestellungen</i>
     {% endfor %}
     </ul>
     <h3>Deine Bestellungen</h3>
+    <ul>
     {% for best in bestellungen %}
-        <li><a href="{% url 'mediathek:sammelbest_auftrag_detail' auftrag_id=best.pk %}">{{ best }}</a></li>
+        <li><a href="{% url 'mediathek:sammelbest_auftrag_detail' auftrag_id=best.pk %}">
+            Bestellung vom <b>{{ best.datum|date:'d.m.Y' }}</b> <i>({{ best.get_status_display }})</i>{% if not best.bezahlt %} [Zahlung noch ausstehend]{% endif %}</a></li>
     {% empty %}
         <i>du hast noch nichts bestellt</i>
     {% endfor %}
+    </ul>
 {% endblock %}
