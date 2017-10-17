@@ -79,6 +79,15 @@ class Angebot(models.Model):
     def get_preis_str(self):
         return "{} €".format(self.preis).replace(".", ",")
 
+    def get_best_count(self):
+        count = 0
+        for pos in self.bestellungposition_set.all():
+            count += pos.anzahl
+        return count
+
+    def get_best_total_sale(self):
+        return decimal.Decimal(self.get_best_count()) * self.preis
+
     def __str__(self):
         return "{} - {} - {}".format(self.sammelbestellung, self.ware, self.get_preis_str())
 

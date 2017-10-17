@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import ObjectDoesNotExist
 from mediathek.models import Kunde, Bestellung, Sammelbestellung, Angebot, BestellungPosition
 from fsmedhrocore.models import BasicHistory
 from django.contrib import messages
 from django.utils import timezone
+import decimal
 
 
 def check_mediathek_mitarbeiter(user):
@@ -104,3 +105,20 @@ def sammelbest_auftrag_neu(request, sammelbest_id):
     context = {'sammelbestellung': sammelbestellung, 'angebote': angebote}
 
     return render(request, 'mediathek/sammelbest_auftrag_neu.html', context)
+
+
+@login_required
+@user_passes_test(check_mediathek_mitarbeiter)
+def sammelbest_zusammenfassung(request, sammelbest_id):
+
+    sammelbestellung = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
+
+    angebote = Angebot.objects.filter(sammelbestellung=sammelbestellung)
+
+    gesamt_preis = decimal.Decimal('0.00')
+    for angebot in angebote:
+        gesamt_preis += angebot.get_best_total_sale()
+
+    context = {'sammelbestellung': sammelbestellung, 'angebote': angebote, 'gesamt_preis': gesamt_preis}
+
+    return render(request, 'mediathek/sammelbest_zusammenfassung.html', context)
