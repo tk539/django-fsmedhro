@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import ObjectDoesNotExist
-from mediathek.models import Kunde, Bestellung, Sammelbestellung, Angebot, BestellungPosition
+from mediathek.models import Kunde, Bestellung, Sammelbestellung, Angebot, BestellungPosition, Einstellungen
 from fsmedhrocore.models import BasicHistory
 from django.contrib import messages
 from django.utils import timezone
@@ -57,8 +57,12 @@ def sammelbest_auftrag_detail(request, auftrag_id):
 
     positionen = BestellungPosition.objects.filter(bestellung=bestellung)
 
-    context = {'bestellung': bestellung, 'positionen': positionen,
-               'sammelbestellung': positionen.first().angebot.sammelbestellung}
+    context = {'bestellung': bestellung,
+               'positionen': positionen,
+               'sammelbestellung': positionen.first().angebot.sammelbestellung,
+               'einstellungen': Einstellungen.objects.last(),
+               'user': request.user,
+               }
 
     return render(request, 'mediathek/sammelbest_auftrag_detail.html', context)
 
@@ -75,8 +79,9 @@ def sammelbest_auftrag_neu(request, sammelbest_id):
 
     # Sammelbestellung abgelaufen?
     if sammelbestellung.start > timezone.now() or sammelbestellung.ende < timezone.now():
-        messages.add_message(request, messages.INFO, 'Bestellung nur zwischen {:%d.%m.%y %H:%M} und {:%d.%m.%y %H:%M} möglich.'.format(
-            sammelbestellung.start, sammelbestellung.ende))
+        messages.add_message(request, messages.INFO,
+                             'Bestellung nur zwischen {:%d.%m.%y %H:%M} und {:%d.%m.%y %H:%M} möglich.'.format(
+                                 sammelbestellung.start, sammelbestellung.ende))
         return redirect('mediathek:index')
 
     valid_order = False

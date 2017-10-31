@@ -3,15 +3,18 @@
 {% block site_heading %}Bestellübersicht{% endblock %}
 
 {% block beschreibung %}
-    <p>
+    <p>Auftragsnummer: {{ bestellung.pk|stringformat:"05d" }}</p>
     {% if bestellung.bezahlt %}
-        Die Zahlung über {{ bestellung.get_bezahlbetrag }} ist bei uns eingegangen.
+        <p>Die Zahlung über {{ bestellung.get_bezahlbetrag }} ist bei uns eingegangen.</p>
     {% else %}
-        Bitte überweise zeitnah den Betrag von <b>{{ bestellung.get_bezahlbetrag }}</b> auf folgendes Konto:<br>
-        in Arbeit... <i class="fa fa-wrench" aria-hidden="true"></i>
+        <p>Bitte überweise zeitnah den Betrag von <b>{{ bestellung.get_bezahlbetrag }}</b> auf folgendes Konto:</p>
+        <table>
+            <tr><td>InhaberIn:</td><td>{{ einstellungen.konto_inhaber }}</td></tr>
+            <tr><td>IBAN:</td><td>{{ einstellungen.konto_iban }}</td></tr>
+        </table>
+        <p>Mit dem Betreff "{{ bestellung.pk|stringformat:"05d" }} - {{ user.username }}"</p>
     {% endif %}
-    </p>
-Statuscode der Bestellung: "{{ bestellung.get_status_display }}"
+    <p>Statuscode der Bestellung: "{{ bestellung.get_status_display }}"</p>
 {% endblock %}
 
 {% block content %}

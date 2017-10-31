@@ -152,6 +152,11 @@ class Bestellung(Auftrag):
     bezahlt = models.BooleanField(default=False, verbose_name="bezahlt")
     # has BestellungPosition
 
+    def get_status_display(self):
+        return self.STATUS[self.status][1]
+    get_status_display.short_description = 'Status'
+    get_status_display.admin_order_field = 'status'
+
     def get_bezahlbetrag(self):
         summe = decimal.Decimal('0.00')
         for pos in self.bestellungposition_set.all():
@@ -183,6 +188,9 @@ class Einstellungen(models.Model):
     oeffnungszeiten = models.TextField(null=True, blank=True, verbose_name="Öffnungszeiten")
     konto_inhaber = models.CharField(max_length=30, default='KontoinhaberIn', verbose_name="KontoinhaberIn")
     konto_iban = models.CharField(max_length=22, default='DE00000000000000000000', verbose_name="Konto IBAN")
+
+    def __str__(self):
+        return "Einstellungen (Stand: {:%d.%m.%y %H:%M})".format(self.timestamp)
 
     class Meta:
         verbose_name = "Einstellungen"
