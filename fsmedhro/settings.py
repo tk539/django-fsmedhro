@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'exoral.apps.ExoralConfig',
     'fsmedhrocore.apps.FachschaftConfig',
+    'mediathek.apps.MediathekConfig',
     'django.contrib.sites',
     'django.contrib.humanize',
     'django_nyt',
@@ -111,7 +112,7 @@ REST_FRAMEWORK = {
 
 LOGIN_URL = '/login/'
 LOGOUT_URL = 'fsmedhro_logout'
-LOGIN_REDIRECT_URL = 'fsmedhro_user'
+LOGIN_REDIRECT_URL = 'fachschaft:fsmedhro_user'
 
 MIDDLEWARE = [
     #'cms.middleware.utils.ApphookReloadMiddleware'
@@ -221,8 +222,8 @@ USE_TZ = True
 
 
 LANGUAGES = [
-    ('en', 'English'),
     ('de', 'German'),
+    ('en', 'English'),
 ]
 
 # Static files (CSS, JavaScript, Images)

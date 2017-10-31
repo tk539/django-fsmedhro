@@ -1,0 +1,26 @@
+{% extends "mediathek/base.html" %}
+
+{% block site_heading %}Neue Bestellung{% endblock %}
+
+{% block beschreibung %}
+Bestellung aufgeben für Sammelbestellung "{{ sammelbestellung.bezeichnung }}".
+{% endblock %}
+
+{% block content %}
+
+    <form action="" method="post">
+    {% csrf_token %}
+        <table>
+        {% for angebot in angebote %}
+            <tr>
+                <td><label for="position_{{ forloop.counter }}">{{ angebot.ware }}</label></td>
+                <td>{{ angebot.preis }} €</td>
+                <td><input id="position_{{ forloop.counter }}" name="{{ angebot.pk }}" type="number" value="0" min="0" max="10"></td>
+            </tr>
+        {% endfor %}
+        </table>
+        <input type="submit" value="bestellen">
+    </form>
+    <a href="{% url 'mediathek:index' %}">abbrechen</a>
+
+{% endblock %}
