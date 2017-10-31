@@ -76,9 +76,9 @@
     <nav> <!--Menue-->
         <ul>
             {% if request.user.is_authenticated %}
-                <li><a href="{% url 'fsmedhro_user' %}"><i class="fa fa-user-md fa-fw" aria-hidden="true"></i>{{ user }}</a>
+                <li><a href="{% url 'fachschaft:fsmedhro_user' %}"><i class="fa fa-user-md fa-fw" aria-hidden="true"></i>{{ user }}</a>
                     <ul>
-                        <li><a href="{% url 'fsmedhro_user' %}"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Dein Profil</a>
+                        <li><a href="{% url 'fachschaft:fsmedhro_user' %}"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Dein Profil</a>
                         <li><a href="{% url 'fsmedhro_logout' %}"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Abmelden</a></li>
                     </ul>
                 </li>
@@ -86,7 +86,7 @@
                 <li><a href="{% url 'fsmedhro_login' %}"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>Anmelden</a></li>
             {% endif %}
         {% block app_menu %}
-            <li><a href="{% url 'fsmedhro_index'%}">Fachschaft Medizin Rostock</a>
+            <li><a href="{% url 'fachschaft:fsmedhro_index'%}">Fachschaft Medizin Rostock</a>
             </li>
         {% endblock %}
             <li>
