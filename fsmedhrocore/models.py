@@ -124,6 +124,7 @@ class Dozent(models.Model):
         verbose_name_plural = "Dozenten"
         ordering = ("nachname",)
 
+
 class BasicHistory(models.Model):
     """
     Abstracte model-Klasse um mitzuschreiben, wann welcher User einen Eintrag hinzugefügt und wann zuletzt geändert hat.
