@@ -32,7 +32,7 @@ def user_profile(request, username):
 def user_self_redirect(request):
 
     # view personal profile
-    return redirect(user_profile, username=request.user.username)
+    return redirect('fachschaft:fsmedhro_user_profile', username=request.user.username)
 
 
 @login_required
@@ -48,26 +48,24 @@ def user_edit(request):
     """
 
     if request.method == 'POST':
-        uform = UserForm(data=request.POST, instance=request.user)
+
         try:
             # FachschaftUser bereits vorhanden?
             fuform = FachschaftUserForm(data=request.POST, instance=request.user.fachschaftuser)
         except ObjectDoesNotExist:
             fuform = FachschaftUserForm(data=request.POST)
 
-        if uform.is_valid() and fuform.is_valid():
-            user = uform.save()
-            fuser = fuform.save(commit=False)
-            fuser.user = user
-            fuser.save()
-            return redirect(user_profile, username=request.user.username)
-    else:
-        uform = UserForm(instance=request.user)
+        if fuform.is_valid():
 
+            fuser = fuform.save(commit=False)
+            fuser.user = request.user
+            fuser.save()
+            return redirect('fachschaft:fsmedhro_user_profile', username=request.user.username)
+    else:
         try:
             # FachschaftUser bereits vorhanden?
             fuform = FachschaftUserForm(instance=request.user.fachschaftuser)
         except ObjectDoesNotExist:
             fuform = FachschaftUserForm()
 
-    return render(request, 'fsmedhrocore/user_edit.html', {'uform': uform, 'fuform': fuform})
+    return render(request, 'fsmedhrocore/user_edit.html', {'fuform': fuform})
