@@ -1,0 +1,37 @@
+{% extends "mediathek/base.html" %}
+
+{% block site_heading %}Bestellübersicht{% endblock %}
+
+{% block beschreibung %}
+    <p>Auftragsnummer: {{ bestellung.pk|stringformat:"05d" }}</p>
+    {% if bestellung.bezahlt %}
+        <p>Die Zahlung über {{ bestellung.get_bezahlbetrag }} ist bei uns eingegangen.</p>
+    {% else %}
+        <p>Bitte überweise zeitnah den Betrag von <b>{{ bestellung.get_bezahlbetrag }}</b> auf folgendes Konto:</p>
+        <table>
+            <tr><td>InhaberIn:</td><td>{{ einstellungen.konto_inhaber }}</td></tr>
+            <tr><td>IBAN:</td><td>{{ einstellungen.konto_iban }}</td></tr>
+        </table>
+        <p>Mit dem Betreff "{{ bestellung.pk|stringformat:"05d" }} - {{ user.username }}"</p>
+    {% endif %}
+    <p>Statuscode der Bestellung: "{{ bestellung.get_status_display }}"</p>
+{% endblock %}
+
+{% block content %}
+
+    <h2>{{ sammelbestellung.bezeichnung }} ({{ bestellung.datum|date:'d.m.Y' }})</h2>
+    <table>
+        <tr>
+            <th>Bezeichnung</th><th>Preis</th><th>Anzahl</th>
+        </tr>
+        {% for position in positionen %}
+        <tr>
+            <td>{{ position.angebot.ware }}</td>
+            <td>{{ position.angebot.get_preis_str }}</td>
+            <td>{{ position.anzahl }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'mediathek:index' %}">zurück</a>
+
+{% endblock %}

@@ -9,12 +9,12 @@
 
 {% block site_content %}
 <section>
-    Fachschafts-Profil bearbeiten. Manche Anwendungen auf dieser Homepage beziehen sich auf Informationen aus diesem Profil.
+    Fachschafts-Profil bearbeiten. Manche Anwendungen auf dieser Homepage beziehen sich auf Informationen aus diesem Profil.<br>
+Name, Vorname und eMail werden automatisch mit der Uni abgeglichen. Zum Ändern bitte Studiendekanat ansprechen
 </section>
 <form method="post" action="">
     {% csrf_token %}
     <table>
-    {{ uform.as_table }}
     {{ fuform.as_table }}
     </table>
     <button>speichern</button>

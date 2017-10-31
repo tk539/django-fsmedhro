@@ -21,7 +21,7 @@ def testatwahl(request, modus):
         studiengang = request.user.fachschaftuser.studiengang
         studienabschnitt = request.user.fachschaftuser.studienabschnitt
     except ObjectDoesNotExist:
-        return redirect(user_edit)  # neuen Fachschaft-User anlegen (für Studiengang etc.)
+        return redirect('fachschaft:fsmedhro_user_edit')  # neuen Fachschaft-User anlegen (für Studiengang etc.)
 
     testate = Testat.objects.filter(active=True,
                                     studienabschnitt=studienabschnitt,
@@ -89,7 +89,7 @@ def fragenliste(request, modus, testat_id, pruefer_id):
     c_kommentare = Kommentar.objects.filter(pruefer=pruefer).count()
 
     context = {'modus': modus, 'testat': testat, 'pruefer': pruefer, 'fragen': fragen,
-               'count_fragen': c_fragen, 'count_protokolle': c_protokolle, 'count_kommentare': c_kommentare,}
+               'count_fragen': c_fragen, 'count_protokolle': c_protokolle, 'count_kommentare': c_kommentare, }
 
     return render(request, 'exoral/fragenliste.html', context)
 
@@ -114,14 +114,11 @@ def kommentarliste(request, modus, testat_id, pruefer_id):
     return render(request, 'exoral/kommentarliste.html', context)
 
 
-
 @login_required
 def protokollliste(request, modus, testat_id, pruefer_id):
     testat = get_object_or_404(Testat, pk=testat_id)
     pruefer = get_object_or_404(Pruefer, pk=pruefer_id)
-    protokolle = Protokoll.objects.filter(pruefer=pruefer,
-                                  testat=testat,
-                                  sichtbar=True).order_by('-datum')
+    protokolle = Protokoll.objects.filter(pruefer=pruefer, testat=testat, sichtbar=True).order_by('-datum')
 
     if not protokolle.exists():
         messages.add_message(request, messages.INFO,
