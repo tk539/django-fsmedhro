@@ -8,19 +8,31 @@ Bestellung aufgeben für Sammelbestellung "{{ sammelbestellung.bezeichnung }}".
 
 {% block content %}
 
-    <form action="" method="post">
-    {% csrf_token %}
-        <table>
-        {% for angebot in angebote %}
-            <tr>
-                <td><label for="position_{{ forloop.counter }}">{{ angebot.ware }}</label></td>
-                <td>{{ angebot.preis }} €</td>
-                <td><input id="position_{{ forloop.counter }}" name="{{ angebot.pk }}" type="number" value="0" min="0" max="10"></td>
-            </tr>
-        {% endfor %}
-        </table>
-        <input type="submit" value="bestellen">
-    </form>
-    <a href="{% url 'mediathek:index' %}">abbrechen</a>
+<h1>Bestellung</h1>
+<div class="container-fluid form-group">
+<form action="" method="post">
+{% csrf_token %}
+    <table class="table table-striped">
+      <thead class="bg-primary text-light">
+        <td scope="col">Artikel</td>
+        <td scope="col">Preis in €</td>
+        <td scope="col">Menge</td>
+      </thead>
+    {% for angebot in angebote %}
+        <tr>
+            <td><label for="position_{{ forloop.counter }}">{{ angebot.ware }}</label></td>
+            <td>{{ angebot.preis }} €</td>
+            <td><input class="form-control"id="position_{{ forloop.counter }}" name="{{ angebot.pk }}" type="number" value="0" min="0" max="10"></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <div class="button-group d-flex justify-content-between">
+      <button type="button" class="btn btn-sm btn-danger" name="button">
+        <a href="{% url 'mediathek:index' %}">Vorgang Abbrechenn</a>
+      </button>
+      <input type="submit" class="btn btn-lg btn-success" value="Artikel Bestellen">
+    </div>    
+</form>
+</div>
 
 {% endblock %}
