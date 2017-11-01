@@ -7,35 +7,69 @@ Hier findest du eine Übersicht über alle deine Aufträge, wie Buchhausleihen, 
 {% endblock %}
 
 {% block content %}
-    <h2>Profil</h2>
+    <div class="container-fluid">
+      <h2>Profil</h2>
 
-    <i>Diese Kontaktinformationen sind nur für die Mediathek hinterlegt.
-        Alle anderen Profildaten kannst du <a href="{% url 'fachschaft:fsmedhro_user' %}">hier</a> ändern.</i>
-    <table>
-        <tr><td>Anschrift:</td><td>{{ kunde.anschrift|default_if_none:"N/A" }}</td></tr>
-        <tr><td>Telefon:</td><td>{{ kunde.tel|default_if_none:"N/A" }}</td></tr>
+    <div class="text-center">
+      Diese Kontaktinformationen sind in der Medithek für dich hinterlegt
+    </div>
+    <table class="table-light table-sm table">
+        <tr><th>Anschrift:</th><td>{{ kunde.anschrift|default_if_none:"N/A" }}</td></tr>
+        <tr><th>Telefon:</th><td>{{ kunde.tel|default_if_none:"N/A" }}</td></tr>
     </table>
+
+    <button type="button" name="button" class="btn-primary btn float-right">
+      <a href="{% url 'fachschaft:fsmedhro_user' %}" class="text-light">Hier kannst du deine Profildaten ändern</a>
+    </button>
 
     <h2>Ausleihe</h2>
     in Arbeit... <i class="fa fa-wrench" aria-hidden="true"></i>
     <h2>Namensschild</h2>
     in Arbeit... <i class="fa fa-wrench" aria-hidden="true"></i>
     <h2>Sammelbstellung</h2>
-    <h3>aktuelle Sammelbestellungen</h3>
-    <ul>
-    {% for sb in aktuelle_sammelbest %}
-        <li><a href="{% url 'mediathek:sammelbest_auftrag_neu' sammelbest_id=sb.pk %}">{{ sb }} ({{ sb.start|date:'d.m.y H:i' }} bis {{ sb.ende|date:'d.m.y H:i' }})</a></li>
-    {% empty %}
-        <i>aktuell gibt es keine Sammelbestellungen</i>
-    {% endfor %}
-    </ul>
-    <h3>Deine Bestellungen</h3>
-    <ul>
-    {% for best in bestellungen %}
-        <li><a href="{% url 'mediathek:sammelbest_auftrag_detail' auftrag_id=best.pk %}">
-            Bestellung vom <b>{{ best.datum|date:'d.m.Y' }}</b> <i>({{ best.get_status_display }})</i>{% if not best.bezahlt %} [Zahlung noch ausstehend]{% endif %}</a></li>
-    {% empty %}
-        <i>du hast noch nichts bestellt</i>
-    {% endfor %}
-    </ul>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">aktuelle Sammelbestellungen</h4>
+            <div class="btn-group-vertical">
+              {% for sb in aktuelle_sammelbest %}
+                <button type="button" name="button" class="btn btn-outline-info active">
+                  <a href="{% url 'mediathek:sammelbest_auftrag_neu' sammelbest_id=sb.pk %}" class="">
+                    {{ sb }} ({{ sb.start|date:'d.m.y H:i' }} bis {{ sb.ende|date:'d.m.y H:i' }})
+                  </a>
+                </button>
+              {% empty %}
+                  <button type="button" class="btn-danger btn"name="button" disabled>
+                    Momentan gibt es keine Sammelbestellungen
+                  </button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Deine Bestellungen</h4>
+            <div class="button-group-vertical">
+            {% for best in bestellungen %}
+                <button type="button" class="btn btn-outline-success"name="button">
+                  <a href="{% url 'mediathek:sammelbest_auftrag_detail' auftrag_id=best.pk %}">
+                    Bestellung vom <b>{{ best.datum|date:'d.m.Y' }}</b>
+                    <i>({{ best.get_status_display }})</i>
+                    {% if not best.bezahlt %} [Zahlung noch ausstehend]{% endif %}
+                  </a>
+                </button>
+            {% empty %}
+                <button type="button" class="btn btn-danger" disabled name="button">
+                  Du hast noch nichts bestellt
+                </button>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
