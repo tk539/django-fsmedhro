@@ -8,9 +8,9 @@
         <p>Die Zahlung über {{ bestellung.get_bezahlbetrag }} ist bei uns eingegangen.</p>
     {% else %}
         <p>Bitte überweise zeitnah den Betrag von <b>{{ bestellung.get_bezahlbetrag }}</b> auf folgendes Konto:</p>
-        <table>
-            <tr><td>InhaberIn:</td><td>{{ einstellungen.konto_inhaber }}</td></tr>
-            <tr><td>IBAN:</td><td>{{ einstellungen.konto_iban }}</td></tr>
+        <table class="table">
+            <tr><td scope="row">InhaberIn:</td><td>{{ einstellungen.konto_inhaber }}</td></tr>
+            <tr><td scope="row">IBAN:</td><td>{{ einstellungen.konto_iban }}</td></tr>
         </table>
         <p>Mit dem Betreff "{{ bestellung.pk|stringformat:"05d" }} - {{ user.username }}"</p>
     {% endif %}
@@ -18,12 +18,14 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="container-fluid">
     <h2>{{ sammelbestellung.bezeichnung }} ({{ bestellung.datum|date:'d.m.Y' }})</h2>
-    <table>
-        <tr>
-            <th>Bezeichnung</th><th>Preis</th><th>Anzahl</th>
-        </tr>
+    <table class="table table-striped">
+        <thead class="bg-primary text-light">
+            <td scope="col">Artikel</td>
+            <td scope="col">Preis in €</td>
+            <td scope="col">Menge</td>
+        </thead>
         {% for position in positionen %}
         <tr>
             <td>{{ position.angebot.ware }}</td>
@@ -32,6 +34,9 @@
         </tr>
         {% endfor %}
     </table>
-    <a href="{% url 'mediathek:index' %}">zurück</a>
+    <button type="button" class="btn btn-sm btn-danger" name="button">
+        <a href="{% url 'mediathek:index' %}">Zurück</a>
+    </button>
+</div>
 
 {% endblock %}
