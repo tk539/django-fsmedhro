@@ -7,10 +7,10 @@ Zusammenfassung zur Sammelbestellung "{{ sammelbestellung.bezeichnung }}"
 {% endblock %}
 
 {% block content %}
-<div class="results">
-    <table border="1">
+<div class="results container-fluid">
+    <table border="1" class="table table-striped table-bordered">
 
-    <thead>
+    <thead class="thead-dark">
       <tr>
         <th>Ware</th>
         <th>Anzahl</th>
@@ -28,10 +28,8 @@ Zusammenfassung zur Sammelbestellung "{{ sammelbestellung.bezeichnung }}"
       </tr>
       {% endfor %}
         <tr>
-            <td></td>
-            <td></td>
-            <td>gesamt:</td>
-            <td>{{ gesamt_preis }} €</td>
+            <td colspan="2"></td>
+            <td colspan="2"><strong>Gesamt:</strong> {{ gesamt_preis }} €</td>
         </tr>
     </tbody>
 
