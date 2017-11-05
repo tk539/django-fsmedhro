@@ -18,9 +18,9 @@ Hier findest du eine Übersicht über alle deine Aufträge, wie Buchhausleihen, 
         <tr><th>Telefon:</th><td>{{ kunde.tel|default_if_none:"N/A" }}</td></tr>
     </table>
 
-    <button type="button" name="button" class="btn-primary btn float-right">
-      <a href="{% url 'fachschaft:fsmedhro_user' %}" class="text-light">Hier kannst du deine Profildaten ändern</a>
-    </button>
+    <a href="{% url 'fachschaft:fsmedhro_user' %}" class="text-light">
+    <button type="button" name="button" class="btn-primary btn float-right">Hier kannst du deine anderen Profildaten ändern</button>
+    </a>
 
     <h2>Ausleihe</h2>
     in Arbeit... <i class="fa fa-wrench" aria-hidden="true"></i>
@@ -34,15 +34,13 @@ Hier findest du eine Übersicht über alle deine Aufträge, wie Buchhausleihen, 
             <h4 class="card-title">aktuelle Sammelbestellungen</h4>
             <div class="btn-group-vertical">
               {% for sb in aktuelle_sammelbest %}
-                <button type="button" name="button" class="btn btn-outline-info active">
                   <a href="{% url 'mediathek:sammelbest_auftrag_neu' sammelbest_id=sb.pk %}" class="">
+                    <button type="button" name="button" class="btn btn-outline-info active">
                     {{ sb }} ({{ sb.start|date:'d.m.y H:i' }} bis {{ sb.ende|date:'d.m.y H:i' }})
+                    </button>
                   </a>
-                </button>
               {% empty %}
-                  <button type="button" class="btn-danger btn"name="button" disabled>
                     Momentan gibt es keine Sammelbestellungen
-                  </button>
               {% endfor %}
             </div>
           </div>
@@ -54,17 +52,15 @@ Hier findest du eine Übersicht über alle deine Aufträge, wie Buchhausleihen, 
             <h4 class="card-title">Deine Bestellungen</h4>
             <div class="button-group-vertical">
             {% for best in bestellungen %}
-                <button type="button" class="btn btn-outline-success"name="button">
                   <a href="{% url 'mediathek:sammelbest_auftrag_detail' auftrag_id=best.pk %}">
+                    <button type="button" class="btn btn-outline-success" name="button">
                     Bestellung vom <b>{{ best.datum|date:'d.m.Y' }}</b>
                     <i>({{ best.get_status_display }})</i>
                     {% if not best.bezahlt %} [Zahlung noch ausstehend]{% endif %}
+                    </button>
                   </a>
-                </button>
             {% empty %}
-                <button type="button" class="btn btn-danger" disabled name="button">
                   Du hast noch nichts bestellt
-                </button>
             {% endfor %}
             </div>
           </div>

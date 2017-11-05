@@ -22,9 +22,11 @@
     <h2>{{ sammelbestellung.bezeichnung }} ({{ bestellung.datum|date:'d.m.Y' }})</h2>
     <table class="table table-striped">
         <thead class="bg-primary text-light">
+        <tr>
             <td scope="col">Artikel</td>
             <td scope="col">Preis in €</td>
             <td scope="col">Menge</td>
+        </tr>
         </thead>
         {% for position in positionen %}
         <tr>
@@ -34,9 +36,9 @@
         </tr>
         {% endfor %}
     </table>
-    <button type="button" class="btn btn-sm btn-danger" name="button">
-        <a href="{% url 'mediathek:index' %}">Zurück</a>
-    </button>
+    <a href="{% url 'mediathek:index' %}">
+        <button type="button" class="btn btn-sm btn-danger" name="button">zurück</button>
+    </a>
 </div>
 
 {% endblock %}

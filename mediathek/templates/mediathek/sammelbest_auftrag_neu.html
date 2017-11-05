@@ -14,23 +14,25 @@ Bestellung aufgeben für Sammelbestellung "{{ sammelbestellung.bezeichnung }}".
 {% csrf_token %}
     <table class="table table-striped">
       <thead class="bg-primary text-light">
+      <tr>
         <td scope="col">Artikel</td>
         <td scope="col">Preis in €</td>
         <td scope="col">Menge</td>
+      </tr>
       </thead>
     {% for angebot in angebote %}
         <tr>
             <td><label for="position_{{ forloop.counter }}">{{ angebot.ware }}</label></td>
             <td>{{ angebot.preis }} €</td>
-            <td><input class="form-control"id="position_{{ forloop.counter }}" name="{{ angebot.pk }}" type="number" value="0" min="0" max="10"></td>
+            <td><input class="form-control" id="position_{{ forloop.counter }}" name="{{ angebot.pk }}" type="number" value="0" min="0" max="10"></td>
         </tr>
     {% endfor %}
     </table>
     <div class="button-group d-flex justify-content-between">
-      <button type="button" class="btn btn-sm btn-danger" name="button">
-        <a href="{% url 'mediathek:index' %}">Vorgang Abbrechenn</a>
-      </button>
-      <input type="submit" class="btn btn-lg btn-success" value="Artikel Bestellen">
+        <a href="{% url 'mediathek:index' %}">
+            <button type="button" class="btn btn-sm btn-danger" name="button">Vorgang abbrechenn</button>
+        </a>
+      <input type="submit" class="btn btn-lg btn-success" value="Artikel bestellen">
     </div>    
 </form>
 </div>
