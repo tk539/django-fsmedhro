@@ -6,6 +6,9 @@ from fsmedhrocore.models import BasicHistory
 from django.contrib import messages
 from django.utils import timezone
 import decimal
+from django.contrib.auth.models import User
+import csv
+from django.http import HttpResponse
 
 
 def check_mediathek_mitarbeiter(user):
@@ -79,9 +82,10 @@ def sammelbest_auftrag_neu(request, sammelbest_id):
 
     # Sammelbestellung abgelaufen?
     if sammelbestellung.start > timezone.now() or sammelbestellung.ende < timezone.now():
+        tz = timezone.get_current_timezone()
         messages.add_message(request, messages.INFO,
-                             'Bestellung nur zwischen {:%d.%m.%y %H:%M} und {:%d.%m.%y %H:%M} möglich.'.format(
-                                 sammelbestellung.start, sammelbestellung.ende))
+                             'Bestellung nur zwischen {:%d.%m.%y %H:%M} und {:%d.%m.%y %H:%M} ({}) möglich.'.format(
+                                 sammelbestellung.start.astimezone(tz), sammelbestellung.ende.astimezone(tz), tz))
         return redirect('mediathek:index')
 
     valid_order = False
@@ -115,15 +119,56 @@ def sammelbest_auftrag_neu(request, sammelbest_id):
 @login_required
 @user_passes_test(check_mediathek_mitarbeiter)
 def sammelbest_zusammenfassung(request, sammelbest_id):
-
     sammelbestellung = get_object_or_404(Sammelbestellung, pk=sammelbest_id)
 
     angebote = Angebot.objects.filter(sammelbestellung=sammelbestellung)
 
-    gesamt_preis = decimal.Decimal('0.00')
-    for angebot in angebote:
-        gesamt_preis += angebot.get_best_total_sale()
+    positionen = BestellungPosition.objects.filter(angebot__sammelbestellung=sammelbestellung)
 
-    context = {'sammelbestellung': sammelbestellung, 'angebote': angebote, 'gesamt_preis': gesamt_preis}
+    bestellungen = Bestellung.objects.filter(bestellungposition__in=positionen)
 
-    return render(request, 'mediathek/sammelbest_zusammenfassung.html', context)
+    kunden = User.objects.filter(auftrag__in=bestellungen).distinct().order_by('last_name', 'first_name')
+
+    #table = [['x']*(angebote.count()+1) for i in range(len(kunden))]
+
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="Sammelbestellung_Zusammenfassung.csv"'
+
+    writer = csv.writer(response, dialect=csv.excel)
+
+    writer.writerow(["Sammelbestellung", sammelbestellung.bezeichnung,
+                     "{:%d.%m.%y %H:%M}".format(sammelbestellung.start),
+                     "bis",
+                     "{:%d.%m.%y %H:%M}".format(sammelbestellung.ende),
+                     ])
+
+    headrow = ["Kunde"]
+    for a in angebote:
+        headrow.append(a.ware)
+
+    writer.writerow(headrow)
+
+    for i, k in enumerate(kunden):
+        row = ['{}, {}'.format(k.last_name, k.first_name)]
+        for j, a in enumerate(angebote):
+            pos = BestellungPosition.objects.filter(
+                angebot__sammelbestellung=sammelbestellung,
+                angebot=a,
+                bestellung__user=k
+            )
+
+            anz = 0
+            for p in pos:
+                anz += p.anzahl
+
+            row.append(anz)
+        writer.writerow(row)
+
+    lastrow = ["gesamt:"]
+    for a in angebote:
+        lastrow.append(a.get_best_count())
+
+    writer.writerow(lastrow)
+
+    return response
