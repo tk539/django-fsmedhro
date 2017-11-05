@@ -79,9 +79,10 @@ def sammelbest_auftrag_neu(request, sammelbest_id):
 
     # Sammelbestellung abgelaufen?
     if sammelbestellung.start > timezone.now() or sammelbestellung.ende < timezone.now():
+        tz = timezone.get_current_timezone()
         messages.add_message(request, messages.INFO,
-                             'Bestellung nur zwischen {:%d.%m.%y %H:%M} und {:%d.%m.%y %H:%M} möglich.'.format(
-                                 sammelbestellung.start, sammelbestellung.ende))
+                             'Bestellung nur zwischen {:%d.%m.%y %H:%M} und {:%d.%m.%y %H:%M} ({}) möglich.'.format(
+                                 sammelbestellung.start.astimezone(tz), sammelbestellung.ende.astimezone(tz), tz))
         return redirect('mediathek:index')
 
     valid_order = False
