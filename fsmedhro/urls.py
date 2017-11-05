@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='fsmedhro_logout'),
     url(r'^fachschaft/', include('fsmedhrocore.urls', namespace='fachschaft')),
     url(r'^exoral/', include('exoral.urls')),
-    url(r'^mediathek/', include('mediathek.urls', namespace='mediathek')),
+    url(r'^mediathek-app/', include('mediathek.urls', namespace='mediathek')),
     url(r'^api/fachschaft/', include('fsmedhrocore.api.urls', namespace='fsmedhrocore-api')),
     url(r'^api/exoral/', include('exoral.api.urls', namespace='exoral-api')),
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
