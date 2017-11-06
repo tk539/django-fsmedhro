@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import *
+from django.utils.html import format_html
+from django.core.urlresolvers import reverse
 
 
 def best_abholbereit(modeladmin, request, queryset):
@@ -23,8 +25,16 @@ class AngebotInline(admin.StackedInline):
 @admin.register(Sammelbestellung)
 class SammelbestAdmin(admin.ModelAdmin):
     model = Sammelbestellung
-    list_display = ('bezeichnung', 'start', 'ende', 'abgeschlossen')
+    list_display = ('bezeichnung', 'start', 'ende', 'abgeschlossen', 'zusammenfassung')
     inlines = [AngebotInline, ]
+
+    def zusammenfassung(self, obj):
+        return format_html(
+            '<a class="button" href="{}">als .csv downloaden</a>',
+            reverse('mediathek:sammelbest_zusammenfassung', args=[obj.pk]),
+        )
+    zusammenfassung.short_description = 'Zusammenfassung'
+    zusammenfassung.allow_tags = True
 
 
 class BestellungPositionInline(admin.StackedInline):
@@ -44,6 +54,7 @@ class BestellungAdmin(admin.ModelAdmin):
         'get_bezahlbetrag',
         'bezahlt',
         'get_status_display')
+    ordering = ('-datum', '-id',)
     inlines = [BestellungPositionInline, ]
     actions = [best_abholbereit, best_abgeschlossen, best_bezahlt, ]
     search_fields = ['=user__username', '=id', 'user__last_name', 'user__first_name']
