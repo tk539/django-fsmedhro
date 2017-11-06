@@ -53,7 +53,7 @@ class Sammelbestellung(models.Model):
 
 
 class Ware(models.Model):
-    bezeichnung = models.CharField(max_length=30)
+    bezeichnung = models.CharField(max_length=40)
     marke = models.CharField(max_length=30, null=True, blank=True)
     variation = models.CharField(max_length=30, null=True, blank=True)
 
