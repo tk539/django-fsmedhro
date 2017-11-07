@@ -9,13 +9,24 @@ Für die Prüfung {{ testat }} stehen folgende Prüfer zur Auswahl:<br>
 {% block content %}
     {% for fach, list in pruefer_list.items|dictsort:0 %}
         <h3>{{ fach }}</h3>
+    <div class="btn-group container-fluid">
     {% for row in list %}
-        <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=row.pruefer.pk %}">
-            <button class="name animated zoomIn">{{ row.pruefer.get_full_name_nachname }} <br>
-                (<i class="fa fa-question" aria-hidden="true"></i> {{ row.count_fragen }},
-                <i class="fa fa-book" aria-hidden="true"></i> {{ row.count_protokolle }},
-                <i class="fa fa-comments" aria-hidden="true"></i> {{ row.count_kommentare }})</button>
-        </a>
+    <a href="{% url 'exoral:fragenliste' modus=modus testat_id=testat.pk pruefer_id=row.pruefer.pk %}">
+        <button class="btn btn-primary border border-danger animated zoomIn">
+          {{ row.pruefer.get_full_name_nachname }}
+          <br>
+          <span class="badge badge-light">
+            <i class="fa fa-question" aria-hidden="true"></i>{{ row.count_fragen }}
+          </span>
+          <span class="badge badge-light">
+            <i class="fa fa-book" aria-hidden="true"></i> {{ row.count_protokolle }}
+          </span>
+          <span class="badge badge-light">
+            <i class="fa fa-comments" aria-hidden="true"></i> {{ row.count_kommentare }}
+          </span>
+        </button>
+    </a>
     {% endfor %}
+    </div>
     {% endfor %}
 {% endblock %}
