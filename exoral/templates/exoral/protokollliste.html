@@ -10,19 +10,24 @@
 
 {% block beschreibung %}
     Wir haben für das Testat: <b>{{ testat }}</b> bei <b>{{ pruefer }}</b> <b>{{ count_protokolle }}</b> Protokolle gefunden
-    <a href="javascript:window.print()"><button class="small"><i class="fa fa-print" aria-hidden="true"></i></button></a>
+    <a href="javascript:window.print()"><button class="btn btn-sm btn-danger"><i class="fa fa-print" aria-hidden="true"></i></button></a>
     {% if modus == 'p' %}
         <br><a href="{% url 'exoral:protokoll_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
-        <button class="small"><span class="fa fa-plus" aria-hidden="true"></span> Neues Protokoll eintragen</button></a>
+        <button class="btn btn-sm btn btn-danger"><span class="fa fa-plus" aria-hidden="true"></span> Neues Protokoll eintragen</button></a>
     {% endif %}
 {% endblock%} //PDF function
 
 {% block content %}
-
-        {% for protokoll in protokolle %}
-            <div class="protokoll animated bounceInLeft">
-                <div class="date">{{ protokoll.datum }}</div>
-                <div class="text"><p>{{ protokoll.text|linebreaks }}</p></div>
-            </div>
-        {% endfor %}
+<div class="container list-group">
+    {% for protokoll in protokolle %}
+      <div class="animated bounceInLeft list-group-item flex-column align-items-start mb-3 mt-1 bg-primary text-light" style="border:3px solid brown; border-radius: 0 50px 50px">
+        <div class="d-flex w-100 justify-content-between">
+          <small class="font-italic font-weight-light text-muted">{{ protokoll.datum }}</small>
+        </div>
+        <div class="d-flex w-100">
+          <p class="text-left text-justify">{{ protokoll.text|linebreaks }}</p>
+        </div>
+      </div>
+    {% endfor %}
+</div>
 {% endblock %}

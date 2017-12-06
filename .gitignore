@@ -2,6 +2,7 @@
 ####################
 venv/
 fsmedhro/secret_settings.py
+media/
 .ipython/
 .cache/
 
