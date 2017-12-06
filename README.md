@@ -1,21 +1,31 @@
-# django-fsmedhro
-Django Website for Fachschaft Medizin Rostock
+# The Project
+Django Webseite für die Fachschaft Medizin Rostock
 
-__[Our Website](https://fachschaft.med.uni-rostock.de/)__
 
-This is a project for handling differenz tasks.
+__Demo at our [Website](https://fachschaft.med.uni-rostock.de)__
+
+## Features
+* LDAP Authetification (uni-rostock.de)
+* CMS with multiple Plugins
+
 
 # Apps
 ## eXOral
-This is an project for handling questions that was asked in exams. It sorts the
-Questions by subject and examiner. It also has a option to score. So there are
-no duplicated questions.
-### Fachschaftsrat (planing)
-### Skillslab (planing)
-### Mediathek (planing)
-### Calender Changing for Dentalists (in progress)
-### (core)
-### (login)
+This is an Application for managing questions in exams. It is wasy to use and
+very flexible
+
+### Features
+* Score for each questions
+* Sort questions by subject and examinor
+* make comments for each examinor
+* limitation for Scores
+
+## other Parts
+* Fachschaftsrat (in Planung)
+* Skillslab (in Planung)
+* Mediathek (in Planung)
+* (core)
+* (login)
 
 ## Besondere Funktionen
 * Authentifizierung via LDAP (Active Directory Domäne "uni-rostock.de")
