@@ -11,33 +11,45 @@
 
 {% block beschreibung %}
     Wir haben für das Testat: <b>{{ testat }}</b> bei <b>{{ pruefer }}</b> <b>{{ count_fragen }}</b> Fragen gefunden
-    <a href="javascript:window.print()"><button class="small"><i class="fa fa-print" aria-hidden="true"></i></button></a><br>
+    <a href="javascript:window.print()"><button class="btn btn-danger"><i class="fa fa-print" aria-hidden="true"></i></button></a><br>
 {% endblock%} //PDF function
 
 {% block content %}
 
-        {% for frage in fragen %}
-            <div class="frage animated bounceInLeft">
-                <div class="date">{{ frage.datum }}</div>
-                <div class="score">Score: {{ frage.score }}</div>
-                <div class="text"><u><small></small></u> <p>{{ frage.text }}</p></div>
-                {% if frage.antwort %}
-                    <div class="answer"><u><small>Antwort:</small></u> <p>{{ frage.antwort }}</p></div>
-                {% endif %}
-
-
-                {% if modus == 'p' %}
-                    <form action="{% url 'exoral:frage_score' frage.pk %}" method="post" class="up">
-                        {% csrf_token %}
-                        <input type="hidden" name="testat_id" value="{{ testat.pk }}" />
-                        <input type="hidden" name="pruefer_id" value="{{ pruefer.pk }}" />
-                        <button class="small"><span class="fa fa-long-arrow-up"></span> up</button>
-                    </form>
-                {% endif %}
+<div class="container list-group">
+    {% for frage in fragen %}
+        <div class=" animated bounceInLeft list-group-item flex-column align-items-start mb-3 mt-1 bg-primary text-light" style="border:3px solid brown; border-radius: 0 50px 50px">
+            <div class="d-flex w-100 justify-content-between">
+                <small class="font-italic font-weight-light text-muted">{{ frage.datum }}</small>
+                <div class="text-right border border-danger p-2 d-flex flex-wrap" style="border-radius:30px 30px 0 30px">
+                    <small class="text-mutet" style="text-decoration:underline;">Score:</small>
+                    {{ frage.score }}
+                    {% if modus == 'p' %}
+                        <form action="{% url 'exoral:frage_score' frage.pk %}" method="post" class="up">
+                            {% csrf_token %}
+                            <input type="hidden" name="testat_id" value="{{ testat.pk }}" />
+                            <input type="hidden" name="pruefer_id" value="{{ pruefer.pk }}" />
+                            <button class="badge badge-danger" data-toggle="tooltip" data-placement="top" title="Hier Klicken um den Score zu erhöhen">
+                            Score +1
+                            </button>
+                        </form>
+                    {% endif %}
+                </div>
             </div>
-        {% endfor %}
+            <div class="d-flex w-100">
+                <p class="text-left text-justify">{{ frage.text }}</p>
+            </div>
+            {% if frage.antwort %}
+            <div class="d-flex w-100 pl-3">
+                <small class="font-italic font-weight-light text-left">{{ frage.antwort }}</small>
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
     {% if modus == 'p' %}
         <a href="{% url 'exoral:frage_neu' modus=modus testat_id=testat.pk pruefer_id=pruefer.pk %}">
-        <button class="big">Neue Frage eintragen</button></a>
+           <button class="btn btn-danger float-right">Neue Frage eintragen</button>
+        </a>
     {% endif %}
+</div>
 {% endblock %}

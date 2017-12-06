@@ -1,15 +1,27 @@
-<div class="fortschritt">
-    {% if modus %}
-        <a href="{% url 'exoral:moduswahl' %}">
-            {% if modus == 'l' %} Lernmodus
-                {% else %} Protokollmodus
-            {% endif %}
-        </a>
-        {% if testat %}
-            <a href="{% url 'exoral:testatwahl' modus=modus%}">{{ testat }}</a>
-            {% if pruefer %}
-                <a href="{% url 'exoral:prueferwahl'  modus=modus testat_id=testat.pk %}">bei {{ pruefer }}</a>
-            {% endif %}
+{% if modus %}
+<div aria-label="fortschritt">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link"href="{% url 'exoral:moduswahl' %}" tabindex="1">
+        {% if modus == 'l' %} Lernmodus
+          {% else %} Protokollmodus
         {% endif %}
+      </a>
+    </li>
+    {% if testat %}
+    <li class="page-item">
+      <a class="page-link"href="{% url 'exoral:testatwahl' modus=modus%}"tabindex="2">
+        {{ testat }}
+      </a>
+    </li>
+    {% if pruefer %}
+    <li class="page-item">
+      <a class="page-link"tabindex="2" href="{% url 'exoral:prueferwahl'  modus=modus testat_id=testat.pk %}">
+        bei {{ pruefer }}
+      </a>
+    </li>
     {% endif %}
+    {% endif %}
+  </ul>
 </div>
+{% endif %}
