@@ -14,6 +14,7 @@
 
             <title>{% block title %}Fachschaft Medizin Rostock{% endblock %}</title>
 
+
             <link rel="icon" href="{% block logo_bar %}{% static 'images/Signet.svg' %}{% endblock %}" type="image/png" >
 	<link rel="stylesheet" href="{% static 'design/bootstrap3/css/bootstrap.min.css' %}">
             <link rel="stylesheet" href="{% static 'design/bootstrap3/css/bootstrap-fs.css' %}">
@@ -22,6 +23,7 @@
 			<link rel="stylesheet" href="{% static 'design/animate.css' %}"> <!--File für alle Animationen-->
 			<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
 			<link rel="stylesheet" href="{% static 'design/hamburger.css' %}">
+
 
             {% render_block "css"%}
             {{ ALDRYN_SNAKE.render_head }}
