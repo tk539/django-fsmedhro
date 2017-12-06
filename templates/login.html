@@ -10,16 +10,37 @@
 {% block site_heading %}Login{% endblock %}
 
 {% block site_content %}
-    <section style="background-color: #272a44; color: #E0E0F8;">
-        Willkommen auf der internen Seite der Fachschaft Medizin Rostock. <br> Du kannst dich hier problemlos
-    mit dem Nutzerkennzeichen und dem Passwort des ITMZ anmelden. Solltest du kein Student der medizinischen Fakultät sein
-        wird dein Loginversuch scheitern. <br>
-    Wir wünschen dir viel Spaß bei deinem Studium
-    </section>
-    <form action="{% url "fsmedhro_login" %}" method="post" accept-charset="utf-8">{% csrf_token %}
-        <input class="nkz form-control" type="text" placeholder="Nutzerkennzeichen" name="username">
-        <input class="psw form-control" type="password" placeholder="Passwort" name="password">
-        <input type="hidden" name="next" value="{{ next }}">
-        <input class="btn_login" type="submit" value="Login">
-    </form>
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header text-center text-light bg-primary">
+          Willkommen auf der internen Seite der Fachschaft Medizin Rostock. <br>
+          Du kannst dich hier problemlos mit dem Nutzerkennzeichen und dem Passwort des ITMZ anmelden. Solltest du kein Student der medizinischen Fakultät seiwird dein Loginversuch scheitern. <br>
+          Wir wünschen dir viel Spaß bei deinem Studium
+        </div>
+        <div class="card-body">
+          <form action="{% url "fsmedhro_login" %}" method="post" accept-charset="utf-8">{% csrf_token %}
+            <div class="form-section">
+              <div class="row mt-3 mr-3 ml-3">
+                <div class="col">
+                  <input class="form-control" type="text" placeholder="Nutzerkennzeichen" name="username">
+                </div>
+                <div class="col">
+                  <input class="form-control" type="password" placeholder="Passwort" name="password">
+                </div>
+              </div>
+              <div class="row mr-3 ml-3">
+                <div class="col">
+                  <small class="form-text text-mutet">Bitte verwende hier das Nutzerkennzeichen, dass du von der Uni bekommen hast</small>
+                </div>
+                <div class="col">
+                  <small class="form-text text-mutet">Bitte verwende hier das Passwort, dass du auch in der Uni verwendest</small>
+                </div>
+              </div>
+              <input type="hidden" name="next" value="{{ next }}">
+              <input class="btn btn-primary float-right" type="submit" value="Login">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 {% endblock %}
