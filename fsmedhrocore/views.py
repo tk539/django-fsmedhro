@@ -20,8 +20,9 @@ def user_profile(request, username):
     except ObjectDoesNotExist:
         f_user = None
         if request.user == p_user:
-            # wenn eigenes profil, aber noch kein Fachschaft-Profil, dann bearbeiten/hinzufügen
-            return redirect(user_edit)
+            # wenn eigenes profil, aber noch kein Fachschaft-Profil, dann
+            # bearbeiten/hinzufügen
+            return redirect('fachschaft:fsmedhro_user_edit')
 
     context = {'p_user': p_user, 'f_user': f_user}
 
