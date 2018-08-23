@@ -102,6 +102,11 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'email.uni-rostock.de'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.DjangoModelPermissions',
