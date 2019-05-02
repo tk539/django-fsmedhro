@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'djangocms_admin_style' muss vor 'django.contrib.admin' geladen werden:
     'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,14 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    # Django CMS und wichtige dazugehörige Apps:
     'cms',
     'menus',
     'treebeard',
     'sekizai',
+    # Django Filer und die dazugehörigen Apps:
     'filer',
     'easy_thumbnails',
     'mptt',
+    # Der Standardeditor für Django CMS:
     'djangocms_text_ckeditor',
+    # "well-maintained" Plugins:
     'djangocms_link',
     'djangocms_file',
     'djangocms_picture',
