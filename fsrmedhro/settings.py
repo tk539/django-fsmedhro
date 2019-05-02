@@ -159,8 +159,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Django CMS configuration:
 
 LANGUAGES = [
-    ('en', 'English'),
     ('de', 'German'),
+    ('en', 'English'),
 ]
 
 CMS_TEMPLATES = [
