@@ -2,3 +2,11 @@ setuptools
 django-cms<=3.6
 django-filer
 djangocms-text-ckeditor
+djangocms-link
+djangocms-file
+djangocms-picture
+djangocms-video
+djangocms-googlemap
+djangocms-snippet
+djangocms-style
+djangocms-column
