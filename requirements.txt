@@ -1,3 +1,4 @@
 setuptools
 django-cms<=3.6
 django-filer
+djangocms-text-ckeditor

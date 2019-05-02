@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'filer',
     'easy_thumbnails',
     'mptt',
+    'djangocms_text_ckeditor',
 ]
 
 SITE_ID = 1
