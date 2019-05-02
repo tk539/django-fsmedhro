@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'menus',
     'treebeard',
     'sekizai',
+    'filer',
+    'easy_thumbnails',
+    'mptt',
 ]
 
 SITE_ID = 1
@@ -149,3 +152,14 @@ LANGUAGES = [
 CMS_TEMPLATES = [
     ('home.html', 'Home page template'),
 ]
+
+# Easy Thumbnail and Django filer configuration:
+
+THUMBNAIL_HIGH_RESOLUTION = True
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+)
