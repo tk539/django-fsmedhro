@@ -1,5 +1,7 @@
 setuptools
-django-cms<=3.6
+# ~= 3.6.0  ⇔  >=3.6.0, ==3.6.*
+# Also 3.6 und alle Sicherheitspatches.
+django-cms~=3.6.0
 django-filer
 djangocms-text-ckeditor
 djangocms-link
