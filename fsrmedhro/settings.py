@@ -63,10 +63,16 @@ INSTALLED_APPS = [
     'djangocms_snippet',
     'djangocms_style',
     'djangocms_column',
+    # Unsere eigenen Apps:
+    'fsmedhro_core.apps.FachschaftConfig',
 ]
 
 SITE_ID = 1
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'fsmedhro_core.backends.auth.LDAPUniRostock',
+]
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
