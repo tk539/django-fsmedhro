@@ -173,7 +173,7 @@ LANGUAGES = [
 ]
 
 CMS_TEMPLATES = [
-    ('home.html', 'Home page template'),
+    ('base.html', 'Standardvorlage'),
 ]
 
 # Easy Thumbnail and Django filer configuration:
