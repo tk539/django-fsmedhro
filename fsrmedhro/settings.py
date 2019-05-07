@@ -93,6 +93,23 @@ MIDDLEWARE = [
     'cms.middleware.utils.ApphookReloadMiddleware',
 ]
 
+INTERNAL_IPS = []
+
+if DEBUG:
+    """
+    Hier kommt hauptsächlich die Konfiguration der django-debug-toolbar rein.
+    Der ganze Debuggingkram wird nur aktiviert, wenn DEBUG = True ist.
+    """
+    INSTALLED_APPS += [
+        'django_extensions',
+        'debug_toolbar',
+    ]
+    MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ] + MIDDLEWARE
+    INTERNAL_IPS += ['127.0.0.1']
+
+
 ROOT_URLCONF = 'fsrmedhro.urls'
 
 TEMPLATES = [
