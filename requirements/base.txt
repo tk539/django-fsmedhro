@@ -14,3 +14,4 @@ djangocms-snippet
 djangocms-style
 djangocms-column
 -e git+https://github.com/hutchison/django-fsmedhro-core.git#egg=fsmedhro_core
+django-crispy-forms
