@@ -15,3 +15,4 @@ djangocms-style
 djangocms-column
 django-fsmedhro-core
 django-crispy-forms
+djangocms-bootstrap4

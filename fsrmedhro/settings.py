@@ -56,8 +56,9 @@ INSTALLED_APPS = [
     'djangocms_text_ckeditor',
     # "well-maintained" Plugins:
     'djangocms_link',
-    'djangocms_file',
+    'djangocms_icon',
     'djangocms_picture',
+    'djangocms_file',
     'djangocms_video',
     'djangocms_googlemap',
     'djangocms_snippet',
@@ -65,6 +66,27 @@ INSTALLED_APPS = [
     'djangocms_column',
     # für schöne Formulare:
     'crispy_forms',
+    # alles für Bootstrap 4
+    #
+    # benötigt:
+    # 'djangocms_icon',
+    # 'djangocms_link',
+    # 'djangocms_picture',
+    'djangocms_bootstrap4',
+    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
+    'djangocms_bootstrap4.contrib.bootstrap4_badge',
+    'djangocms_bootstrap4.contrib.bootstrap4_card',
+    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
+    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
+    'djangocms_bootstrap4.contrib.bootstrap4_content',
+    'djangocms_bootstrap4.contrib.bootstrap4_grid',
+    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
+    'djangocms_bootstrap4.contrib.bootstrap4_link',
+    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
+    'djangocms_bootstrap4.contrib.bootstrap4_media',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
+    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
+    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     # Unsere eigenen Apps:
     'fsmedhro_core.apps.FachschaftConfig',
 ]
