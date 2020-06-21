@@ -1,34 +1,41 @@
-{% load static cms_tags sekizai_tags %}
-<!doctype html>
+{% load static cms_tags sekizai_tags menu_tags %}
 <html lang="de">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" >
     {% render_block "css" %}
-
-    {% block stylesheets %}
-    {% endblock %}
-
-    <title>{% block title %}{% endblock %}</title>
+    <title>
+    {% block title %}{% endblock %}
+    </title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark flex-column align-items-stretch">
+      <div class="d-flex">
+        <img src="{% static "img/logo.png" %}" style="height: 95px;">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse w-100 sticky-top" id="navbarMenu">
+        <ul class="navbar-nav ">
+          {% show_menu 0 100 100 100  "menu.html" %}
+        </ul>
+      </div>
+    </nav>
+    
     <main role="main" class="container-fluid">
-    {% cms_toolbar %}
-
-    {% block content %}
-    {% placeholder "content" %}
-    {% endblock %}
+      {% cms_toolbar %}
+      {% block content %}
+        {% placeholder "content" %}
+      {% endblock %}
     </main>
-
+    <footer class="py-4 bg-dark text-white">
+      {% static_placeholder 'footer' %}
+    </footer>
     <script src="{% static "js/jquery-3.4.1.min.js" %}"></script>
     <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
-
-    {% block javascript %}
-    {% endblock %}
-
     {% render_block "js" %}
   </body>
 </html>
